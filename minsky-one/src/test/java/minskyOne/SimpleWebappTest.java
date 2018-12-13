@@ -12,8 +12,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.webapp.WebAppContext;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 // See https://www.eclipse.org/jetty/documentation/9.4.x/embedded-examples.html
 
@@ -23,21 +26,18 @@ public class SimpleWebappTest {
   
     @Before
     public void setUp() throws Exception {
+
+      ClassLoader classLoader = getClass().getClassLoader();
+      URL uri = classLoader.getResource(".");  // absolute path to target/classess
+      Path p = Paths.get(uri.getPath(), "../../src/main/webapp");
+      p = p.normalize();
+
       server = new Server(8080);
       server.setStopAtShutdown(true);
 
-      //ContextHandler context = new ContextHandler();
-      //context.setContextPath( "/hello" );
-      //context.setResourceBase("github/ExeterBScDTS/ECM3432-minsky/minsky-one/src/main/webapp");
-      //context.setClassLoader(getClass().getClassLoader());
-      //context.setHandler( new HelloHandler() );
-
-      // Can be accessed using http://localhost:8080/hello
-
-      //server.setHandler( context );
       WebAppContext webAppContext = new WebAppContext();
       webAppContext.setContextPath("/webapp");
-      webAppContext.setResourceBase("github/ExeterBScDTS/ECM3432-minsky/minsky-one/src/main/webapp");
+      webAppContext.setResourceBase(p.toString());
       webAppContext.setClassLoader(getClass().getClassLoader());
       server.setHandler(webAppContext);
       server.start();
