@@ -13,6 +13,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
+import org.eclipse.jetty.security.HashLoginService;
+import org.eclipse.jetty.security.LoginService;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,6 +36,10 @@ public class SimpleWebappTest {
 
       server = new Server(8080);
       server.setStopAtShutdown(true);
+
+      LoginService loginService = new HashLoginService("Test Realm",
+      Paths.get(uri.getPath(),"../../src/etc/realm.properties").normalize().toString());
+      server.addBean(loginService);
 
       WebAppContext webAppContext = new WebAppContext();
       webAppContext.setContextPath("/webapp");

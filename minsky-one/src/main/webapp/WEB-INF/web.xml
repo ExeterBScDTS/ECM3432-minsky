@@ -18,7 +18,6 @@
 
    -->
 
-
   <login-config>
     <auth-method>FORM</auth-method>
     <realm-name>Test Realm</realm-name>
