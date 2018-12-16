@@ -18,4 +18,23 @@
 
    -->
 
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>Test Realm</realm-name>
+    <form-login-config>
+       <form-login-page>/logon.html?param=test</form-login-page>
+       <form-error-page>/logonError.html?param=test</form-error-page>
+    </form-login-config>
+  </login-config>
+
+  <security-constraint>
+    <web-resource-collection>
+        <web-resource-name>samplesite</web-resource-name>
+        <url-pattern>/authorised/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>user-role</role-name>
+    </auth-constraint>
+  </security-constraint>
+
 </web-app>

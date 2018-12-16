@@ -43,6 +43,21 @@
             <artifactId>jetty-webapp</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-annotations</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>apache-jsp</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>apache-jstl</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>
         <!--
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
@@ -73,6 +88,21 @@
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jettyVersion}</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                    </webApp>
+
+                    <!-- See https://www.eclipse.org/jetty/documentation/9.4.x/jetty-maven-plugin.html
+                    -->
+                    <loginServices>
+                        <loginService implementation="org.eclipse.jetty.security.HashLoginService">
+                        <name>Test Realm</name>
+                        <config>${project.basedir}/src/etc/realm.properties</config>
+                        </loginService>
+                    </loginServices>
+                </configuration>
             </plugin>
         </plugins>
     </build>

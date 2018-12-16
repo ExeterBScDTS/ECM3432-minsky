@@ -1,3 +1,4 @@
+<%@page import="java.security.Principal"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,11 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/4.1.3/css/bootstrap.min.css">
 
     <title>Minsky One</title>
   </head>
   <body>
-    <a href="authorised/status.jsp">Sensor status</a>
+    <%
+        Principal prin = request.getUserPrincipal();
+        if(prin != null){
+          out.print("<p>" + prin.getName()  + "</p>");
+        }
+    %>
+
   </body>
 </html>
