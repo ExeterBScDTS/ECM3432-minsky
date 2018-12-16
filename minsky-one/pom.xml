@@ -76,8 +76,11 @@
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <webApp>
-                        <contextPath>/test</contextPath>
+                        <contextPath>/</contextPath>
                     </webApp>
+
+                    <!-- See https://www.eclipse.org/jetty/documentation/9.4.x/jetty-maven-plugin.html
+                    -->
                     <loginServices>
                         <loginService implementation="org.eclipse.jetty.security.HashLoginService">
                         <name>Test Realm</name>
