@@ -1,3 +1,4 @@
+<%@page import="java.security.Principal"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,6 +12,14 @@
     <title>Minsky One</title>
   </head>
   <body>
+      <%
+      Principal prin = request.getUserPrincipal();
+      if(prin != null){
+        out.print("<p>" + prin.getName()  + "</p>");
+      }else{
+        out.print("<p><a href=\"authorised\">Login</a></p>");
+      }
+      %>
     <a href="authorised/status.jsp">Sensor status</a>
   </body>
 </html>
