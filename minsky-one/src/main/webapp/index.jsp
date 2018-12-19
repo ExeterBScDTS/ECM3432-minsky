@@ -14,11 +14,13 @@
   <body>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
           <a class="navbar-brand" href="#">Minsky One</a>
-          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+            <div class="pull-right">
             <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
+            </div>
           </div>
         </nav>
         <main role="main" class="container">
