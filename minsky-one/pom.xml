@@ -43,6 +43,8 @@
             <artifactId>jetty-webapp</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
+
+        <!--
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-annotations</artifactId>
@@ -58,6 +60,7 @@
             <artifactId>apache-jstl</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
+        --> 
         <!--
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
@@ -93,9 +96,6 @@
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
-
-                    <!-- See https://www.eclipse.org/jetty/documentation/9.4.x/jetty-maven-plugin.html
-                    -->
                     <loginServices>
                         <loginService implementation="org.eclipse.jetty.security.HashLoginService">
                         <name>Test Realm</name>
