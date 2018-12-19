@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URI;
 
 
 import org.junit.After;
@@ -30,20 +31,20 @@ public class SimpleWebappTest {
     public void setUp() throws Exception {
 
       ClassLoader classLoader = getClass().getClassLoader();
-      URL uri = classLoader.getResource(".");  // absolute path to target/classess
-      Path p = Paths.get(uri.getPath(), "../../src/main/webapp");
-      p = p.normalize();
+      URI uri = classLoader.getResource(".").toURI();  // absolute path to target/classess
+      Path projPath = Paths.get(uri).resolve("../..").normalize();
+      Path webappPath = projPath.resolve("src/main/webapp");
 
       server = new Server(8080);
       server.setStopAtShutdown(true);
 
       LoginService loginService = new HashLoginService("Test Realm",
-      Paths.get(uri.getPath(),"../../src/etc/realm.properties").normalize().toString());
+      Paths.get(projPath.toString(),"src/etc/realm.properties").normalize().toString());
       server.addBean(loginService);
 
       WebAppContext webAppContext = new WebAppContext();
       webAppContext.setContextPath("/webapp");
-      webAppContext.setResourceBase(p.toString());
+      webAppContext.setResourceBase(webappPath.toString());
       webAppContext.setClassLoader(getClass().getClassLoader());
       server.setHandler(webAppContext);
       server.start();
