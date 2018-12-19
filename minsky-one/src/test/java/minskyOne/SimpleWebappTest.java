@@ -16,6 +16,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.eclipse.jetty.security.HashLoginService;
 import org.eclipse.jetty.security.LoginService;
+import org.eclipse.jetty.webapp.Configuration;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -80,5 +81,32 @@ public class SimpleWebappTest {
         }
       }
     }  
+
+    /*
+    @Test
+    public void testWebappJsp() {
+      HttpURLConnection connection = null;
+      try {
+        URL url = new URL("http://localhost:8080/webapp/index.jsp");
+        connection = (HttpURLConnection) url.openConnection();
+        if (connection.getResponseCode() != 200) {
+          throw new RuntimeException("Failed! HTTP Error Code: " + connection.getResponseCode());
+        }
+        BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
+        String str;
+        while ((str = br.readLine()) != null) {
+          System.out.println(str);
+        }
+      } catch (MalformedURLException e) {
+        e.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
+      } finally {
+        if (connection != null) {
+          connection.disconnect();
+        }
+      }
+    }
+    */  
 }
 
