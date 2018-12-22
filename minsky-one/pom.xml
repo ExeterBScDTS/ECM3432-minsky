@@ -102,9 +102,11 @@
                 <version>${jettyVersion}</version>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <!--
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
+                    -->
                     <loginServices>
                         <loginService implementation="org.eclipse.jetty.security.HashLoginService">
                         <name>Test Realm</name>
