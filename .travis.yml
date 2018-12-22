@@ -8,6 +8,9 @@ deploy:
   provider: releases
   api_key:
     secure: YjsAUurCRlZ/zPiMkOofduJtXVBkjmqjrfqWAuX2+KYVbZUi/wtGF+90PPmfcmQu06zIFZiGwnqyblvRk2YrktjNFpbBmAKftL3AUWssCY42VnB6CRSeYIFD1smflrEBmB1zeeDvWP15eO/M9DxdGK1wRBdFRizbSpAgf2Ub+EaQWAJSbnqmAcXULK87ar/HejEgcjDncl0iQZXJXL3B87WE2JfIP/VNM+1xT2PPi8HupP2091WdRuCUOZZbtElkfs+Tc3EjH4vp9Y8Zrc7KCTsobipQOozs8JVmOVd3JCBZfhA4BzkJ+a3VN5VCUR5M1cZLeyYyuGxl5KYylI37rXXwKHMeNpAic3lnlJqpOuxpUTkOjdsnomP5/vxCTXr+9LsVQGUlBBf+mP5CYOLgKYC70KW/d/XIt/U63FFMQvq4ClNuntmkk5b+hzHLSjSvnnNyLv/fVhMU5TJn6G8vxBa67VeDEF3nIlPHSH3qzG8LV4Mv68pKg6NehUFSgKCISjZ9VAa5dTKNoCrhqg36JT8gXPKBrvZxlk7g6w2cgRwA+J9GtesxJS+At+hZ1vJpfa/bFva8zC29ZzeFDlDfk6LfGdTdvyA7Bp2KswccSmO1jW5j4m4XJ1NfksAA37YGAnY69j4GUr100Dgk9dp4FkNfo1sAyt5pVC1DqCQqgnQ=
-  file: minsky-one/target/minskyOne-0.1.war
+  file:
+    - ExeterBScDTS/ECM3432-minsky/minsky-one/target/minskyOne-0.1.war
+  skip_cleanup: true
   on:
     repo: ExeterBScDTS/ECM3432-minsky
+  
