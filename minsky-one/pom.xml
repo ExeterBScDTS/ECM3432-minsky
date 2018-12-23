@@ -47,7 +47,6 @@
             <artifactId>jetty-servlet</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
-
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
@@ -58,40 +57,11 @@
             <artifactId>jetty-annotations</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>apache-jsp</artifactId>
-            <version>${jettyVersion}</version>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>apache-jstl</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlet</artifactId>
-            <version>${jettyVersion}</version>
-        </dependency>
-        <!--
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-util</artifactId>
-            <version>${version.jetty}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlets</artifactId>
-            <version>${version.jetty}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-http</artifactId>
-            <version>${version.jetty}</version>
-        </dependency>
-        -->
     </dependencies>
 
     <build>
@@ -102,11 +72,6 @@
                 <version>${jettyVersion}</version>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <!--
-                    <webApp>
-                        <contextPath>/</contextPath>
-                    </webApp>
-                    -->
                     <loginServices>
                         <loginService implementation="org.eclipse.jetty.security.HashLoginService">
                         <name>Test Realm</name>
