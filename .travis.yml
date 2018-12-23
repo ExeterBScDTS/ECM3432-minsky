@@ -11,7 +11,7 @@ deploy:
   file:
     -  /home/travis/build/ExeterBScDTS/ECM3432-minsky/minsky-one/target/minskyOne-0.1.war
   skip_cleanup: true
-  draft: true
+  draft: false
   on:
     repo: ExeterBScDTS/ECM3432-minsky
     tags: true
