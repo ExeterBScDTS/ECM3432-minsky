@@ -3,4 +3,17 @@
 
 <Configure>
     <Set name="contextPath">/minskyOne-0.1</Set>
+    
+    <Set name="war"><SystemProperty name="jetty.home" default="."/>/</Set>
+
+<!--
+    <Get name="securityHandler">
+    <Set name="loginService">
+      <New class="org.eclipse.jetty.security.HashLoginService">
+            <Set name="name">Test Realm</Set>
+            <Set name="config"><SystemProperty name="jetty.home" default="."/>/src/etc/realm.properties</Set>
+      </New>
+    </Set>
+    </Get>
+ -->
 </Configure>
