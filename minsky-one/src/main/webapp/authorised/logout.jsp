@@ -15,6 +15,8 @@
   // N.B. This works if we use a login form, but not if we let Jetty (and browser) manage basic auth.  
   request.getSession(false).invalidate();
   // out.print("<p>Sorry, cannot log out when basic auth in use. Please close your browser.</p>");
+
+  response.sendRedirect("../");
 %>
   </body>
 </html>
