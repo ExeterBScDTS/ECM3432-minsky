@@ -21,6 +21,8 @@ import org.eclipse.jetty.webapp.Configuration;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import minskyOne.servlet.*;
+
 
 // See https://www.eclipse.org/jetty/documentation/9.4.x/embedded-examples.html
 
@@ -34,7 +36,7 @@ public class SimpleWebappTest {
       ClassLoader classLoader = getClass().getClassLoader();
       URI uri = classLoader.getResource(".").toURI();  // absolute path to target/classess
       Path projPath = Paths.get(uri).resolve("../..").normalize();
-      Path webappPath = projPath.resolve("src/main/webapp");
+      Path webappPath = projPath.resolve("src/main/webapp");  // use minimal web.xml
 
       server = new Server(8082);
       server.setStopAtShutdown(true);
