@@ -5,18 +5,29 @@
       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
       version="3.1">
 
-   <!-- add more servlets here, like this ...
+<context-param>
+    <param-name>minsky.prop</param-name>
+    <param-value>something.csv</param-value>
+</context-param>
 
    <servlet>
-     <servlet-name>something</servlet-name>
-     <servlet-class>com.example.classname</servlet-class>
+     <servlet-name>props</servlet-name>
+     <servlet-class>minskyOne.servlet.props</servlet-class>
    </servlet>
    <servlet-mapping>
-     <servlet-name>something</servlet-name>
-     <url-pattern>/myFormUrl/*</url-pattern>
+     <servlet-name>props</servlet-name>
+     <url-pattern>/props/*</url-pattern>
    </servlet-mapping>   
 
-   -->
+<servlet>
+     <servlet-name>camera</servlet-name>
+     <servlet-class>minskyOne.servlet.camera</servlet-class>
+   </servlet>
+   <servlet-mapping>
+     <servlet-name>camera</servlet-name>
+     <url-pattern>/camera/*</url-pattern>
+   </servlet-mapping>   
+
 
   <login-config>
     <auth-method>FORM</auth-method>
