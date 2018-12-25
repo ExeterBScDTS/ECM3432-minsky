@@ -19,6 +19,15 @@
      <url-pattern>/props/*</url-pattern>
    </servlet-mapping>   
 
+<servlet>
+     <servlet-name>camera</servlet-name>
+     <servlet-class>minskyOne.servlet.camera</servlet-class>
+   </servlet>
+   <servlet-mapping>
+     <servlet-name>camera</servlet-name>
+     <url-pattern>/camera/*</url-pattern>
+   </servlet-mapping>   
+
 
   <login-config>
     <auth-method>FORM</auth-method>

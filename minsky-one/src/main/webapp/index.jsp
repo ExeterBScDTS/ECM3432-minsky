@@ -32,9 +32,23 @@
         <main role="main" class="container">
 
             <div class="starter-template">
+              <div>
+                <img id="thermal" src="camera/xxx" width="192" height="256">
+              </div>
               <a href="authorised/status.jsp">Sensor status</a>
             </div>
       
           </main>
+          <script>
+          window.onload = function() {
+            var image = document.getElementById("thermal");
+        
+            function updateImage() {
+                image.src =  "camera" + "/" + new Date().getTime();
+            }
+        
+            setInterval(updateImage, 1000);
+        }
+        </script>       
   </body>
 </html>
