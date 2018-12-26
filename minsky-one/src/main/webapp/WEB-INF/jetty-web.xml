@@ -3,7 +3,7 @@
 
 <Configure>
     <Set name="contextPath">/minskyOne-0.1</Set>
-    
+
     <Set name="war"><SystemProperty name="jetty.home" default="."/>/</Set>
 
 <!--
