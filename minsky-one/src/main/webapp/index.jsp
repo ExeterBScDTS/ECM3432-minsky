@@ -33,7 +33,7 @@
 
             <div class="starter-template">
               <div>
-                <img id="thermal" src="camera/xxx" width="192" height="256">
+                <img id="thermal" src="camera/xxx" width="512" height="384">
               </div>
               <a href="authorised/status.jsp">Sensor status</a>
             </div>
@@ -47,7 +47,7 @@
                 image.src =  "camera" + "/" + new Date().getTime();
             }
         
-            setInterval(updateImage, 1000);
+            setInterval(updateImage, 200);
         }
         </script>       
   </body>
