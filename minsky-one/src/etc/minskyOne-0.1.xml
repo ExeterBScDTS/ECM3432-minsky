@@ -21,6 +21,10 @@
   <Call name="setInitParameter">
     <Arg>minsky.dir</Arg>
     <Arg>some-dir</Arg>
-</Call>
+  </Call>
+   <Call name="setInitParameter">
+    <Arg>minsky.prop</Arg>
+    <Arg>minskyOne-0.1.xml</Arg>
+  </Call>
 </Configure>
 
