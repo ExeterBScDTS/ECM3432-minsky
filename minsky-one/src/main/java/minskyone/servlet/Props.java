@@ -1,4 +1,4 @@
-package minskyOne.servlet;
+package minskyone.servlet;
 
 import javax.servlet.http.HttpServlet;
 

@@ -1,4 +1,4 @@
-package minskyOne;
+package minskyone;
 
 public class Sensor{
 

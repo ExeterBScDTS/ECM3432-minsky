@@ -1,4 +1,4 @@
-package minskyOne;
+package minskyone;
 
 import org.junit.After;
 import org.junit.Before;

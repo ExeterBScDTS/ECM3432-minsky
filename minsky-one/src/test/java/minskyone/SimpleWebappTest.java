@@ -1,4 +1,4 @@
-package minskyOne;
+package minskyone;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ import org.eclipse.jetty.webapp.Configuration;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import minskyOne.servlet.*;
+import minskyone.servlet.*;
 
 
 // See https://www.eclipse.org/jetty/documentation/9.4.x/embedded-examples.html

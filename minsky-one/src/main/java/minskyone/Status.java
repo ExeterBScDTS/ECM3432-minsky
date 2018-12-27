@@ -1,4 +1,4 @@
-package minskyOne;
+package minskyone;
 
 import java.util.ArrayList;
 import java.util.List;
