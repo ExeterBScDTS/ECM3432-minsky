@@ -1,4 +1,4 @@
-<%@page import="minskyOne.*,java.util.List,java.security.Principal"%>
+<%@page import="minskyone.*,java.util.List,java.security.Principal"%>
 <!doctype html>
 <html lang="en">
   <head>

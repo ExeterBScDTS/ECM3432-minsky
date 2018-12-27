@@ -20,6 +20,12 @@ public class UtilsTest{
         req = mock(HttpServletRequest.class);
         when(req.getServletContext()).thenReturn(sc);
         when(sc.getInitParameter( "mock.init.parameter" )).thenReturn("boo");
+
+        // A parameter with default value
+        when(sc.getInitParameter( "mock.init.defaulttest0" )).thenReturn("result");
+        when(sc.getInitParameter( "mock.init.defaulttest0.default" )).thenReturn("hidden value");
+        // A parameter with only a default
+        when(sc.getInitParameter( "mock.init.defaulttest1.default" )).thenReturn("visible");
     }
 
     @Test
@@ -34,5 +40,19 @@ public class UtilsTest{
 
         String p = Utils.getParameter(req, "mock.init.parameter");
         assertTrue(p.equals("boo"));
+    }
+
+    @Test
+    public void testGetParameterDefaultOnly(){
+
+        String p = Utils.getParameter(req, "mock.init.defaulttest1");
+        assertTrue(p.equals("visible"));
+    }
+
+    @Test
+    public void testGetParameterDefaultMasked(){
+
+        String p = Utils.getParameter(req, "mock.init.defaulttest0");
+        assertTrue(p.equals("result"));
     }
 }
