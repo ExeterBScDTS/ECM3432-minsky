@@ -12,7 +12,7 @@
 
    <servlet>
      <servlet-name>props</servlet-name>
-     <servlet-class>minskyOne.servlet.Props</servlet-class>
+     <servlet-class>minskyone.servlet.Props</servlet-class>
    </servlet>
    <servlet-mapping>
      <servlet-name>props</servlet-name>
@@ -21,7 +21,7 @@
 
 <servlet>
      <servlet-name>camera</servlet-name>
-     <servlet-class>minskyOne.servlet.Camera</servlet-class>
+     <servlet-class>minskyone.servlet.Camera</servlet-class>
    </servlet>
    <servlet-mapping>
      <servlet-name>camera</servlet-name>

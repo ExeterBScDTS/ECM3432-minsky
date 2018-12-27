@@ -1,4 +1,4 @@
-package minskyOne.servlet;
+package minskyone.servlet;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
