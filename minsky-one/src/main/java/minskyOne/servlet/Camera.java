@@ -12,8 +12,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import minskyOne.Utils;
+
 public class Camera extends HttpServlet {
 
+    private static final long serialVersionUID = 1L;
     int frame_num = 5;
 
     @Override
@@ -41,6 +44,7 @@ public class Camera extends HttpServlet {
 
         in.close();
         }else{
+        String param = Utils.getParameter(req, "minsky.camera.tirpath");    
         // Get the absolute path of the image
         String path = String.format("tir-samples/frame%03d.bin", frame_num);
         frame_num++;
