@@ -6,7 +6,7 @@
       version="3.1">
 
 <context-param>
-    <param-name>minsky.prop</param-name>
+    <param-name>minsky.prop.default</param-name>
     <param-value>something.csv</param-value>
 </context-param>
 

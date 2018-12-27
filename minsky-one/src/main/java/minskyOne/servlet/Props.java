@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class Props extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
@@ -29,7 +31,8 @@ public class Props extends HttpServlet {
         Enumeration<String> a = sc.getInitParameterNames();
         while(a.hasMoreElements()){
             String n = a.nextElement();
-            out.printf("{%s}%n",n);
+            String v = sc.getInitParameter(n);
+            out.printf("{%s} = %s%n",n,v);
         }
     
     }
