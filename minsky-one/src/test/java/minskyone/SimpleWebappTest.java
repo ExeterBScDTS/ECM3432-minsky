@@ -16,7 +16,6 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.eclipse.jetty.security.HashLoginService;
 import org.eclipse.jetty.security.LoginService;
-import org.eclipse.jetty.webapp.Configuration;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
