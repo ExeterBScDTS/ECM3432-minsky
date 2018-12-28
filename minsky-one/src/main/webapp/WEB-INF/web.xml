@@ -6,8 +6,8 @@
       version="3.1">
 
 <context-param>
-    <param-name>minsky.prop.default</param-name>
-    <param-value>something.csv</param-value>
+    <param-name>minsky.camera.tirpath.default</param-name>
+    <param-value>tir-samples/frame010.bin</param-value>
 </context-param>
 
    <servlet>
