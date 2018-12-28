@@ -17,7 +17,7 @@ import minskyone.Utils;
 public class Camera extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    int frame_num = 5;
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -27,6 +27,8 @@ public class Camera extends HttpServlet {
         OutputStream out = resp.getOutputStream();
         ServletContext cntx= req.getServletContext();
         boolean copy_image = false;
+        boolean video_loop = false;
+        int frame_num = 5;
 
         if(copy_image){
         // Get the absolute path of the image
@@ -43,17 +45,24 @@ public class Camera extends HttpServlet {
         }
 
         in.close();
+
+        }else if(video_loop){        
+            // Get the absolute path of the image
+            String path = String.format("tir-samples/frame%03d.bin", frame_num);
+            frame_num++;
+            if(frame_num > 60) frame_num=5;
+            String filename = cntx.getRealPath(path);
+            File file = new File(filename);
+            FileInputStream in = new FileInputStream(file);
+            Rawtopng.writePNG(in, out);
+        
         }else{
-        String param = Utils.getParameter(req, "minsky.camera.tirpath");    
-        // Get the absolute path of the image
-        String path = String.format("tir-samples/frame%03d.bin", frame_num);
-        frame_num++;
-        if(frame_num > 60) frame_num=5;
-        String filename = cntx.getRealPath(path);
-        File file = new File(filename);
-        FileInputStream in = new FileInputStream(file);
-        Rawtopng.writePNG(in, out);
+            String filename = Utils.getPath(req, "minsky.camera.tirpath"); 
+            File file = new File(filename);
+            FileInputStream in = new FileInputStream(file);
+            Rawtopng.writePNG(in, out);
         }
+
 
         out.close();
     }

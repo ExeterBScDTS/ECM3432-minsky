@@ -19,8 +19,19 @@ public class Props extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
         resp.setContentType("text/plain");
-
         PrintWriter out = resp.getWriter();
+
+        ServletContext cntx= req.getServletContext();
+        String realPath; 
+        realPath = cntx.getRealPath(".");
+        out.printf("RealPath for . =%s%n", realPath);
+        realPath = cntx.getRealPath("/");
+        out.printf("RealPath for / =%s%n", realPath);
+
+        realPath = java.nio.file.Paths.get(".").toAbsolutePath().toString();
+        out.printf("file.Paths.get for . =%s%n", realPath);
+        realPath = java.nio.file.Paths.get("/").toAbsolutePath().toString();
+        out.printf("file.Paths.get for / =%s%n", realPath);
         context(out, req);
         info(out,req.getPathInfo());
     }

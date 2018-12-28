@@ -55,4 +55,15 @@ public class UtilsTest{
         String p = Utils.getParameter(req, "mock.init.defaulttest0");
         assertTrue(p.equals("result"));
     }
+
+    @Test
+    public void testGetPathRelative(){
+        // Example paths
+        String realPath;
+        realPath = java.nio.file.Paths.get(".").toAbsolutePath().toString();
+        System.out.printf("file.Paths.get for . =%s%n", realPath);
+        realPath = java.nio.file.Paths.get("/").toAbsolutePath().toString();
+        System.out.printf("file.Paths.get for / =%s%n", realPath);
+
+    }
 }
