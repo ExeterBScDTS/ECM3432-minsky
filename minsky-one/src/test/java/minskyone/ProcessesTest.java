@@ -15,7 +15,7 @@ public class ProcessesTest{
 
     @Test
     public void testA(){
-        Processes.launch("ls -l");
+        Processes.launch("dummy.id","ls -l");
         assertTrue(true);
     }
 }
