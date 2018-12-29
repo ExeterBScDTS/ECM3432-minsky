@@ -15,7 +15,7 @@ public class UtilsTest{
     HttpServletRequest req; 
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         ServletContext sc = mock(ServletContext.class);
         req = mock(HttpServletRequest.class);
         when(req.getServletContext()).thenReturn(sc);
