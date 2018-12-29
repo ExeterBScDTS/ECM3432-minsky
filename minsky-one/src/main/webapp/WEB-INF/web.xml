@@ -5,29 +5,34 @@
       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
       version="3.1">
 
-<context-param>
+  <context-param>
     <param-name>minsky.camera.tirpath.default</param-name>
     <param-value>tir-samples/frame010.bin</param-value>
-</context-param>
+  </context-param>
 
-   <servlet>
+<!-- processes to launch, e.g. to run the TIR camera -->
+  <context-param>
+    <param-name>minsky.process.camera.default</param-name>
+    <param-value>ls -l</param-value>
+  </context-param>
+
+  <servlet>
      <servlet-name>props</servlet-name>
      <servlet-class>minskyone.servlet.Props</servlet-class>
-   </servlet>
-   <servlet-mapping>
+  </servlet>
+  <servlet-mapping>
      <servlet-name>props</servlet-name>
      <url-pattern>/props/*</url-pattern>
-   </servlet-mapping>   
+  </servlet-mapping>   
 
-<servlet>
+  <servlet>
      <servlet-name>camera</servlet-name>
      <servlet-class>minskyone.servlet.Camera</servlet-class>
-   </servlet>
-   <servlet-mapping>
+  </servlet>
+  <servlet-mapping>
      <servlet-name>camera</servlet-name>
      <url-pattern>/camera/*</url-pattern>
-   </servlet-mapping>   
-
+  </servlet-mapping>   
 
   <login-config>
     <auth-method>FORM</auth-method>
