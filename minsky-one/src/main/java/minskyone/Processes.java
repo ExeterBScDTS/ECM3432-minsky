@@ -1,14 +1,17 @@
 package minskyone;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Processes {
 
-    static Process myproc = null;
+    static Map<String, Process> myprocs = new HashMap<String, Process>();
 
     public static void launch(String id, String cmd) {
         try {
-            myproc = new ProcessBuilder().command(cmd.split("\\s+")).inheritIO().start();
+            Process proc = new ProcessBuilder().command(cmd.split("\\s+")).inheritIO().start();
+            myprocs.put(id, proc);
         } catch (IOException e) {
             // TODO Auto-generated catch block
 			e.printStackTrace();
@@ -18,6 +21,6 @@ public class Processes {
     
     
     public static void stop(String id) {
-        myproc.destroy();
+        myprocs.get(id).destroy();
     }
 }
