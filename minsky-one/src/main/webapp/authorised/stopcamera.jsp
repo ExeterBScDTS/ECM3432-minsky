@@ -1,8 +1,8 @@
 <%@page import="minskyone.*"%>
 <%
     String cmd = Utils.getParameter(request, "minsky.process.camera");
-    Processes.launch("minsky.process.camera", cmd);
+    Processes.stop("minsky.process.camera");
 
     // response.sendRedirect("../");
-    out.println("Launched " + cmd);
+    out.println("Stopped");
 %>

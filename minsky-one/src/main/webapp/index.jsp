@@ -1,4 +1,4 @@
-<%@page import="java.security.Principal"%>
+<%@page import="java.security.Principal,minskyone.*"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,6 +19,11 @@
   if(prin != null){
     user = prin.getName();
   }
+
+  // Start the camera
+  String cmd = Utils.getParameter(request, "minsky.process.camera");
+  Processes.launch("minsky.process.camera", cmd);
+
   %>
   <body>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
