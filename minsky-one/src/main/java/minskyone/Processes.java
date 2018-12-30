@@ -9,6 +9,10 @@ public class Processes {
     static Map<String, Process> myprocs = new HashMap<String, Process>();
 
     public static void launch(String id, String cmd) {
+        Process p = myprocs.get(id);
+        if((p != null) && (p.isAlive())){
+            return;
+        }
         try {
             Process proc = new ProcessBuilder().command(cmd.split("\\s+")).inheritIO().start();
             myprocs.put(id, proc);
