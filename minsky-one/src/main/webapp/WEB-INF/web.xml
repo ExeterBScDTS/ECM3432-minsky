@@ -7,7 +7,7 @@
 
   <context-param>
     <param-name>minsky.camera.tir.rgbpath.default</param-name>
-    <param-value>mlx906040-0.rgb</param-value>
+    <param-value>mlx90640-0.rgb</param-value>
   </context-param>
 
   <context-param>
@@ -18,7 +18,7 @@
 <!-- processes to launch, e.g. to run the TIR camera -->
   <context-param>
     <param-name>minsky.process.camera.default</param-name>
-    <param-value>yes dummy</param-value>
+    <param-value>ls -l</param-value>
   </context-param>
 
   <servlet>
