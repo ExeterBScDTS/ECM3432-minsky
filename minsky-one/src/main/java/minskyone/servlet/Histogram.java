@@ -50,11 +50,22 @@ public class Histogram extends HttpServlet {
 
         out.printf("min %f max %f %n", ir_min, ir_max);
 
-        for(int y=0; y <24; y+=4){
-            for(int x=0; x<32; x+=4){
-                out.print(f[y * 32 + x]); out.print(" ");
-            }
-            out.println();
+        double start = Math.floor(ir_min / 10.0) * 10.0;
+        double end = Math.ceil(ir_max / 10.0) * 10.0; 
+        double bin_width = (end-start) / 20.0;
+
+        int[] hist = new int[20];
+
+        out.printf("start %f end %f width %f %n", start, end, bin_width);
+
+        for( double el : ir){
+            double v = el - start;
+            int bin = (int)Math.abs(v / bin_width);
+            hist[bin]++;
+        }
+
+        for( int n = 0; n < hist.length; n++  ){
+            out.printf("%d %d %n", n, hist[n]);
         }
     }
 
