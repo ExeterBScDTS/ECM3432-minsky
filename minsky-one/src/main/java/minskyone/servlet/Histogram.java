@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -31,18 +34,25 @@ public class Histogram extends HttpServlet {
         
         String filename = Utils.getPath(req, "minsky.camera.tir.fltpath"); 
         DataInputStream in = new DataInputStream(new FileInputStream(filename));
-        float[][] f = new float[24][32];
+        Float[] f = new Float[24 * 32];
         for(int y=0; y <24; y++){
             for(int x=0; x<32; x++){
-                f[y][x] = ByteSwapper.swap( in.readFloat() );
+                f[y * 32 + x] = ByteSwapper.swap( in.readFloat() );
             }
         }
         in.close();
 
-        out.print("Histogram demo");
+        List<Float>  ir = Arrays.asList(f);
+        float ir_min = Collections.min(Arrays.asList(f));
+        float ir_max = Collections.max(Arrays.asList(f));
+
+        out.print("Histogram demo"); out.println();
+
+        out.printf("min %f max %f %n", ir_min, ir_max);
+
         for(int y=0; y <24; y+=4){
             for(int x=0; x<32; x+=4){
-                out.print(f[y][x]); out.print(" ");
+                out.print(f[y * 32 + x]); out.print(" ");
             }
             out.println();
         }
