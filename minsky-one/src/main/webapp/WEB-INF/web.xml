@@ -6,8 +6,13 @@
       version="3.1">
 
   <context-param>
-    <param-name>minsky.camera.tirpath.default</param-name>
-    <param-value>tir-samples/frame010.bin</param-value>
+    <param-name>minsky.camera.tir.rgbpath.default</param-name>
+    <param-value>mlx906040-0.rgb</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>minsky.camera.tir.fltpath.default</param-name>
+    <param-value>mlx90640-0.flt</param-value>
   </context-param>
 
 <!-- processes to launch, e.g. to run the TIR camera -->
@@ -32,7 +37,17 @@
   <servlet-mapping>
      <servlet-name>camera</servlet-name>
      <url-pattern>/camera/*</url-pattern>
-  </servlet-mapping>   
+  </servlet-mapping>  
+
+  <servlet>
+     <servlet-name>histogram</servlet-name>
+     <servlet-class>minskyone.servlet.Histogram</servlet-class>
+  </servlet>
+  <servlet-mapping>
+     <servlet-name>histogram</servlet-name>
+     <url-pattern>/histogram/*</url-pattern>
+  </servlet-mapping>  
+
 
   <login-config>
     <auth-method>FORM</auth-method>
