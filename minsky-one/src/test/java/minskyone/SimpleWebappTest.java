@@ -5,37 +5,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.net.URI;
-
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.webapp.WebAppContext;
-import org.eclipse.jetty.security.HashLoginService;
-import org.eclipse.jetty.security.LoginService;
-
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import minskyone.servlet.*;
+import org.eclipse.jetty.security.HashLoginService;
+import org.eclipse.jetty.security.LoginService;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.webapp.WebAppContext;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 
 // See https://www.eclipse.org/jetty/documentation/9.4.x/embedded-examples.html
 
 public class SimpleWebappTest {
 
-    private Server server;
-  
-    @Before
-    public void setUp() throws Exception {
+  private Server server;
 
-      ClassLoader classLoader = getClass().getClassLoader();
-      URI uri = classLoader.getResource(".").toURI();  // absolute path to target/classess
-      Path projPath = Paths.get(uri).resolve("../..").normalize();
-      Path webappPath = projPath.resolve("src/main/webapp");  // use minimal web.xml
+  @Before
+  public void setUp() throws Exception {
+
+    ClassLoader classLoader = getClass().getClassLoader();
+    URI uri = classLoader.getResource(".").toURI(); // absolute path to target/classess
+    Path projPath = Paths.get(uri).resolve("../..").normalize();
+    Path webappPath = projPath.resolve("src/main/webapp"); // use minimal web.xml
 
       server = new Server(8082);
       server.setStopAtShutdown(true);
