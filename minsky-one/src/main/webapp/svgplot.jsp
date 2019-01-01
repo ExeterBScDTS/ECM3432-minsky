@@ -1,29 +1,33 @@
 <%@page import="minskyone.*"%>
 <%
-  HistogramData.getData(request);
+  String filename = Utils.getPath(request, "minsky.camera.tir.fltpath"); 
+  int num_bins = 50;
+  int bar_height = 460;
+  int[] hist = HistogramData.getData(filename, num_bins, bar_height);
 %>
 
 <svg width="960" height="500">
 <g transform="translate(40,10)">
 
-<rect class="bar" x="1" transform="translate(0,393.93088552915765)" width="49" height="66.06911447084235"></rect>
-<rect class="bar" x="1" transform="translate(50,379.0280777537797)" width="49" height="80.97192224622029"></rect>
-<rect class="bar" x="1" transform="translate(100,0)" width="49" height="460"></rect>
-<rect class="bar" x="1" transform="translate(150,328.85529157667384)" width="49" height="131.14470842332616"></rect>
-<rect class="bar" x="1" transform="translate(200,358.90928725701946)" width="49" height="101.09071274298054"></rect>
-<rect class="bar" x="1" transform="translate(250,365.11879049676025)" width="49" height="94.88120950323975"></rect>
-<rect class="bar" x="1" transform="translate(300,373.56371490280776)" width="49" height="86.43628509719224"></rect>
-<rect class="bar" x="1" transform="translate(350,228.75809935205183)" width="49" height="231.24190064794817"></rect>
-<rect class="bar" x="1" transform="translate(400,328.60691144708426)" width="49" height="131.39308855291574"></rect>
-<rect class="bar" x="1" transform="translate(450,364.8704103671706)" width="49" height="95.12958963282938"></rect>
-<rect class="bar" x="1" transform="translate(500,358.6609071274298)" width="49" height="101.33909287257018"></rect>
-<rect class="bar" x="1" transform="translate(550,292.8401727861771)" width="49" height="167.1598272138229"></rect>
-<rect class="bar" x="1" transform="translate(600,369.34125269978404)" width="49" height="90.65874730021596"></rect>
-<rect class="bar" x="1" transform="translate(650,369.34125269978404)" width="49" height="90.65874730021596"></rect>
-<rect class="bar" x="1" transform="translate(700,367.6025917926566)" width="49" height="92.3974082073434"></rect>
-<rect class="bar" x="1" transform="translate(750,365.11879049676025)" width="49" height="94.88120950323975"></rect>
-<rect class="bar" x="1" transform="translate(800,317.92656587473004)" width="49" height="142.07343412526996"></rect>
-<rect class="bar" x="1" transform="translate(850,295.5723542116631)" width="49" height="164.42764578833692"></rect>
+<%
+
+ int bar_width = (900 / num_bins) - 1;
+ for(int i = 0; i < hist.length; i++){
+    int v = hist[i]; 
+    int tr_x = (bar_width+1)*i; 
+    out.print("<rect class=\"bar\" x=\"1\" transform=\"translate(");
+    out.print(tr_x);
+    out.print(",");
+    out.print(bar_height - (v+1));
+    out.print(")\" width=\"");
+    out.print(bar_width);
+    out.print("\" height=\"");
+    out.print(1+v);
+    out.print("\"></rect>");  
+ }
+
+%>
+
 <rect class="bar" x="1" transform="translate(900,460)" width="-1" height="0"></rect>
 <!--
 <g transform="translate(0,460)" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle">

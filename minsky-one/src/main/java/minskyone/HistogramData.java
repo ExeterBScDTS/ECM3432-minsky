@@ -13,8 +13,9 @@ import java.util.List;
 
 public class HistogramData {
 
-    public static void getDdata(String filename)
+    public static int[] getData(String filename, int num_bins, int scale_max)
     {   
+        int[] hist = new int[num_bins];
  
         try {
             DataInputStream in;
@@ -30,14 +31,14 @@ public class HistogramData {
 
 
             List<Float>  ir = Arrays.asList(f);
-            float ir_min = Collections.min(Arrays.asList(f));
-            float ir_max = Collections.max(Arrays.asList(f));
+            float ir_min = Collections.min(ir);
+            float ir_max = Collections.max(ir);
 
             double start = Math.floor(ir_min / 10.0) * 10.0;
-            double end = Math.ceil(ir_max / 10.0) * 10.0; 
-            double bin_width = (end-start) / 20.0;
+            double end = Math.ceil(ir_max / 10.0) * 10.0;
+            double bin_width = (end-start) / num_bins;
 
-            int[] hist = new int[20];
+            Double[] histD = new Double[num_bins];
 
             for( double el : ir){
                 double v = el - start;
@@ -45,12 +46,22 @@ public class HistogramData {
                 hist[bin]++;
             }
 
-            for( int n = 0; n < hist.length; n++  ){
-                //out.printf("%d %d %n", n, hist[n]);
+            if(scale_max != 0){
+                for(int i=0; i<hist.length; i++){
+                    histD[i] = 0.0 + hist[i];
+                }
+
+                double scale = (double)scale_max / Collections.max(Arrays.asList(histD));
+            
+                for(int i=0; i<hist.length; i++){
+                    hist[i] = (int)(scale * hist[i]);
+                }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return hist;
     }
 
 }
