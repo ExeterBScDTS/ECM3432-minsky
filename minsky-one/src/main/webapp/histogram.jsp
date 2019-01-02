@@ -27,7 +27,7 @@
   %>
   <body>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-          <a class="navbar-brand" href="#">Minsky One</a>
+          <a class="navbar-brand" href="index.jsp">Minsky One</a>
           <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <form class="form-inline my-2 my-lg-0" method="get" action="authorised">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= user %></button>
@@ -37,8 +37,8 @@
         <main role="main" class="container">
 
             <div class="starter-template">
-              <div>
-                <object id="data" type="text/plain" data="histogram/xxx" >
+              <div style="width:980px;height:520px">
+                <object id="hist" type="image/svg+xml" data="svgplot.jsp?xxx" width="980" height="520" onclick="alert('hi')">
                    Hidden
                 </object>
               </div>
@@ -48,10 +48,10 @@
           </main>
           <script>
           window.onload = function() {
-            var image = document.getElementById("thermal");
+            var image = document.getElementById("hist");
         
             function updateImage() {
-                image.src =  "histogram" + "/" + new Date().getTime();
+                image.data =  "svgplot.jsp" + "?" + new Date().getTime();
             }
         
             setInterval(updateImage, 1000);

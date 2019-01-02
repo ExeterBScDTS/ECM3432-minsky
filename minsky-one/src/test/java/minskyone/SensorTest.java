@@ -1,13 +1,12 @@
 package minskyone;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Properties;
 
-public class SensorTest{
+import org.junit.Test;
+
+public class SensorTest {
 
     @Test
     public void testGetSensorsList(){

@@ -38,7 +38,9 @@
 
             <div class="starter-template">
               <div>
+                <a href="histogram.jsp">
                 <img id="thermal" src="camera/xxx" width="512" height="384">
+                </a>
               </div>
               <a href="authorised/status.jsp">Sensor status</a>
             </div>

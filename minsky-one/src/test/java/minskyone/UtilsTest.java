@@ -1,16 +1,17 @@
 package minskyone;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
-public class UtilsTest{
+import org.junit.Before;
+import org.junit.Test;
+
+public class UtilsTest {
 
     HttpServletRequest req; 
 
