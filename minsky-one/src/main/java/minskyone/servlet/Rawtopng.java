@@ -31,7 +31,6 @@ public class Rawtopng {
         try {
             in.read(rgbPixelData, 0, width * height * samplesPerPixel);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -47,7 +46,6 @@ public class Rawtopng {
         try {
             ImageIO.write(image, "PNG", out);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
