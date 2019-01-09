@@ -11,10 +11,10 @@ public class ProcessesTest{
     public void setUp() {
     }
 
-    @Test
+/*    @Test
     public void testA(){
         Processes.launch("dummy.id","yes hello");
         Processes.stop("dummy.id");
         assertTrue(true);
-    }
+    }*/
 }
