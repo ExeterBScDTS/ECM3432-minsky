@@ -14,13 +14,12 @@ public class Processes {
             return;
         }
         try {
-            Process proc = new ProcessBuilder().command(cmd.split("\\s+")).inheritIO().start();
-            myprocs.put(id, proc);
+            String[] cmds = cmd.split("\\s+");
+            ProcessBuilder pb = new ProcessBuilder(cmds).inheritIO();
+            myprocs.put(id, pb.start());
         } catch (IOException e) {
-            // TODO Auto-generated catch block
 			e.printStackTrace();
         }
-        //myproc.destroy();
     }
     
     
