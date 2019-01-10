@@ -14,7 +14,7 @@
     <title>Minsky One</title>
   </head>
   <%
-  String user = "logged out";
+  String user = "Log In";
   Principal prin = request.getUserPrincipal();
   if(prin != null){
     user = prin.getName();
