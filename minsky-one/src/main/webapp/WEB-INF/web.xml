@@ -18,7 +18,7 @@
 <!-- processes to launch, e.g. to run the TIR camera -->
   <context-param>
     <param-name>minsky.process.camera.default</param-name>
-    <param-value>yes</param-value>
+    <param-value></param-value>
   </context-param>
 
   <servlet>
