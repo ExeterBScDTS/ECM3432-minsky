@@ -47,13 +47,14 @@
           </main>
           <script>
           window.onload = function() {
-            var image = document.getElementById("thermal");
-        
-            function updateImage() {
-                image.src =  "camera" + "/" + new Date().getTime();
+            var thermal = document.getElementById("thermal");
+            var colour = document.getElementById("thermal");
+            function updateImages() {
+                thermal.src =  "camera" + "/0/" + new Date().getTime();
+                thermal.src =  "camera" + "/1/" + new Date().getTime();
             }
         
-            setInterval(updateImage, 200);
+            setInterval(updateImages, 200);
         }
         </script>       
   </body>
