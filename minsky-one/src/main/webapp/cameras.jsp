@@ -48,9 +48,9 @@
           <script>
           window.onload = function() {
             var thermal = document.getElementById("thermal");
-            var colour = document.getElementById("thermal");
+            var colour = document.getElementById("colour");
             function updateImages() {
-                thermal.src =  "camera" + "/0/" + new Date().getTime();
+                colour.src =  "camera" + "/0/" + new Date().getTime();
                 thermal.src =  "camera" + "/1/" + new Date().getTime();
             }
         
