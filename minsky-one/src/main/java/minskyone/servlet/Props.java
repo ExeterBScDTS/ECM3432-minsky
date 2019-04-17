@@ -33,7 +33,9 @@ public class Props extends HttpServlet {
         realPath = java.nio.file.Paths.get("/").toAbsolutePath().toString();
         out.printf("file.Paths.get for / =%s%n", realPath);
         context(out, req);
-        info(out,req.getPathInfo());
+        // info(out,req.getPathInfo());
+        //String urlPath[]= req.getPathInfo().split("/");
+        //out.printf("req.getPathInfo() =%s%n", urlPath[1]);
     }
 
     private void context(PrintWriter out, HttpServletRequest req)
@@ -44,35 +46,6 @@ public class Props extends HttpServlet {
             String n = a.nextElement();
             String v = sc.getInitParameter(n);
             out.printf("{%s} = %s%n",n,v);
-        }
-    
-    }
-    private void info(PrintWriter out, String propName)
-    {
-        if ((propName == null) || (propName.length() == 0))
-        {
-            // dump all system properties.
-            Properties props = System.getProperties();
-            for (Object key : props.keySet())
-            {
-                info(out,key.toString());
-            }
-            return;
-        }
-
-        if (propName.charAt(0) == '/')
-        {
-            propName = propName.substring(1);
-        }
-
-        String val = System.getProperty(propName);
-        if (val == null)
-        {
-            out.printf("[%s] = <null>%n",propName);
-        }
-        else
-        {
-            out.printf("[%s] = %s%n",propName,val);
         }
     }
 }

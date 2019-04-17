@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.eclipse.jetty.util.log.Log;
+
 import minskyone.Utils;
 
 public class Camera extends HttpServlet {
@@ -22,6 +24,8 @@ public class Camera extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
+        String urlPath[]= req.getPathInfo().split("/");
+        //Log.getRootLogger().info(urlPath[1]);
         resp.setContentType("image/png");
         resp.setContentLength(-1);
         OutputStream out = resp.getOutputStream();
