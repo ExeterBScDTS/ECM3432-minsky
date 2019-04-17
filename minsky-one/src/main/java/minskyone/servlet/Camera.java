@@ -34,6 +34,8 @@ public class Camera extends HttpServlet {
         boolean video_loop = false;
         int frame_num = 5;
 
+        int cam_num = Integer.parseInt(urlPath[1]);
+
         if(copy_image){
             // Get the absolute path of the image
             String filename = cntx.getRealPath("sample.apng");
@@ -61,10 +63,17 @@ public class Camera extends HttpServlet {
             in.close();
         
         }else{
-            String filename = Utils.getPath(req, "minsky.camera.tir.rgbpath"); 
-            File file = new File(filename);
-            FileInputStream in = new FileInputStream(file);
-            Rawtopng.writePNG(in, out);
+            if(cam_num == 0){
+                String filename = Utils.getPath(req, "minsky.camera.tir.rgbpath"); 
+                File file = new File(filename);
+                FileInputStream in = new FileInputStream(file);
+                Rawtopng.writePNG(in, out);
+            }else{
+                String filename = Utils.getPath(req, "minsky.camera.colour.jpgpath"); 
+                File file = new File(filename);
+                FileInputStream in = new FileInputStream(file);
+                CopyJpg.writeJPG(in, out);
+            }
         }
 
 
