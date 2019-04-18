@@ -72,12 +72,24 @@ public class Camera extends HttpServlet {
                 String filename = Utils.getPath(req, "minsky.camera.colour.jpgpath"); 
                 File file = new File(filename);
                 FileInputStream in = new FileInputStream(file);
-                CopyJpg.writeJPG(in, out);
+                //CopyJpg.writeJPG(in, out);
+                copy(in, out);
             }
         }
 
 
         out.close();
     }
+
+    public static void copy(FileInputStream in, OutputStream out) throws IOException {
+
+        byte[] buffer = new byte[1024];
+        while (true) {
+          int bytesRead = in.read(buffer);
+          if (bytesRead == -1)
+            break;
+          out.write(buffer, 0, bytesRead);
+        }
+      }
 
 }
