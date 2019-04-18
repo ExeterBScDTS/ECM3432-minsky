@@ -16,9 +16,10 @@ public class CopyJpg {
         try {
             BufferedImage source = ImageIO.read(in);
             BufferedImage output = new BufferedImage(source.getHeight(), source.getWidth(), source.getType());
-            AffineTransformOp op = new AffineTransformOp(rotateClockwise90(source), AffineTransformOp.TYPE_BILINEAR);
-            op.filter(source, output);
-            ImageIO.write(output, "JPG", out);
+            //AffineTransformOp op = new AffineTransformOp(rotateClockwise90(source), AffineTransformOp.TYPE_BILINEAR);
+            //op.filter(source, output);
+            //ImageIO.write(output, "JPG", out);
+            ImageIO.write(source, "JPG", out);
         } catch (IOException e) {
             e.printStackTrace();
         }
