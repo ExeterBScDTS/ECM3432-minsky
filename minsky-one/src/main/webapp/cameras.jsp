@@ -20,9 +20,11 @@
     user = prin.getName();
   }
 
-  // Start the camera
+  // Start the TIR camera
   String cmd = Utils.getParameter(request, "minsky.process.camera");
   Processes.launch("minsky.process.camera", cmd);
+
+  // Start the colour camera
 
   %>
   <body>
@@ -50,8 +52,8 @@
             var thermal = document.getElementById("thermal");
             var colour = document.getElementById("colour");
             function updateImages() {
-                colour.src =  "camera" + "/0/" + new Date().getTime();
-                thermal.src =  "camera" + "/1/" + new Date().getTime();
+                colour.src =  "camera" + "/1/" + new Date().getTime();
+                thermal.src =  "camera" + "/0/" + new Date().getTime();
             }
         
             setInterval(updateImages, 200);

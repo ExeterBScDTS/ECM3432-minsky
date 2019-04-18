@@ -48,10 +48,10 @@
           </main>
           <script>
           window.onload = function() {
-            var image = document.getElementById("thermal");
+            var thermal = document.getElementById("thermal");
         
             function updateImage() {
-                image.src =  "camera" + "/" + new Date().getTime();
+                thermal.src =  "camera" + "/0/" + new Date().getTime();
             }
         
             setInterval(updateImage, 200);
