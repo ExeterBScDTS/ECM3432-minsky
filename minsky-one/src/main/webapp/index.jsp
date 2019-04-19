@@ -20,9 +20,13 @@
     user = prin.getName();
   }
 
-  // Start the camera
-  String cmd = Utils.getParameter(request, "minsky.process.camera");
-  Processes.launch("minsky.process.camera", cmd);
+  // Start the TIR camera
+  String cmd = Utils.getParameter(request, "minsky.process.camera.tir");
+  Processes.launch("minsky.process.camera.tir", cmd);
+
+  // Start the colour camera
+  String cmd = Utils.getParameter(request, "minsky.process.camera.colour");
+  Processes.launch("minsky.process.camera.colour", cmd);
 
   %>
   <body>
