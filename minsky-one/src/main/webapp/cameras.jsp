@@ -43,17 +43,50 @@
                 <img id="colour" src="camera/xxx" width="512" height="384">
                 <img id="thermal" src="camera/xxx" width="512" height="384">
               </div>
+              <div>
+                <canvas id="composite" width="512" height="384">
+              </div>
               <a href="authorised/status.jsp">Sensor status</a>
             </div>
       
           </main>
           <script>
+          function updateComposite(){
+            var ctx = document.getElementById('composite').getContext('2d');
+            var img = new Image();
+            var colour = document.getElementById("colour");
+
+            ctx.save();
+            ctx.clearRect(0, 0, 512, 384);
+            ctx.scale(15, 15);
+            ctx.drawImage(thermal, 0, 0);
+            ctx.globalCompositeOperation = "saturation";
+            ctx.fillStyle = "hsl(0,100%,50%)";  // saturation at 100%
+            ctx.fillRect(0,0,512,384);  // apply the comp filter
+            ctx.globalCompositeOperation = "source-over";  // restore default comp;
+            ctx.globalAlpha = 1.0;
+            ctx.restore();
+            ctx.save();
+            
+            // scale
+            //ctx.scale(0.5, 0.5);
+            //ctx.rotate((Math.PI / 180) * 5);
+            ctx.globalAlpha = 0.3;
+            ctx.drawImage(colour, 0, 0);
+            //ctx.globalCompositeOperation = "saturation";
+            //ctx.fillStyle = "hsl(0,10%,50%)";  // saturation at 100%
+            //ctx.fillRect(0,0,512,384);  // apply the comp filter
+            //ctx.globalCompositeOperation = "source-over";  // restore default comp;
+            ctx.restore();
+          }
+
           window.onload = function() {
             var thermal = document.getElementById("thermal");
             var colour = document.getElementById("colour");
             function updateImages() {
                 colour.src =  "camera" + "/1/" + new Date().getTime();
                 thermal.src =  "camera" + "/0/" + new Date().getTime();
+                updateComposite();
             }
         
             setInterval(updateImages, 200);
