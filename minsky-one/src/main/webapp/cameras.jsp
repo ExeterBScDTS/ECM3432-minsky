@@ -42,11 +42,11 @@
 
             <div class="starter-template">
               <div>
-                <img id="colour" src="camera/1/" width="512" height="384">
-                <img id="thermal" src="camera/0/" width="512" height="384">
+                <img id="colour" src="camera/1/" width="256" height="192">
+                <img id="thermal" src="camera/0/" width="256" height="192">
               </div>
               <div>
-                <canvas id="composite" width="512" height="384">
+                <canvas id="composite" width="640" height="480">
               </div>
               <div>
                   Set X [<span id="val-x"></span>]
@@ -96,7 +96,7 @@
 
             var range_x = document.getElementById("range-x");
             var val_x = document.getElementById("val-x");
-            var shift_x = 50;
+            var shift_x = 69;
 
             range_x.onchange = function(e){
               val_x.innerHTML = e.target.value;
@@ -105,7 +105,7 @@
 
             var range_y = document.getElementById("range-y");
             var val_y = document.getElementById("val-y");
-            var shift_y = 50;
+            var shift_y = 20;
 
             range_y.onchange = function(e){
               val_y.innerHTML = e.target.value;
