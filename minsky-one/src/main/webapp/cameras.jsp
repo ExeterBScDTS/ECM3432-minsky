@@ -61,14 +61,15 @@
       
           </main>
           <script>
-          function updateComposite(mov_x, mov_y){
+          function updateComposite(mov_x, mov_y, scale){
             var ctx = document.getElementById('composite').getContext('2d');
             var img = new Image();
             var colour = document.getElementById("colour");
 
             ctx.save();
             ctx.clearRect(0, 0, 512, 384);
-            ctx.scale(15, 15);
+            var s = 15 + (scale-50) / 20;
+            ctx.scale(s, s);
             ctx.drawImage(thermal, mov_x/10.0, mov_y/10.0);
             ctx.globalCompositeOperation = "saturation";
             ctx.fillStyle = "hsl(0,100%,50%)";  // saturation at 100%
@@ -118,12 +119,13 @@
 
             range_scale.onchange = function(e){
               val_scale.innerHTML = e.target.value;
+              tir_scale = Number(e.target.value);
             }
 
             function updateImages() {
                 colour.src =  "camera" + "/1/" + new Date().getTime();
                 thermal.src =  "camera" + "/0/" + new Date().getTime();
-                updateComposite(shift_x,shift_y);
+                updateComposite(shift_x,shift_y,tir_scale);
             }
         
             setInterval(updateImages, 200);
