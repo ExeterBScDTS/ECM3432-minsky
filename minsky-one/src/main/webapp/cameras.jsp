@@ -67,7 +67,7 @@
             var colour = document.getElementById("colour");
 
             ctx.save();
-            ctx.clearRect(0, 0, 512, 384);
+            ctx.clearRect(0, 0, 640, 480);
             var s = 15 + (scale-50) / 20;
             ctx.scale(s, s);
             ctx.drawImage(thermal, mov_x/10.0, mov_y/10.0);
@@ -97,7 +97,7 @@
 
             var range_x = document.getElementById("range-x");
             var val_x = document.getElementById("val-x");
-            var shift_x = 69;
+            var shift_x = 55;
 
             range_x.onchange = function(e){
               val_x.innerHTML = e.target.value;
@@ -106,7 +106,7 @@
 
             var range_y = document.getElementById("range-y");
             var val_y = document.getElementById("val-y");
-            var shift_y = 20;
+            var shift_y = 33;
 
             range_y.onchange = function(e){
               val_y.innerHTML = e.target.value;
@@ -115,7 +115,7 @@
 
             var range_scale = document.getElementById("range-scale");
             var val_scale = document.getElementById("val-scale");
-            var tir_scale = 50;
+            var tir_scale = 63;
 
             range_scale.onchange = function(e){
               val_scale.innerHTML = e.target.value;
