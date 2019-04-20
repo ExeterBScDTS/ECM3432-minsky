@@ -67,27 +67,14 @@
             var colour = document.getElementById("colour");
 
             ctx.save();
-            ctx.clearRect(0, 0, 512, 384);
+            ctx.clearRect(0, 0, 640, 480);
             var s = 15 + (scale-50) / 20;
             ctx.scale(s, s);
             ctx.drawImage(thermal, mov_x/10.0, mov_y/10.0);
-            ctx.globalCompositeOperation = "saturation";
-            ctx.fillStyle = "hsl(0,100%,50%)";  // saturation at 100%
-            ctx.fillRect(0,0,512,384);  // apply the comp filter
-            ctx.globalCompositeOperation = "source-over";  // restore default comp;
-            ctx.globalAlpha = 1.0;
             ctx.restore();
             ctx.save();
-            
-            // scale
-            //ctx.scale(0.5, 0.5);
-            //ctx.rotate((Math.PI / 180) * 5);
             ctx.globalAlpha = 0.3;
             ctx.drawImage(colour, 0, 0);
-            //ctx.globalCompositeOperation = "saturation";
-            //ctx.fillStyle = "hsl(0,10%,50%)";  // saturation at 100%
-            //ctx.fillRect(0,0,512,384);  // apply the comp filter
-            //ctx.globalCompositeOperation = "source-over";  // restore default comp;
             ctx.restore();
           }
 
