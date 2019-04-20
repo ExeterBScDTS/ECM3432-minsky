@@ -42,8 +42,8 @@
 
             <div class="starter-template">
               <div>
-                <img id="colour" src="camera/xxx" width="512" height="384">
-                <img id="thermal" src="camera/xxx" width="512" height="384">
+                <img id="colour" src="camera/1/" width="512" height="384">
+                <img id="thermal" src="camera/0/" width="512" height="384">
               </div>
               <div>
                 <canvas id="composite" width="512" height="384">
