@@ -48,12 +48,20 @@
               <div>
                 <canvas id="composite" width="512" height="384">
               </div>
+              <div>
+                  Set X [<span id="val-x"></span>]
+                  <input type="range" id="range-x">
+                  Set Y [<span id="val-y"></span>]
+                  <input type="range" id="range-y">
+                  Set scale [<span id="val-scale"></span>]
+                  <input type="range" id="range-scale">
+                </div>
               <a href="authorised/status.jsp">Sensor status</a>
             </div>
       
           </main>
           <script>
-          function updateComposite(){
+          function updateComposite(mov_x, mov_y){
             var ctx = document.getElementById('composite').getContext('2d');
             var img = new Image();
             var colour = document.getElementById("colour");
@@ -61,7 +69,7 @@
             ctx.save();
             ctx.clearRect(0, 0, 512, 384);
             ctx.scale(15, 15);
-            ctx.drawImage(thermal, 0, 0);
+            ctx.drawImage(thermal, mov_x/10.0, mov_y/10.0);
             ctx.globalCompositeOperation = "saturation";
             ctx.fillStyle = "hsl(0,100%,50%)";  // saturation at 100%
             ctx.fillRect(0,0,512,384);  // apply the comp filter
@@ -85,10 +93,37 @@
           window.onload = function() {
             var thermal = document.getElementById("thermal");
             var colour = document.getElementById("colour");
+
+            var range_x = document.getElementById("range-x");
+            var val_x = document.getElementById("val-x");
+            var shift_x = 50;
+
+            range_x.onchange = function(e){
+              val_x.innerHTML = e.target.value;
+              shift_x = Number(e.target.value);
+            }
+
+            var range_y = document.getElementById("range-y");
+            var val_y = document.getElementById("val-y");
+            var shift_y = 50;
+
+            range_y.onchange = function(e){
+              val_y.innerHTML = e.target.value;
+              shift_y = Number(e.target.value);
+            }
+
+            var range_scale = document.getElementById("range-scale");
+            var val_scale = document.getElementById("val-scale");
+            var tir_scale = 50;
+
+            range_scale.onchange = function(e){
+              val_scale.innerHTML = e.target.value;
+            }
+
             function updateImages() {
                 colour.src =  "camera" + "/1/" + new Date().getTime();
                 thermal.src =  "camera" + "/0/" + new Date().getTime();
-                updateComposite();
+                updateComposite(shift_x,shift_y);
             }
         
             setInterval(updateImages, 200);
