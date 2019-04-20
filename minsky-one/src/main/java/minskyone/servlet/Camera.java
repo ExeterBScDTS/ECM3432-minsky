@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.eclipse.jetty.util.log.Log;
+
 import minskyone.Utils;
 
 public class Camera extends HttpServlet {
@@ -22,6 +24,8 @@ public class Camera extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
+        String urlPath[]= req.getPathInfo().split("/");
+        //Log.getRootLogger().info(urlPath[1]);
         resp.setContentType("image/png");
         resp.setContentLength(-1);
         OutputStream out = resp.getOutputStream();
@@ -29,6 +33,8 @@ public class Camera extends HttpServlet {
         boolean copy_image = false;
         boolean video_loop = false;
         int frame_num = 5;
+
+        int cam_num = Integer.parseInt(urlPath[1]);
 
         if(copy_image){
             // Get the absolute path of the image
@@ -57,14 +63,33 @@ public class Camera extends HttpServlet {
             in.close();
         
         }else{
-            String filename = Utils.getPath(req, "minsky.camera.tir.rgbpath"); 
-            File file = new File(filename);
-            FileInputStream in = new FileInputStream(file);
-            Rawtopng.writePNG(in, out);
+            if(cam_num == 0){
+                String filename = Utils.getPath(req, "minsky.camera.tir.rgbpath"); 
+                File file = new File(filename);
+                FileInputStream in = new FileInputStream(file);
+                Rawtopng.writePNG(in, out);
+            }else{
+                String filename = Utils.getPath(req, "minsky.camera.colour.jpgpath"); 
+                File file = new File(filename);
+                FileInputStream in = new FileInputStream(file);
+                //CopyJpg.writeJPG(in, out);
+                copy(in, out);
+            }
         }
 
 
         out.close();
     }
+
+    public static void copy(FileInputStream in, OutputStream out) throws IOException {
+
+        byte[] buffer = new byte[1024];
+        while (true) {
+          int bytesRead = in.read(buffer);
+          if (bytesRead == -1)
+            break;
+          out.write(buffer, 0, bytesRead);
+        }
+      }
 
 }

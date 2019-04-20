@@ -17,14 +17,37 @@
       <param-name>minsky.dir</param-name>
       <param-value>some-dir</param-value>
     </context-param>
+
+    <Call name="setInitParameter">
+      <Arg>minsky.prop</Arg>
+      <Arg>minskyOne-0.1.xml</Arg>
+    </Call>
   -->
-  <Call name="setInitParameter">
-    <Arg>minsky.dir</Arg>
-    <Arg>some-dir</Arg>
-  </Call>
+
    <Call name="setInitParameter">
-    <Arg>minsky.prop</Arg>
-    <Arg>minskyOne-0.1.xml</Arg>
+    <Arg>minsky.camera.tir.rgbpath</Arg>
+    <Arg>/run/mlx90640-0.rgb</Arg>
   </Call>
+
+  <Call name="setInitParameter">
+   <Arg>minsky.camera.tir.fltpath</Arg>
+   <Arg>/run/mlx90640-0.flt</Arg>
+  </Call>
+
+  <Call name="setInitParameter">
+    <Arg>minsky.process.camera.tir</Arg>
+    <Arg>sudo /home/pi/github/mlx90640-library/mmap</Arg>
+  </Call>
+
+  <Call name="setInitParameter">
+    <Arg>minsky.camera.colour.jpgpath</Arg>
+    <Arg>/run/camera.jpg</Arg>
+  </Call>
+
+  <Call name="setInitParameter">
+    <Arg>minsky.process.camera.colour</Arg>
+    <Arg>sudo mjpg_streamer -i "input_raspicam.so" -o "output_file.so -f /run -s 2 -l camera.jpg"</Arg>
+   </Call>
+
 </Configure>
 

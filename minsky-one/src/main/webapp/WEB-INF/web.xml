@@ -15,9 +15,20 @@
     <param-value>mlx90640-0.flt</param-value>
   </context-param>
 
+  <context-param>
+    <param-name>minsky.camera.colour.jpgpath.default</param-name>
+    <param-value>sample.jpg</param-value>
+  </context-param>
+
+
 <!-- processes to launch, e.g. to run the TIR camera -->
   <context-param>
-    <param-name>minsky.process.camera.default</param-name>
+    <param-name>minsky.process.camera.tir.default</param-name>
+    <param-value></param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>minsky.process.camera.colour.default</param-name>
     <param-value></param-value>
   </context-param>
 

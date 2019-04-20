@@ -20,9 +20,13 @@
     user = prin.getName();
   }
 
-  // Start the camera
-  String cmd = Utils.getParameter(request, "minsky.process.camera");
-  Processes.launch("minsky.process.camera", cmd);
+  // Start the TIR camera
+  String cmd1 = Utils.getParameter(request, "minsky.process.camera.tir");
+  Processes.launch("minsky.process.camera.tir", cmd1);
+
+  // Start the colour camera
+  String cmd2 = Utils.getParameter(request, "minsky.process.camera.colour");
+  Processes.launch("minsky.process.camera.colour", cmd2);
 
   %>
   <body>
@@ -39,7 +43,7 @@
             <div class="starter-template">
               <div>
                 <a href="histogram.jsp">
-                <img id="thermal" src="camera/xxx" width="512" height="384">
+                <img id="thermal" src="camera/0/" width="512" height="384">
                 </a>
               </div>
               <a href="authorised/status.jsp">Sensor status</a>
@@ -48,10 +52,10 @@
           </main>
           <script>
           window.onload = function() {
-            var image = document.getElementById("thermal");
+            var thermal = document.getElementById("thermal");
         
             function updateImage() {
-                image.src =  "camera" + "/" + new Date().getTime();
+                thermal.src =  "camera" + "/0/" + new Date().getTime();
             }
         
             setInterval(updateImage, 200);
