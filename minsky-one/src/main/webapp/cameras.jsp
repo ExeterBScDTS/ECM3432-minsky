@@ -21,8 +21,8 @@
   }
 
   // Start the TIR camera
-  String cmd1 = Utils.getParameter(request, "minsky.process.camera");
-  Processes.launch("minsky.process.camera", cmd1);
+  String cmd1 = Utils.getParameter(request, "minsky.process.camera.tir");
+  Processes.launch("minsky.process.camera.tir", cmd1);
 
   // Start the colour camera
   String cmd2 = Utils.getParameter(request, "minsky.process.camera.colour");
