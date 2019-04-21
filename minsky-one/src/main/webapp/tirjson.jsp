@@ -1,5 +1,6 @@
-<%@page import="minskyone.*" language="java" contentType="application/json" %>
+<%@page import="minskyone.*,javax.json.*" language="java" contentType="application/json" %>
 <%
   String fltpath = Utils.getPath(request, "minsky.camera.tir.fltpath"); 
+  String[] tir = TemperatureData.getData(fltpath);
+  out.print("[" + String.join(",",tir) + "]");
 %>
-[12.3,100.5,66.6]

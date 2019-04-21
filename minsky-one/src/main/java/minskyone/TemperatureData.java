@@ -6,17 +6,17 @@ import java.io.IOException;
 
 public class TemperatureData {
 
-    public static Float[] getData(String filename, int x_from, int y_from, int x_to, int y_to)
-    // 0, 0, 32, 24
+    public static String[] getData(String filename)
     { 
         try {
             DataInputStream in;
             in = new DataInputStream(new FileInputStream(filename));
-            Float[] f = new Float[(y_to - y_from) * (x_to - x_from)];
+            String[] f = new String[24 * 32];
 
-            for(int y=y_from; y < y_to; y++){
-                for(int x=x_from; x < x_to; x++){
-                    f[y * 32 + x] = ByteSwapper.swap(in.readFloat());
+            for(int y=0; y < 24; y++){
+                for(int x=0; x < 32; x++){
+                    Float v = ByteSwapper.swap(in.readFloat());
+                    f[y * 32 + x] = v.toString();
                 }
             }
             in.close();
