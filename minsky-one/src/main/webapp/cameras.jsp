@@ -48,6 +48,7 @@
               <div>
                 <canvas id="composite" width="640" height="480">
               </div>
+              <span id="temp-val"></span>
               <div>
                   Set X [<span id="val-x"></span>]
                   <input type="range" id="range-x">
@@ -109,13 +110,31 @@
               tir_scale = Number(e.target.value);
             }
 
+            var request = new XMLHttpRequest();
+
+            var temp_val = document.getElementById("temp-val");
+
+            function updateTemperature() {
+              request.open('GET', "tirjson.jsp");
+              request.responseType = 'json';
+              request.send();
+              request.onload = function() {
+                var tirdata = request.response;
+                var centre_t = Number(tirdata[tirdata.length/2]).toFixed(1);
+                temp_val.innerHTML = centre_t;
+                //console.log(centre_t);
+              }
+            }
+
+            setInterval(updateTemperature, 1000);
+            
             function updateImages() {
                 colour.src =  "camera" + "/1/" + new Date().getTime();
                 thermal.src =  "camera" + "/0/" + new Date().getTime();
                 updateComposite(shift_x,shift_y,tir_scale);
             }
         
-            setInterval(updateImages, 200);
+            setInterval(updateImages, 800);
         }
         </script>       
   </body>
