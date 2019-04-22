@@ -41,24 +41,81 @@
         <main role="main" class="container">
 
             <div class="starter-template">
-              <div>
-                <a href="histogram.jsp">
-                <img id="thermal" src="camera/0/" width="512" height="384">
-                </a>
+              <div style="visibility:hidden">
+                <img id="colour" src="camera/1/" width="1" height="1">
+                <img id="thermal" src="camera/0/" width="1" height="1">
               </div>
+              <div>
+                <canvas id="composite" width="640" height="480">
+              </div>
+              <div style="visibility:hidden">
+                  Set X [<span id="val-x"></span>]
+                  <input type="range" id="range-x">
+                  Set Y [<span id="val-y"></span>]
+                  <input type="range" id="range-y">
+                  Set scale [<span id="val-scale"></span>]
+                  <input type="range" id="range-scale">
+                </div>
               <a href="authorised/status.jsp">Sensor status</a>
             </div>
       
           </main>
           <script>
+          function updateComposite(mov_x, mov_y, scale){
+            var ctx = document.getElementById('composite').getContext('2d');
+            var img = new Image();
+            var colour = document.getElementById("colour");
+
+            ctx.save();
+            ctx.clearRect(0, 0, 640, 480);
+            var s = 15 + (scale-50) / 20;
+            ctx.scale(s, s);
+            ctx.drawImage(thermal, mov_x/10.0, mov_y/10.0);
+            ctx.restore();
+            ctx.save();
+            ctx.globalAlpha = 0.3;
+            ctx.drawImage(colour, 0, 0);
+            ctx.restore();
+          }
+
           window.onload = function() {
             var thermal = document.getElementById("thermal");
-        
-            function updateImage() {
+            var colour = document.getElementById("colour");
+
+            var range_x = document.getElementById("range-x");
+            var val_x = document.getElementById("val-x");
+            var shift_x = 69;
+
+            range_x.onchange = function(e){
+              val_x.innerHTML = e.target.value;
+              shift_x = Number(e.target.value);
+            }
+
+            var range_y = document.getElementById("range-y");
+            var val_y = document.getElementById("val-y");
+            var shift_y = 20;
+
+            range_y.onchange = function(e){
+              val_y.innerHTML = e.target.value;
+              shift_y = Number(e.target.value);
+            }
+
+            var range_scale = document.getElementById("range-scale");
+            var val_scale = document.getElementById("val-scale");
+            var tir_scale = 50;
+
+            range_scale.onchange = function(e){
+              val_scale.innerHTML = e.target.value;
+              tir_scale = Number(e.target.value);
+            }
+
+            function updateImages() {
+                colour.src =  "camera" + "/1/" + new Date().getTime();
                 thermal.src =  "camera" + "/0/" + new Date().getTime();
+                updateComposite(shift_x,shift_y,tir_scale);
             }
         
-            setInterval(updateImage, 200);
+            setInterval(updateImages, 200);
         }
         </script>       
   </body>
