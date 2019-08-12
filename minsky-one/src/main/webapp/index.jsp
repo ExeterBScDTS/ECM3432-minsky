@@ -10,7 +10,26 @@
     <link rel="stylesheet" href="bootstrap/4.1.3/css/bootstrap.min.css">
     <!-- Custom styles for this template -->
     <link href="bootstrap/starter-template.css" rel="stylesheet">
-
+    <style type="text/css"> 
+    .image_ccw {
+        background: url(arrow.png) no-repeat;
+        width:32px; height:32px;
+        -webkit-transform: rotate(270deg);
+        -moz-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        -o-transform: rotate(270deg);
+        transform: rotate(270deg);
+    }
+    .image_cw {
+        background: url(arrow.png) no-repeat;
+        width:32px; height:32px;
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    </style>
     <title>Minsky One</title>
   </head>
   <%
