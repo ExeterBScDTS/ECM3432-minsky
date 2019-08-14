@@ -12,21 +12,9 @@
     <link href="bootstrap/starter-template.css" rel="stylesheet">
     <style type="text/css"> 
     .image_ccw {
-        background: url(arrow.png) no-repeat;
-        width:32px; height:32px;
-        -webkit-transform: rotate(270deg);
-        -moz-transform: rotate(270deg);
-        -ms-transform: rotate(270deg);
-        -o-transform: rotate(270deg);
         transform: rotate(270deg);
     }
     .image_cw {
-        background: url(arrow.png) no-repeat;
-        width:32px; height:32px;
-        -webkit-transform: rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        -o-transform: rotate(90deg);
         transform: rotate(90deg);
     }
     </style>
@@ -60,12 +48,13 @@
         <main role="main" class="container">
 
             <div class="starter-template">
+                <a href="authorised/status.jsp">Sensor status</a>
               <div style="visibility:hidden">
                 <img id="colour" src="camera/1/" width="1" height="1">
                 <img id="thermal" src="camera/0/" width="1" height="1">
               </div>
-              <div>
-                <canvas id="composite" width="640" height="480">
+              <div height="640">
+                <canvas class="image_cw" id="composite" width="640" height="640">
               </div>
               <div style="visibility:hidden">
                   Set X [<span id="val-x"></span>]
@@ -74,8 +63,7 @@
                   <input type="range" id="range-y">
                   Set scale [<span id="val-scale"></span>]
                   <input type="range" id="range-scale">
-                </div>
-              <a href="authorised/status.jsp">Sensor status</a>
+                </div>  
             </div>
       
           </main>
