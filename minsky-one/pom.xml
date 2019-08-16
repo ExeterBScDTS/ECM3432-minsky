@@ -14,7 +14,7 @@
         <!-- Jetty version from
            https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/
         -->
-        <jettyVersion>9.4.17.v20190418</jettyVersion>
+        <jettyVersion>9.4.20.v20190813</jettyVersion>
     </properties>
 
     <dependencies>
@@ -94,7 +94,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                <release>11</release>
+                <release>8</release>
                 </configuration>
             </plugin>
             <!-- -->
