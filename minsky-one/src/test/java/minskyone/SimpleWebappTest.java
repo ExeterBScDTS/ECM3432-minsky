@@ -24,6 +24,7 @@ import org.junit.Test;
 public class SimpleWebappTest {
 
   private Server server;
+  String appname = "minskyOne-0.2";
 
   @Before
   public void setUp() throws Exception {
@@ -41,7 +42,7 @@ public class SimpleWebappTest {
       server.addBean(loginService);
 
       WebAppContext webAppContext = new WebAppContext();
-      webAppContext.setContextPath("/minskyOne-0.1");  // must match contextPath in jetty-web.xml
+      webAppContext.setContextPath("/" + appname);  // must match contextPath in jetty-web.xml
       webAppContext.setResourceBase(webappPath.toString());
       webAppContext.setClassLoader(getClass().getClassLoader());
       server.setHandler(webAppContext);
@@ -58,7 +59,7 @@ public class SimpleWebappTest {
       HttpURLConnection connection = null;
       try {
         // Fetch an HTML page rather than JSP as this is easier with embedded server.
-        URL url = new URL("http://localhost:8082/minskyOne-0.1/logon.html");
+        URL url = new URL("http://localhost:8082/" + appname + "/logon.html");
         connection = (HttpURLConnection) url.openConnection();
         if (connection.getResponseCode() != 200) {
           throw new RuntimeException("Failed! HTTP Error Code: " + connection.getResponseCode());
