@@ -33,9 +33,10 @@ public class initDb {
         // SQLite connection string
         String url = "jdbc:sqlite:/tmp/test.db";
         
-        // SQL statement for creating a new table
+        // SQL statement for creating a new table.
+        // Tables spec from sample jdbcReal.properties included with Jetty.
  
-        String sql = "create table users  (\n"
+        String sql_tables = "create table users  (\n"
                 + "     id integer primary key,\n"
                 + "     username varchar(100) not null unique,\n"
                 + "     pwd varchar(20) not null\n"
@@ -51,10 +52,18 @@ public class initDb {
                 + "    index(user_id)\n"
                 + ");";
         
+        String sql_test_data = "insert into users values (1, 'admin', 'password');"
+                + "insert into roles values (1, 'server-administrator');"
+                + "insert into roles values (2, 'content-administrator');"
+                + "insert into user_roles values (1, 1);"
+                + "insert into user_roles values (1, 2);";
+
+
         try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()) {
             // create a new table
-            stmt.execute(sql);
+            stmt.execute(sql_tables);
+            stmt.execute(sql_test_data);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

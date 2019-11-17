@@ -14,7 +14,7 @@
         <!-- Jetty version from
            https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/
         -->
-        <jettyVersion>9.4.20.v20190813</jettyVersion>
+        <jettyVersion>9.4.22.v20191022</jettyVersion>
     </properties>
 
     <dependencies>
@@ -26,10 +26,18 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
+        <!--
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
-        <version>3.28.0</version>
+        <version>3.27.2.1</version>
+        </dependency>
+        -->
+
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>7.4.1.jre11</version>
         </dependency>
 
         <dependency>
@@ -111,21 +119,34 @@
                 <version>${jettyVersion}</version>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
+  
+                    <!--
                     <loginServices>
                         <loginService implementation="org.eclipse.jetty.security.HashLoginService">
                         <name>Test Realm</name>
                         <config>${project.basedir}/src/etc/realm.properties</config>
                         </loginService>
                     </loginServices>
+                    -->
+                    
+                    <loginServices>
+                        <loginService implementation="org.eclipse.jetty.security.JDBCLoginService">
+                        <name>Test JDBC Realm</name>
+                        <config>${project.basedir}/src/etc/jdbcRealm.properties</config>
+                        </loginService>
+                    </loginServices>
+                   
                 </configuration>
             </plugin>
 
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.2.2</version>
+                <!--
                 <configuration>
                     <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
                 </configuration>
+                -->
             </plugin>
         </plugins>
     </build>
