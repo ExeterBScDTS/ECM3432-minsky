@@ -22,3 +22,4 @@ test/
 settings.json
 launch.test.json
 .vscode/launch.json
+minsky-one/src/main/webapp/WEB-INF/lib/mssql-jdbc-7.4.1.jre11.jar
