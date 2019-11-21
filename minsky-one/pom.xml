@@ -119,21 +119,21 @@
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
   
-                    <!--
                     <loginServices>
                         <loginService implementation="org.eclipse.jetty.security.HashLoginService">
                         <name>Test Realm</name>
                         <config>${project.basedir}/src/etc/realm.properties</config>
                         </loginService>
                     </loginServices>
-                    -->
-                    
+
+                    <!--
                     <loginServices>
                         <loginService implementation="org.eclipse.jetty.security.JDBCLoginService">
                         <name>Test JDBC Realm</name>
                         <config>${project.basedir}/src/etc/jdbcRealm.properties</config>
                         </loginService>
                     </loginServices>
+                    -->
                    
                 </configuration>
             </plugin>
