@@ -34,11 +34,14 @@
         </dependency>
         -->
 
+        <!--
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>7.4.1.jre11</version>
         </dependency>
+        -->
+
 
         <dependency>
             <groupId>junit</groupId>
@@ -52,16 +55,20 @@
             <artifactId>mockito-core</artifactId>
             <version>2.23.4</version>
         </dependency>
+
+         <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-security</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>
+
+        <!--
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-security</artifactId>
-            <version>${jettyVersion}</version>
-        </dependency>
+       
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
@@ -87,6 +94,8 @@
             <artifactId>apache-jstl</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
+        -->
+        
         <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
         <!--
 <dependency>
@@ -132,7 +141,14 @@
                         </loginService>
                     </loginServices>
                     -->
-                    
+                    <configuration>
+                        <webApp>
+                        <Call name="setInitParameter">
+                        <Arg>jaas.login.conf</Arg>
+                        <Arg>${project.basedir}/src/etc/login.conf</Arg>
+                        </Call>
+                        </webApp>
+                    </configuration>
                 </configuration>
             </plugin>
 

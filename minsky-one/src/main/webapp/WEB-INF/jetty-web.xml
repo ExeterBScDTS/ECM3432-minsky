@@ -15,21 +15,5 @@
                   <Set name="LoginModuleName">xyz</Set>
             </New>
       </Set>
-    <!--
-    <Set name="loginService">
-      <New class="org.eclipse.jetty.security.HashLoginService">
-            <Set name="name">Test Realm</Set>
-            <Set name="config"><SystemProperty name="jetty.home" default="."/>/src/etc/realm.properties</Set>
-      </New>
-    </Set>
-    -->
-    <!--
-     <Set name="loginService">
-      <New class="org.eclipse.jetty.security.JDBCLoginService">
-            <Set name="name">Test Realm</Set>
-            <Set name="config"><SystemProperty name="jetty.home" default="."/>/src/etc/jdbcRealm.properties</Set>
-      </New>
-    </Set>
-    -->
     </Get>
 </Configure>
