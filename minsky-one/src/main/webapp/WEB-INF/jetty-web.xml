@@ -8,6 +8,13 @@
 
 
     <Get name="securityHandler">
+
+      <Set name="loginService">
+            <New class="org.eclipse.jetty.jaas.JAASLoginService">
+                  <Set name="Name">Test JAAS Realm</Set>
+                  <Set name="LoginModuleName">xyz</Set>
+            </New>
+      </Set>
     <!--
     <Set name="loginService">
       <New class="org.eclipse.jetty.security.HashLoginService">
