@@ -144,7 +144,7 @@
                     <configuration>
                         <webApp>
                         <Call name="setInitParameter">
-                        <Arg>jaas.login.conf</Arg>
+                        <Arg>jetty.jaas.login.conf</Arg>
                         <Arg>${project.basedir}/src/etc/login.conf</Arg>
                         </Call>
                         </webApp>
