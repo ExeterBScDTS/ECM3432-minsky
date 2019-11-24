@@ -14,7 +14,7 @@
         <!-- Jetty version from
            https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/
         -->
-        <jettyVersion>9.4.20.v20190813</jettyVersion>
+        <jettyVersion>9.4.22.v20191022</jettyVersion>
     </properties>
 
     <dependencies>
@@ -24,6 +24,24 @@
             <version>8.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
+        <!--
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+        <version>3.27.2.1</version>
+        </dependency>
+        -->
+
+        <!--
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>7.4.1.jre11</version>
+        </dependency>
+        -->
+
 
         <dependency>
             <groupId>junit</groupId>
@@ -38,16 +56,19 @@
             <version>2.23.4</version>
         </dependency>
 
+         <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-security</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>
+
+        <!--
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-security</artifactId>
-            <version>${jettyVersion}</version>
-        </dependency>
+       
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
@@ -63,11 +84,18 @@
             <artifactId>jetty-annotations</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
+         <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-jaas</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>apache-jstl</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
+        -->
+        
         <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
         <!--
 <dependency>
@@ -104,12 +132,23 @@
                 <version>${jettyVersion}</version>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
+  
+                    <!--
                     <loginServices>
                         <loginService implementation="org.eclipse.jetty.security.HashLoginService">
                         <name>Test Realm</name>
                         <config>${project.basedir}/src/etc/realm.properties</config>
                         </loginService>
                     </loginServices>
+                    -->
+                    <configuration>
+                        <webApp>
+                        <Call name="setInitParameter">
+                        <Arg>jetty.jaas.login.conf</Arg>
+                        <Arg>${project.basedir}/src/etc/login.conf</Arg>
+                        </Call>
+                        </webApp>
+                    </configuration>
                 </configuration>
             </plugin>
 
