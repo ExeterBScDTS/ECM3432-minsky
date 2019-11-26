@@ -133,8 +133,16 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jettyVersion}</version>
                 <configuration>
+                    <jettyXml>${project.basedir}/src/etc/test-realm.xml</jettyXml>
+                    <systemProperties>
+                        <force>true</force>
+                        <systemProperty>
+                            <name>jetty.jaas.login.conf</name>
+                            <value>${project.basedir}/src/etc/login.conf</value>
+                        </systemProperty>
+                    </systemProperties>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
-  
+
                     <!--
                     <loginServices>
                         <loginService implementation="org.eclipse.jetty.security.HashLoginService">
@@ -143,14 +151,9 @@
                         </loginService>
                     </loginServices>
                     -->
-                    <configuration>
                         <webApp>
-                        <Call name="setInitParameter">
-                        <Arg>jetty.jaas.login.conf</Arg>
-                        <Arg>${project.basedir}/src/etc/login.conf</Arg>
-                        </Call>
+                        <descriptor>${project.basedir}/src/etc/test-web.xml</descriptor>
                         </webApp>
-                    </configuration>
                 </configuration>
             </plugin>
 
