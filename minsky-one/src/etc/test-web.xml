@@ -7,17 +7,17 @@
 
   <context-param>
     <param-name>minsky.camera.tir.rgbpath.default</param-name>
-    <param-value>mlx90640-0.rgb</param-value>
+    <param-value>samples/mlx90640-0.rgb</param-value>
   </context-param>
 
   <context-param>
     <param-name>minsky.camera.tir.fltpath.default</param-name>
-    <param-value>mlx90640-0.flt</param-value>
+    <param-value>samples/mlx90640-0.flt</param-value>
   </context-param>
 
   <context-param>
     <param-name>minsky.camera.colour.jpgpath.default</param-name>
-    <param-value>sample.jpg</param-value>
+    <param-value>samples/sample.jpg</param-value>
   </context-param>
 
 
