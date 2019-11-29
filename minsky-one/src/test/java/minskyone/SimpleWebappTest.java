@@ -54,7 +54,6 @@ public class SimpleWebappTest {
       server.stop();
     }
 
-    /*
     @Test
     public void testWebappDeploy() {
       HttpURLConnection connection = null;
@@ -81,9 +80,7 @@ public class SimpleWebappTest {
         }
       }
     } 
-    */ 
 
-    /*
     @Test
     public void testWebappJsp() {
       HttpURLConnection connection = null;
@@ -107,7 +104,6 @@ public class SimpleWebappTest {
           connection.disconnect();
         }
       }
-    }
-    */  
+    }  
 }
 

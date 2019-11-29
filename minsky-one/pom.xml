@@ -68,6 +68,11 @@
             <version>${jettyVersion}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-jaas</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>
         <!--
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
@@ -86,11 +91,7 @@
             <artifactId>jetty-annotations</artifactId>
             <version>${jettyVersion}</version>
         </dependency>
-         <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-jaas</artifactId>
-            <version>${jettyVersion}</version>
-        </dependency>
+        
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>apache-jstl</artifactId>
