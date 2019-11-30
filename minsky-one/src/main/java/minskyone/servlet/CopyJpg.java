@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import javax.imageio.ImageIO;
 import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
+//import java.awt.image.AffineTransformOp;
 
 // See https://www.quickprogrammingtips.com/java/how-to-rotate-an-image-using-affine-transform-in-java.html
 
@@ -15,7 +15,7 @@ public class CopyJpg {
     public static void writeJPG(FileInputStream in,  OutputStream out){
         try {
             BufferedImage source = ImageIO.read(in);
-            BufferedImage output = new BufferedImage(source.getHeight(), source.getWidth(), source.getType());
+            //BufferedImage output = new BufferedImage(source.getHeight(), source.getWidth(), source.getType());
             //AffineTransformOp op = new AffineTransformOp(rotateClockwise90(source), AffineTransformOp.TYPE_BILINEAR);
             //op.filter(source, output);
             //ImageIO.write(output, "JPG", out);

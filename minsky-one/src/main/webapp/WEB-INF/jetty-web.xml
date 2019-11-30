@@ -6,14 +6,14 @@
 
     <Set name="war"><SystemProperty name="jetty.home" default="."/>/</Set>
 
-<!--
+
     <Get name="securityHandler">
-    <Set name="loginService">
-      <New class="org.eclipse.jetty.security.HashLoginService">
-            <Set name="name">Test Realm</Set>
-            <Set name="config"><SystemProperty name="jetty.home" default="."/>/src/etc/realm.properties</Set>
-      </New>
-    </Set>
+
+      <Set name="loginService">
+            <New class="org.eclipse.jetty.jaas.JAASLoginService">
+                  <Set name="Name">Test JAAS Realm</Set>
+                  <Set name="LoginModuleName">xyz</Set>
+            </New>
+      </Set>
     </Get>
- -->
 </Configure>

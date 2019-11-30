@@ -59,7 +59,8 @@ public class SimpleWebappTest {
       HttpURLConnection connection = null;
       try {
         // Fetch an HTML page rather than JSP as this is easier with embedded server.
-        URL url = new URL("http://localhost:8082/" + appname + "/logon.html");
+        // URL url = new URL("http://localhost:8082/" + appname + "/logon.html");
+        URL url = new URL("http://localhost:8082/" + appname + "/test.html");
         connection = (HttpURLConnection) url.openConnection();
         if (connection.getResponseCode() != 200) {
           throw new RuntimeException("Failed! HTTP Error Code: " + connection.getResponseCode());
@@ -78,9 +79,8 @@ public class SimpleWebappTest {
           connection.disconnect();
         }
       }
-    }  
+    } 
 
-    /*
     @Test
     public void testWebappJsp() {
       HttpURLConnection connection = null;
@@ -104,7 +104,6 @@ public class SimpleWebappTest {
           connection.disconnect();
         }
       }
-    }
-    */  
+    }  
 }
 

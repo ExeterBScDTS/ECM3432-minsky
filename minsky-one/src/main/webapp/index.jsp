@@ -48,7 +48,8 @@
         <main role="main" class="container">
 
             <div class="starter-template">
-                <a href="authorised/status.jsp">Sensor status</a>
+                <a href="authorised/status.jsp">Sensor status</a> |
+                <a href="histogram.jsp">Histogram</a>
               <div style="visibility:hidden">
                 <img id="colour" src="camera/1/" width="1" height="1">
                 <img id="thermal" src="camera/0/" width="1" height="1">
