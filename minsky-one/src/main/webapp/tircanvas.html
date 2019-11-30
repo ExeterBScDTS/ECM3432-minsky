@@ -15,7 +15,7 @@
 <script type="text/javascript">
 
 var mint = 12.0;
-var maxt = 25.0;
+var maxt = 35.0;
 var ctx;
 
 function main() {
@@ -45,7 +45,7 @@ async function draw(){
             var v = tir[col*32 + row];
             if (v < mint) v=mint;
             if (v > maxt) v=maxt;
-            var p = (v-mint) * (255/maxt);
+            var p = (v-mint) * (255/(maxt-mint));
             ctx.fillStyle = 'rgb('+ p +',' + p +',' + p + ')';
             ctx.fillRect(x, y, 10, 10);
         }
