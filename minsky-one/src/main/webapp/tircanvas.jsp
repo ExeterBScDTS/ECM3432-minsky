@@ -13,7 +13,6 @@ canvas {
 </style>
 
 <script type="text/javascript">
-function main() {
 
     var tir =
    <%
@@ -22,19 +21,28 @@ function main() {
   out.print("[" + String.join(",",tir) + "]");
    %> ;
 
-   mint = 12.0;
-   maxt = 25.0;
+   var mint = 12.0;
+   var maxt = 25.0;
 
+   var ctx;
+
+function main() {
     var c = document.getElementById('canvas');
     if (c.getContext) {
       //initializeCanvas(c);
-      const ctx = canvas.getContext('2d');
-      
-      // updateInterval = window.setInterval("update()", mspf);
-      
-      ctx.fillRect(0, 0, 10, 10);
+      ctx = canvas.getContext('2d'); 
+      updateInterval = window.setInterval("draw()", 200);
 
-      for(var row=0; row<32; row++){
+      //draw();
+    }
+
+    else {
+      trace('Sorry.. you need a browser that supports the canvas tag.');
+    }
+  }
+
+function draw(){
+    for(var row=0; row<32; row++){
         y=row*10;
         for(var col=0; col<24; col++){
             x=(23-col)*10;
@@ -45,15 +53,8 @@ function main() {
             ctx.fillStyle = 'rgb('+ p +',' + p +',' + p + ')';
             ctx.fillRect(x, y, 10, 10);
         }
-
       }
-    
-    }
-
-    else {
-      trace('Sorry.. you need a browser that supports the canvas tag.');
-    }
-  }
+}
 </script>
 </head>
 
