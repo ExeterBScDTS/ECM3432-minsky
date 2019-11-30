@@ -10,10 +10,21 @@
     <!-- =========================================================== -->
     <Call name="addBean">
       <Arg>
+      <!--
+        <New class="org.eclipse.jetty.security.HashLoginService">
+          <Set name="name">Test Realm</Set>
+          <Set name="config"><Property name="jetty.demo.realm" default="etc/realm.properties"/></Set>
+          <Set name="hotReload">false</Set>
+        </New>
+      -->
         <New class="org.eclipse.jetty.jaas.JAASLoginService">
           <Set name="Name">Test JAAS Realm</Set>
           <Set name="LoginModuleName">xyz</Set>
        </New>
       </Arg>
     </Call>
+
+    <Get class="org.eclipse.jetty.util.log.Log" name="rootLogger">
+      <Call name="warn"><Arg>Minsky!! demo test-realm is deployed. DO NOT USE IN PRODUCTION!</Arg></Call>
+    </Get>
 </Configure>
