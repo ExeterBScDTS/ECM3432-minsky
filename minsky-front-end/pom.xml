@@ -51,6 +51,7 @@
             </configuration>
           </execution>
 
+          <!--
           <execution>
             <id>bower install</id>
             <goals>
@@ -60,27 +61,33 @@
               <arguments>install</arguments>
             </configuration>
           </execution>
+          -->
 
+          <!--
           <execution>
             <id>jspm install</id>
             <goals>
               <goal>jspm</goal>
             </goals>
             <configuration>
-              <arguments>--version</arguments>
+              <arguments>- -version</arguments>
             </configuration>
           </execution>
+          -->
 
+          <!--
           <execution>
             <id>grunt build</id>
             <goals>
               <goal>grunt</goal>
             </goals>
             <configuration>
-              <arguments>--no-color</arguments>
+              <arguments>- -no-color</arguments>
             </configuration>
           </execution>
+          -->
 
+          <!--
           <execution>
             <id>gulp build</id>
             <phase>generate-resources</phase>
@@ -93,6 +100,7 @@
               </environmentVariables>
             </configuration>
           </execution>
+          -->
 
           <execution>
             <id>javascript tests</id>
