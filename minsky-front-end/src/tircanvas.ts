@@ -3,9 +3,9 @@ var maxt = 35.0;
 var ctx;
 
 function main() {
-    var canvas = document.getElementById('canvas');
-    ctx = canvas.getContext('2d'); 
-    updateInterval = window.setInterval("draw()", 200);
+    var c = <HTMLCanvasElement> document.getElementById('canvas');
+      ctx = c.getContext('2d'); 
+      var updateInterval = window.setInterval("draw()", 200);
   }
 
 async function draw(){
@@ -14,9 +14,9 @@ async function draw(){
   const tir = await response.json();
 
   for(var row=0; row<32; row++){
-        y=row*10;
+        var y=row*10;
         for(var col=0; col<24; col++){
-            x=(23-col)*10;
+            var x=(23-col)*10;
             var v = tir[col*32 + row];
             if (v < mint) v=mint;
             if (v > maxt) v=maxt;
