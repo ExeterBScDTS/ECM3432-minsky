@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="bootstrap/starter-template.css" rel="stylesheet">
+
+    <title>Minsky One</title>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+          <a class="navbar-brand" href="index.jsp">Minsky One</a>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+            <form class="form-inline my-2 my-lg-0" method="get" action="authorised">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= user %></button>
+            </form>
+          </div>
+        </nav>
+        <main role="main" class="container">
+            <div class="starter-template">
+              <div style="width:980px;height:520px">
+              <svg id="svg-hist" width="960" height="500">
+<rect class="bar" x="1" transform="translate(0,459)" width="17" height="1"></rect>
+<rect class="bar" x="1" transform="translate(18,459)" width="17" height="1"></rect>
+<rect class="bar" x="1" transform="translate(36,459)" width="17" height="1"></rect>
+<rect class="bar" x="1" transform="translate(54,459)" width="17" height="1"></rect>
+<rect class="bar" x="1" transform="translate(72,459)" width="17" height="1"></rect>
+<rect class="bar" x="1" transform="translate(90,459)" width="17" height="1"></rect>
+<rect class="bar" x="1" transform="translate(108,459)" width="17" height="1"></rect>
+<rect class="bar" x="1" transform="translate(126,459)" width="17" height="1"></rect>
+<rect class="bar" x="1" transform="translate(144,454)" width="17" height="6"></rect>
+<rect class="bar" x="1" transform="translate(162,454)" width="17" height="6"></rect>
+<rect class="bar" x="1" transform="translate(180,337)" width="17" height="123"></rect>
+<rect class="bar" x="1" transform="translate(198,-1)" width="17" height="461"></rect>
+<rect class="bar" x="1" transform="translate(216,-1)" width="17" height="461"></rect>
+<rect class="bar" x="1" transform="translate(234,93)" width="17" height="367"></rect>
+<rect class="bar" x="1" transform="translate(252,273)" width="17" height="187"></rect>
+<rect class="bar" x="1" transform="translate(270,331)" width="17" height="129"></rect>
+<rect class="bar" x="1" transform="translate(288,296)" width="17" height="164"></rect>
+<rect class="bar" x="1" transform="translate(306,262)" width="17" height="198"></rect>
+<rect class="bar" x="1" transform="translate(324,227)" width="17" height="233"></rect>
+<rect class="bar" x="1" transform="translate(342,151)" width="17" height="309"></rect>
+<rect class="bar" x="1" transform="translate(360,98)" width="17" height="362" fill="red"></rect>
+<rect class="bar" x="1" transform="translate(378,180)" width="17" height="280"></rect>
+<rect class="bar" x="1" transform="translate(396,203)" width="17" height="257"></rect>
+<rect class="bar" x="1" transform="translate(414,308)" width="17" height="152"></rect>
+<rect class="bar" x="1" transform="translate(432,343)" width="17" height="117"></rect>
+<rect class="bar" x="1" transform="translate(450,372)" width="17" height="88"></rect>
+<rect class="bar" x="1" transform="translate(468,372)" width="17" height="88"></rect>
+<rect class="bar" x="1" transform="translate(486,395)" width="17" height="65"></rect>
+<rect class="bar" x="1" transform="translate(504,436)" width="17" height="24"></rect>
+<rect class="bar" x="1" transform="translate(522,401)" width="17" height="59"></rect>
+<rect class="bar" x="1" transform="translate(540,401)" width="17" height="59"></rect>
+<rect class="bar" x="1" transform="translate(558,436)" width="17" height="24"></rect>
+<rect class="bar" x="1" transform="translate(576,454)" width="17" height="6"></rect>
+<rect class="bar" x="1" transform="translate(594,459)" width="17" height="1"></rect>
+<rect class="bar" x="1" transform="translate(612,430)" width="17" height="30"></rect>
+<rect class="bar" x="1" transform="translate(630,442)" width="17" height="18"></rect>
+<rect class="bar" x="1" transform="translate(648,454)" width="17" height="6"></rect>
+<rect class="bar" x="1" transform="translate(666,436)" width="17" height="24"></rect>
+<rect class="bar" x="1" transform="translate(684,448)" width="17" height="12"></rect>
+<rect class="bar" x="1" transform="translate(900,460)" width="-1" height="0"></rect>
+</svg>
+              </div>
+              <a href="authorised/status.jsp">Sensor status</a>
+            </div>
+        </main>
+
+  <script>
+  var rect=function(n,h,fill){
+     var NS="http://www.w3.org/2000/svg";
+     var SVGObj= document.createElementNS(NS,"rect");
+     SVGObj.width.baseVal.value=17;
+     SVGObj.height.baseVal.value=h;
+     SVGObj.x.baseVal.value=1;
+     SVGObj.style.fill=fill;
+     SVGObj.setAttribute("transform","translate(" + (n * 18) + "," + (460 - h) + ")");
+     return SVGObj;
+  }
+
+var svg = document.getElementById('svg-hist');
+
+  async function draw(){
+    const response = await fetch('tirjson.jsp');
+    const tir = await response.json();
+    console.log(tir);
+    var r1 = rect(20,362,"green"); 
+    svg.appendChild(r1);
+  }
+
+  draw();
+  </script>      
+  </body>
+</html>
