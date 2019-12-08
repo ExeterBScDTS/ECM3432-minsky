@@ -64,7 +64,7 @@
   }
 
   async function redraw(){
-    const response = await fetch('histjson.jsp?bins=50');
+    const response = await fetch('histjson.jsp?bins=50&height=460');
     const tir = await response.json();
     console.log(tir);
     for(i=0; i<tir.length; i++){
