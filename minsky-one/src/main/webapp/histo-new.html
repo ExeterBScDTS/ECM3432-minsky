@@ -34,6 +34,7 @@
   var rect=function(n,h,fill){
      var NS="http://www.w3.org/2000/svg";
      var SVGObj= document.createElementNS(NS,"rect");
+     SVGObj.id="r_" + n;
      SVGObj.width.baseVal.value=17;
      SVGObj.height.baseVal.value=h;
      SVGObj.x.baseVal.value=1;
@@ -42,19 +43,38 @@
      return SVGObj;
   }
 
+  var setheight=function(n,h,fill){
+     var SVGObj= document.getElementById("r_" + n);
+     //SVGObj.width.baseVal.value=17;
+     SVGObj.height.baseVal.value=h;
+     //SVGObj.x.baseVal.value=1;
+     SVGObj.style.fill=fill;
+     SVGObj.setAttribute("transform","translate(" + (n * 18) + "," + (460 - h) + ")");
+  }
+
   var svg = document.getElementById('svg-hist');
 
   async function draw(){
-    const response = await fetch('histjson.jsp');
+    //const response = await fetch('histjson.jsp');
+    //const tir = await response.json();
+    for(i=0; i<50; i++){
+       r1 = rect(i,1,"green"); 
+       svg.appendChild(r1);
+    }
+  }
+
+  async function redraw(){
+    const response = await fetch('histjson.jsp?bins=50');
     const tir = await response.json();
     console.log(tir);
     for(i=0; i<tir.length; i++){
        console.log(i, tir[i]);
-       r1 = rect(i,tir[i],"green"); 
-       svg.appendChild(r1);
+       setheight(i,tir[i],"green"); 
     }
   }
+
   draw();
+  redraw();
   </script>      
   </body>
 </html>
