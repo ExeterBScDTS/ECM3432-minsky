@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./built",
+        "outDir": "../minsky-one/src/main/webapp/js",
         "allowJs": true,
         "target": "es2015"
     },
