@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var rect = function (n, h, fill, max_height) {
+function rect(n, h, fill, max_height) {
     var NS = "http://www.w3.org/2000/svg";
     var SVGObj = document.createElementNS(NS, "rect");
     SVGObj.id = "r_" + n;
@@ -17,7 +17,7 @@ var rect = function (n, h, fill, max_height) {
     SVGObj.style.fill = fill;
     SVGObj.setAttribute("transform", "translate(" + (n * 18) + "," + (max_height - h) + ")");
     return SVGObj;
-};
+}
 function setheight(n, h, fill, max_height) {
     var SVGObj = document.getElementById("r_" + n);
     //SVGObj.width.baseVal.value=17;

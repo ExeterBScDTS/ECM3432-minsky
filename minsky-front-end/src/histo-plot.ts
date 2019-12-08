@@ -1,7 +1,7 @@
 
-    var rect=function(n,h,fill,max_height){
+   function rect(n:number,h:number,fill:string,max_height:number){
      var NS="http://www.w3.org/2000/svg";
-     var SVGObj= <any>document.createElementNS(NS,"rect");
+     var SVGObj= <SVGSVGElement><any>document.createElementNS(NS,"rect");
      SVGObj.id="r_" + n;
      SVGObj.width.baseVal.value=17;
      SVGObj.height.baseVal.value=h;
@@ -11,8 +11,8 @@
      return SVGObj;
   }
 
-  function setheight(n:number,h:number,fill:String,max_height:number){
-     var SVGObj= <any> document.getElementById("r_" + n);
+  function setheight(n:number,h:number,fill:string,max_height:number){
+     var SVGObj= <SVGSVGElement><any>document.getElementById("r_" + n);
      //SVGObj.width.baseVal.value=17;
      SVGObj.height.baseVal.value=h;
      //SVGObj.x.baseVal.value=1;
@@ -29,7 +29,7 @@
     }
   }
 
-  async function redrawHist(num_bins,max_height):Promise<void>{
+  async function redrawHist(num_bins:number,max_height:number):Promise<void>{
     let response = await fetch("histjson.jsp?bins=" + num_bins + "&height=" + max_height);
     let tir = await response.json();
     for(let i=0; i<tir.length; i++){
