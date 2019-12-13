@@ -49,7 +49,8 @@
 
             <div class="starter-template">
                 <a href="authorised/status.jsp">Sensor status</a> |
-                <a href="histo-new.html">Histogram</a>
+                <a href="histo-new.html">Histogram</a> |
+                <a href="tircanvas.html">TIR</a>
               <div style="visibility:hidden">
                 <img id="colour" src="camera/1/" width="1" height="1">
                 <img id="thermal" src="camera/0/" width="1" height="1">
