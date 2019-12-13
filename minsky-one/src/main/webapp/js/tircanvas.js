@@ -10,19 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var mint = 12.0;
 var maxt = 35.0;
 var ctx;
-class Palette {
+export class Palette {
     getColour(v) {
         const color = [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 1, 0], [1, 0, 0], [1, 0, 1], [1, 1, 1]];
         let NUM_COLORS = color.length;
         let idx1;
         let idx2;
         let fractBetween = 0.0;
-        let vmin = 5.0;
-        let vmax = 50.0;
-        let vrange = vmax - vmin;
-        let rawpix = v;
-        v -= vmin;
-        v /= vrange;
         if (v <= 0) {
             idx1 = idx2 = 0;
         }
@@ -35,10 +29,9 @@ class Palette {
             idx2 = idx1 + 1;
             fractBetween = v - idx1;
         }
-        let ir, ig, ib;
-        ir = ((((color[idx2][0] - color[idx1][0]) * fractBetween) + color[idx1][0]) * 255.0);
-        ig = ((((color[idx2][1] - color[idx1][1]) * fractBetween) + color[idx1][1]) * 255.0);
-        ib = ((((color[idx2][2] - color[idx1][2]) * fractBetween) + color[idx1][2]) * 255.0);
+        return [~~((((color[idx2][0] - color[idx1][0]) * fractBetween) + color[idx1][0]) * 255),
+            ~~((((color[idx2][1] - color[idx1][1]) * fractBetween) + color[idx1][1]) * 255),
+            ~~((((color[idx2][2] - color[idx1][2]) * fractBetween) + color[idx1][2]) * 255)];
     }
 }
 function main() {
