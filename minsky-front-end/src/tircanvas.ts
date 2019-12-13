@@ -9,12 +9,12 @@ export class Palette{
       let idx1:number; 
       let idx2:number;
       let fractBetween:number = 0.0;
-      let vmin:number = 5.0;
-      let vmax:number = 50.0;
-      let vrange:number = vmax-vmin;
-      let rawpix:number = v;
-      v -= vmin;
-      v /= vrange;
+      //let vmin:number = 5.0;
+      //let vmax:number = 50.0;
+      //let vrange:number = vmax-vmin;
+      //let rawpix:number = v;
+      //v -= vmin;
+      //v /= vrange;
       if(v <= 0) {idx1=idx2=0;}
       else if(v >= 1) {idx1=idx2=NUM_COLORS-1;}
       else
@@ -31,6 +31,7 @@ export class Palette{
       ig = ((((color[idx2][1] - color[idx1][1]) * fractBetween) + color[idx1][1]) * 255.0);
       ib = ((((color[idx2][2] - color[idx1][2]) * fractBetween) + color[idx1][2]) * 255.0);
   
+      return([idx1,idx2,ir,ig,ib]);
     }
 }
 

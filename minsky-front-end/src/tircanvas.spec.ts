@@ -6,6 +6,13 @@ import 'mocha';
 
 console.log("Can you hear me?");
 
+let p = new Palette();
+
+console.log(p.getColour(0));
+console.log(p.getColour(0.1));
+console.log(p.getColour(0.9));
+console.log(p.getColour(1));
+
 describe('Hello function', () => {
 
   it('should return hello world', () => {
