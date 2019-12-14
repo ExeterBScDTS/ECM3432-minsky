@@ -1,8 +1,12 @@
-var mint = 12.0;
-var maxt = 35.0;
-var ctx;
 
 export class Palette{
+
+    data: Array<String>;
+
+    setLength(n:number){
+      this.data = this.getPalette(n);
+    }
+
     getColour(v:number) : String{
       
       const color: number[][] = [[0,0,0], [0,0,1], [0,1,0], [1,1,0], [1,0,0], [1,0,1], [1,1,1]];
@@ -43,18 +47,19 @@ export class Palette{
     }
 }
 
-function main() {
-    var c = <HTMLCanvasElement> document.getElementById('canvas');
-      ctx = c.getContext('2d'); 
-      var updateInterval = window.setInterval("draw()", 200);
-  }
 
-async function draw(){
+export function main() {
 
-  const response = await fetch('tirjson.jsp');
-  const tir = await response.json();
+  let mint = 12.0;
+  let maxt = 35.0;
+  let ctx: CanvasRenderingContext2D;
 
-  for(var row=0; row<32; row++){
+  async function draw(pal:Palette){
+
+    const response = await fetch('tirjson.jsp');
+    const tir = await response.json();
+
+    for(var row=0; row<32; row++){
         var y=row*10;
         for(var col=0; col<24; col++){
             var x=(23-col)*10;
@@ -66,4 +71,15 @@ async function draw(){
             ctx.fillRect(x, y, 10, 10);
         }
     }
+  } 
+  let p = new Palette();
+  p.setLength(10);
+  let c = <HTMLCanvasElement> document.getElementById('canvas');
+  ctx = c.getContext('2d'); 
+  //var updateInterval = window.setInterval("draw(p)", 200);
+  draw(p);
 }
+
+   
+
+
