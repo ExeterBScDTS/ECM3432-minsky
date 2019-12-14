@@ -3,7 +3,7 @@ var maxt = 35.0;
 var ctx;
 
 export class Palette{
-    getColour(v:number){
+    getColour(v:number) : String{
       
       const color: number[][] = [[0,0,0], [0,0,1], [0,1,0], [1,1,0], [1,0,0], [1,0,1], [1,1,1]];
       let NUM_COLORS:number = color.length;
@@ -24,14 +24,16 @@ export class Palette{
         fractBetween = v - idx1;
       }
 
-      return [~~((((color[idx2][0] - color[idx1][0]) * fractBetween) + color[idx1][0]) * 255),
+      let rgb = [~~((((color[idx2][0] - color[idx1][0]) * fractBetween) + color[idx1][0]) * 255),
         ~~((((color[idx2][1] - color[idx1][1]) * fractBetween) + color[idx1][1]) * 255),
         ~~((((color[idx2][2] - color[idx1][2]) * fractBetween) + color[idx1][2]) * 255)];
+
+      return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
     }
 
-    getPalette(len:number) : Array<Array<number>>{
-
-      let pal: Array<Array<number>> = [];
+    getPalette(len:number) : Array<String>
+    { 
+      let pal: Array<String> = [];
       for(let i=0; i<len; i++){
         let v = (1.0 / (len-1)) * i;
         pal.push(this.getColour(v));

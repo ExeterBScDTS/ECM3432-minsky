@@ -13,12 +13,12 @@ describe('Palette.getColour()', () => {
 
   it('0.0 should return [0,0,0]', () => {
     const result = p.getColour(0);
-    expect(result).to.deep.equal([0,0,0]);
+    expect(result).to.equal('rgb(0,0,0)');
   });
 
   it('1.0 should return [255,255,255]', () => {
     const result = p.getColour(1);
-    expect(result).to.deep.equal([255,255,255]);
+    expect(result).to.equal('rgb(255,255,255)');
   });
 
 });
