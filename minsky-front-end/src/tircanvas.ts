@@ -47,39 +47,41 @@ export class Palette{
     }
 }
 
+export class TIRCanvas {
+  private readonly ctx: CanvasRenderingContext2D;
+  mint = 12.0;
+  maxt = 35.0;
 
-export function main() {
+  constructor(private readonly canvas: HTMLCanvasElement) {
+    this.ctx = this.canvas.getContext('2d');
+  }
 
-  let mint = 12.0;
-  let maxt = 35.0;
-  let ctx: CanvasRenderingContext2D;
-
-  async function draw(pal:Palette){
-
+  async draw() {
     const response = await fetch('tirjson.jsp');
     const tir = await response.json();
 
     for(var row=0; row<32; row++){
-        var y=row*10;
-        for(var col=0; col<24; col++){
-            var x=(23-col)*10;
-            var v = tir[col*32 + row];
-            if (v < mint) v=mint;
-            if (v > maxt) v=maxt;
-            var p = (v-mint) * (255/(maxt-mint));
-            ctx.fillStyle = 'rgb('+ p +',' + p +',' + p + ')';
-            ctx.fillRect(x, y, 10, 10);
-        }
+      var y=row*10;
+      for(var col=0; col<24; col++){
+          var x=(23-col)*10;
+          var v = tir[col*32 + row];
+          if (v < this.mint) v=this.mint;
+          if (v > this.maxt) v=this.maxt;
+          var p = (v-this.mint) * (255/(this.maxt-this.mint));
+          this.ctx.fillStyle = 'rgb('+ p +',' + p +',' + p + ')';
+          this.ctx.fillRect(x, y, 10, 10);
+      }
     }
+    window.requestAnimationFrame(() => this.draw());
   }
+}
+
+export function main() {
 
   let p = new Palette();
   p.setLength(10);
   let c = <HTMLCanvasElement> document.getElementById('canvas');
-  ctx = c.getContext('2d'); 
-  setInterval(()=>draw(p), 200);
+
+  let t = new TIRCanvas(c);
+  t.draw();
 }
-
-   
-
-
