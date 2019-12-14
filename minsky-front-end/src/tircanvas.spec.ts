@@ -10,7 +10,7 @@ const dom = new JSDOM('<!doctype html><html><body><div><canvas id="canvas" width
 let p = new Palette();
 p.setLength(100);
 
-console.log(p.getPalette(10));
+//console.log(p.getPalette(10));
 
 describe('Palette.getColour()', () => {
 
@@ -29,8 +29,22 @@ describe('Palette.getColour()', () => {
 let c = <HTMLCanvasElement> dom.window.document.getElementById('canvas');
 let tircanv = new TIRCanvas(c,p);
 
-console.log(tircanv.palIdx(10));
-console.log(tircanv.palIdx(15));
-console.log(tircanv.palIdx(20));
-console.log(tircanv.palIdx(25));
-console.log(tircanv.palIdx(30));
+//console.log(tircanv.palIdx(10));
+//console.log(tircanv.palIdx(15));
+//console.log(tircanv.palIdx(20));
+//console.log(tircanv.palIdx(25));
+//console.log(tircanv.palIdx(30));
+
+describe('TIRCanvas.palIdx()', () => {
+
+  it('10 should return 0', () => {
+    const result = tircanv.palIdx(0);
+    expect(result).to.equal(0);
+  });
+
+  it('20 should return 13', () => {
+    const result = tircanv.palIdx(20);
+    expect(result).to.equal(34);
+  });
+
+});
