@@ -7,6 +7,10 @@ export class Palette{
       this.data = this.getPalette(n);
     }
 
+    getLength():number{
+      return this.data.length;
+    }
+
     getColour(v:number) : String{
       
       const color: number[][] = [[0,0,0], [0,0,1], [0,1,0], [1,1,0], [1,0,0], [1,0,1], [1,1,1]];
@@ -49,25 +53,32 @@ export class Palette{
 
 export class TIRCanvas {
   private readonly ctx: CanvasRenderingContext2D;
+  private readonly pal: Palette;
   mint = 12.0;
   maxt = 35.0;
 
-  constructor(private readonly canvas: HTMLCanvasElement) {
-    this.ctx = this.canvas.getContext('2d');
+  constructor(canvas: HTMLCanvasElement, palette: Palette ) {
+    this.ctx = canvas.getContext('2d');
+    this.pal = palette;
+  }
+
+  palIdx(v:number):number{
+    return 0;
   }
 
   async draw() {
     const response = await fetch('tirjson.jsp');
     const tir = await response.json();
 
-    for(var row=0; row<32; row++){
-      var y=row*10;
-      for(var col=0; col<24; col++){
-          var x=(23-col)*10;
-          var v = tir[col*32 + row];
+    for(let row=0; row<32; row++){
+      let y=row*10;
+      for(let col=0; col<24; col++){
+          let x=(23-col)*10;
+          let v = tir[col*32 + row];
           if (v < this.mint) v=this.mint;
           if (v > this.maxt) v=this.maxt;
-          var p = (v-this.mint) * (255/(this.maxt-this.mint));
+          let p = (v-this.mint) * (255/(this.maxt-this.mint));
+          let n = this.palIdx(v);
           this.ctx.fillStyle = 'rgb('+ p +',' + p +',' + p + ')';
           this.ctx.fillRect(x, y, 10, 10);
       }
@@ -82,6 +93,6 @@ export function main() {
   p.setLength(10);
   let c = <HTMLCanvasElement> document.getElementById('canvas');
 
-  let t = new TIRCanvas(c);
+  let t = new TIRCanvas(c,p);
   t.draw();
 }

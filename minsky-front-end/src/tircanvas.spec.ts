@@ -1,9 +1,11 @@
 // See https://journal.artfuldev.com/unit-testing-node-applications-with-typescript-using-mocha-and-chai-384ef05f32b2
 
-import {Palette} from './tircanvas';
-
+import {Palette, TIRCanvas} from './tircanvas';
+import { JSDOM } from 'jsdom';
 import { expect } from 'chai';
 import 'mocha';
+
+const dom = new JSDOM('<!doctype html><html><body><div><canvas id="canvas" width="240" height="320"></canvas></div></body></html>');
 
 let p = new Palette();
 
@@ -22,3 +24,9 @@ describe('Palette.getColour()', () => {
   });
 
 });
+
+let c = <HTMLCanvasElement> dom.window.document.getElementById('canvas');
+let tircanv = new TIRCanvas(c,p);
+
+console.log(tircanv.palIdx(0));
+
