@@ -8,6 +8,7 @@ import 'mocha';
 const dom = new JSDOM('<!doctype html><html><body><div><canvas id="canvas" width="240" height="320"></canvas></div></body></html>');
 
 let p = new Palette();
+p.setLength(100);
 
 console.log(p.getPalette(10));
 
@@ -28,5 +29,8 @@ describe('Palette.getColour()', () => {
 let c = <HTMLCanvasElement> dom.window.document.getElementById('canvas');
 let tircanv = new TIRCanvas(c,p);
 
-console.log(tircanv.palIdx(0));
-
+console.log(tircanv.palIdx(10));
+console.log(tircanv.palIdx(15));
+console.log(tircanv.palIdx(20));
+console.log(tircanv.palIdx(25));
+console.log(tircanv.palIdx(30));

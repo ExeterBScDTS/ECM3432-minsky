@@ -63,7 +63,10 @@ export class TIRCanvas {
   }
 
   palIdx(v:number):number{
-    return 0;
+    if (v < this.mint) v=this.mint;
+    if (v > this.maxt) v=this.maxt;
+    let p = (v-this.mint) * (this.pal.getLength()/(this.maxt-this.mint));
+    return ~~p;
   }
 
   async draw() {
@@ -90,7 +93,7 @@ export class TIRCanvas {
 export function main() {
 
   let p = new Palette();
-  p.setLength(10);
+  p.setLength(100);
   let c = <HTMLCanvasElement> document.getElementById('canvas');
 
   let t = new TIRCanvas(c,p);
