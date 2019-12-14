@@ -28,6 +28,17 @@ export class Palette{
         ~~((((color[idx2][1] - color[idx1][1]) * fractBetween) + color[idx1][1]) * 255),
         ~~((((color[idx2][2] - color[idx1][2]) * fractBetween) + color[idx1][2]) * 255)];
     }
+
+    getPalette(len:number) : Array<Array<number>>{
+
+      let pal: Array<Array<number>> = [];
+      for(let i=0; i<len; i++){
+        let v = (1.0 / (len-1)) * i;
+        pal.push(this.getColour(v));
+      }
+
+      return pal;
+    }
 }
 
 function main() {

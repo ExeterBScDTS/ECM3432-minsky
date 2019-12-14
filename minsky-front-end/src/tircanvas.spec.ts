@@ -7,10 +7,7 @@ import 'mocha';
 
 let p = new Palette();
 
-console.log(p.getColour(0));
-console.log(p.getColour(0.1));
-console.log(p.getColour(0.9));
-console.log(p.getColour(1));
+console.log(p.getPalette(10));
 
 describe('Palette.getColour()', () => {
 
