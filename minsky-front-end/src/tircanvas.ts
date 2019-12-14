@@ -71,13 +71,13 @@ export function main() {
             ctx.fillRect(x, y, 10, 10);
         }
     }
-  } 
+  }
+
   let p = new Palette();
   p.setLength(10);
   let c = <HTMLCanvasElement> document.getElementById('canvas');
   ctx = c.getContext('2d'); 
-  //var updateInterval = window.setInterval("draw(p)", 200);
-  draw(p);
+  setInterval(()=>draw(p), 200);
 }
 
    

@@ -65,6 +65,7 @@ export function main() {
                     ctx.fillRect(x, y, 10, 10);
                 }
             }
+            console.log("hi");
         });
     }
     let p = new Palette();
@@ -72,5 +73,6 @@ export function main() {
     let c = document.getElementById('canvas');
     ctx = c.getContext('2d');
     //var updateInterval = window.setInterval("draw(p)", 200);
+    setInterval(() => draw(p), 200);
     draw(p);
 }
