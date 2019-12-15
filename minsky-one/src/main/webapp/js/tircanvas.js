@@ -11,6 +11,9 @@ export class Palette {
     setLength(n) {
         this.data = this.getPalette(n);
     }
+    getLength() {
+        return this.data.length;
+    }
     getColour(v) {
         const color = [[0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 1, 0], [1, 0, 0], [1, 0, 1], [1, 1, 1]];
         let NUM_COLORS = color.length;
@@ -44,26 +47,35 @@ export class Palette {
     }
 }
 export class TIRCanvas {
-    constructor(canvas) {
-        this.canvas = canvas;
+    constructor(canvas, palette) {
         this.mint = 12.0;
         this.maxt = 35.0;
-        this.ctx = this.canvas.getContext('2d');
+        this.ctx = canvas.getContext('2d');
+        this.pal = palette;
+    }
+    palIdx(v) {
+        if (v < this.mint)
+            v = this.mint;
+        if (v > this.maxt)
+            v = this.maxt;
+        let p = (v - this.mint) * (this.pal.getLength() / (this.maxt - this.mint));
+        return ~~p;
     }
     draw() {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield fetch('tirjson.jsp');
             const tir = yield response.json();
-            for (var row = 0; row < 32; row++) {
-                var y = row * 10;
-                for (var col = 0; col < 24; col++) {
-                    var x = (23 - col) * 10;
-                    var v = tir[col * 32 + row];
+            for (let row = 0; row < 32; row++) {
+                let y = row * 10;
+                for (let col = 0; col < 24; col++) {
+                    let x = (23 - col) * 10;
+                    let v = tir[col * 32 + row];
                     if (v < this.mint)
                         v = this.mint;
                     if (v > this.maxt)
                         v = this.maxt;
-                    var p = (v - this.mint) * (255 / (this.maxt - this.mint));
+                    let p = (v - this.mint) * (255 / (this.maxt - this.mint));
+                    let n = this.palIdx(v);
                     this.ctx.fillStyle = 'rgb(' + p + ',' + p + ',' + p + ')';
                     this.ctx.fillRect(x, y, 10, 10);
                 }
@@ -74,8 +86,8 @@ export class TIRCanvas {
 }
 export function main() {
     let p = new Palette();
-    p.setLength(10);
+    p.setLength(100);
     let c = document.getElementById('canvas');
-    let t = new TIRCanvas(c);
+    let t = new TIRCanvas(c, p);
     t.draw();
 }

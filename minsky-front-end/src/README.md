@@ -9,3 +9,6 @@ For how to write tests see
 
 Imports and modules
 <https://medium.com/@mattlag/es6-modules-getting-started-gotchas-2ad154f38e2e>
+
+Mocking DOM
+<https://github.com/jsdom/jsdom>

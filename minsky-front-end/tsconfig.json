@@ -2,7 +2,7 @@
     "compilerOptions": {
         "outDir": "../minsky-one/src/main/webapp/js",
         "allowJs": true,
-        "target": "es2015"
+        "target": "ES6"
     },
     "include": [
         "./src/**/*"
