@@ -20,5 +20,6 @@
     "ts-node": "^8.5.4",
     "typescript": "^3.7.3",
     "utf-8-validate": "^5.0.2"
-  }
+  },
+  "dependencies": {}
 }
