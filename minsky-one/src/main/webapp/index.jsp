@@ -52,8 +52,14 @@
                 <a href="histo-new.html">Histogram</a> |
                 <a href="tircanvas.html">TIR</a>
               <div style="visibility:hidden">
+                <div style="height:0px;">
                 <img id="colour" src="camera/1/" width="1" height="1">
-                <img id="thermal" src="camera/0/" width="1" height="1">
+                <canvas id="thermal" width="240" height="320"></canvas>
+                </div>
+                  <script type="module">
+                    import {main} from "./js/tircanvas.js";
+                    main('#thermal');
+                  </script>
               </div>
               <div height="640">
                 <canvas class="image_cw" id="composite" width="640" height="640">
@@ -74,11 +80,11 @@
             var ctx = document.getElementById('composite').getContext('2d');
             var img = new Image();
             var colour = document.getElementById("colour");
-
+            var thermal = document.getElementById("thermal");
             ctx.save();
             ctx.clearRect(0, 0, 640, 480);
             var s = 15 + (scale-50) / 20;
-            ctx.scale(s, s);
+            //ctx.scale(s, s);
             ctx.drawImage(thermal, mov_x/10.0, mov_y/10.0);
             ctx.restore();
             ctx.save();
@@ -88,7 +94,7 @@
           }
 
           window.onload = function() {
-            var thermal = document.getElementById("thermal");
+            //var thermal = document.getElementById("thermal");
             var colour = document.getElementById("colour");
 
             var range_x = document.getElementById("range-x");
@@ -120,7 +126,7 @@
 
             function updateImages() {
                 colour.src =  "camera" + "/1/" + new Date().getTime();
-                thermal.src =  "camera" + "/0/" + new Date().getTime();
+                //thermal.src =  "camera" + "/0/" + new Date().getTime();
                 updateComposite(shift_x,shift_y,tir_scale);
             }
         
