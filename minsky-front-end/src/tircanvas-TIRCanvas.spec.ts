@@ -9,7 +9,7 @@ const dom = new JSDOM('<!doctype html><html><body><div><canvas id="canvas" width
 let p = new Palette();
 p.setLength(100);
 
-let c = <HTMLCanvasElement> dom.window.document.getElementById('canvas');
+let c = <HTMLCanvasElement> dom.window.document.querySelector('#canvas');
 let tircanv = new TIRCanvas(c,p);
 
 

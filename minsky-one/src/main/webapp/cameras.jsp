@@ -44,7 +44,12 @@
               <div>
                 <img id="colour" src="camera/1/" width="256" height="192">
                 <img id="thermal" src="camera/0/" width="256" height="192">
-              </div>
+                <canvas id="canvas" width="240" height="320"></canvas>
+                  <script type="module">
+                    import {main} from "./js/tircanvas.js";
+                    main('#canvas');
+                  </script>
+             </div>
               <div>
                 <canvas id="composite" width="640" height="480">
               </div>

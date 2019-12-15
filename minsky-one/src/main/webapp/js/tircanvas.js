@@ -81,10 +81,10 @@ export class TIRCanvas {
         });
     }
 }
-export function main() {
+export function main(selector) {
     let p = new Palette();
     p.setLength(512);
-    let c = document.getElementById('canvas');
+    let c = document.querySelector(selector);
     let t = new TIRCanvas(c, p);
     t.draw();
 }
