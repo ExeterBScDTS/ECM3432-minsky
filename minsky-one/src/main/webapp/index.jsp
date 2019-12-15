@@ -83,11 +83,9 @@
             var thermal = document.getElementById("thermal");
             ctx.save();
             ctx.clearRect(0, 0, 640, 480);
-            var s = 15 + (scale-50) / 20;
-            //ctx.scale(s, s);
-            ctx.rotate(Math.PI/2);
-            ctx.translate(100,-400);
-            ctx.scale(1.2, 1.2);
+            ctx.rotate(-Math.PI/2);
+            ctx.translate(-400,80);
+            ctx.scale(1.5, 1.5);
             ctx.drawImage(thermal, mov_x/10.0, mov_y/10.0);
             ctx.restore();
             ctx.save();
