@@ -1,7 +1,7 @@
 
 export class Palette{
 
-    data: Array<String>;
+    data: Array<string>;
 
     setLength(n:number){
       this.data = this.getPalette(n);
@@ -11,7 +11,7 @@ export class Palette{
       return this.data.length;
     }
 
-    getColour(v:number) : String{
+    getColour(v:number) : string{
       
       const color: number[][] = [[0,0,0], [0,0,1], [0,1,0], [1,1,0], [1,0,0], [1,0,1], [1,1,1]];
       let NUM_COLORS:number = color.length;
@@ -39,9 +39,9 @@ export class Palette{
       return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
     }
 
-    getPalette(len:number) : Array<String>
+    getPalette(len:number) : Array<string>
     { 
-      let pal: Array<String> = [];
+      let pal: Array<string> = [];
       for(let i=0; i<len; i++){
         let v = (1.0 / (len-1)) * i;
         pal.push(this.getColour(v));
@@ -69,6 +69,10 @@ export class TIRCanvas {
     return ~~p;
   }
 
+  getColour(v:number):string{
+    return this.pal.data[this.palIdx(v)];
+  }
+
   async draw() {
     const response = await fetch('tirjson.jsp');
     const tir = await response.json();
@@ -78,11 +82,7 @@ export class TIRCanvas {
       for(let col=0; col<24; col++){
           let x=(23-col)*10;
           let v = tir[col*32 + row];
-          if (v < this.mint) v=this.mint;
-          if (v > this.maxt) v=this.maxt;
-          let p = (v-this.mint) * (255/(this.maxt-this.mint));
-          let n = this.palIdx(v);
-          this.ctx.fillStyle = 'rgb('+ p +',' + p +',' + p + ')';
+          this.ctx.fillStyle = this.getColour(v);
           this.ctx.fillRect(x, y, 10, 10);
       }
     }
@@ -93,9 +93,8 @@ export class TIRCanvas {
 export function main() {
 
   let p = new Palette();
-  p.setLength(100);
+  p.setLength(512);
   let c = <HTMLCanvasElement> document.getElementById('canvas');
-
   let t = new TIRCanvas(c,p);
   t.draw();
 }

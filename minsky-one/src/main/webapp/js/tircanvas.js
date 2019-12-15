@@ -61,6 +61,9 @@ export class TIRCanvas {
         let p = (v - this.mint) * (this.pal.getLength() / (this.maxt - this.mint));
         return ~~p;
     }
+    getColour(v) {
+        return this.pal.data[this.palIdx(v)];
+    }
     draw() {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield fetch('tirjson.jsp');
@@ -70,13 +73,7 @@ export class TIRCanvas {
                 for (let col = 0; col < 24; col++) {
                     let x = (23 - col) * 10;
                     let v = tir[col * 32 + row];
-                    if (v < this.mint)
-                        v = this.mint;
-                    if (v > this.maxt)
-                        v = this.maxt;
-                    let p = (v - this.mint) * (255 / (this.maxt - this.mint));
-                    let n = this.palIdx(v);
-                    this.ctx.fillStyle = 'rgb(' + p + ',' + p + ',' + p + ')';
+                    this.ctx.fillStyle = this.getColour(v);
                     this.ctx.fillRect(x, y, 10, 10);
                 }
             }
@@ -86,7 +83,7 @@ export class TIRCanvas {
 }
 export function main() {
     let p = new Palette();
-    p.setLength(100);
+    p.setLength(512);
     let c = document.getElementById('canvas');
     let t = new TIRCanvas(c, p);
     t.draw();
