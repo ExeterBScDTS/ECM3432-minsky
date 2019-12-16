@@ -50,7 +50,7 @@
             <div class="starter-template">
                 <a href="authorised/status.jsp">Sensor status</a> |
                 <a href="histo-new.html">Histogram</a> |
-                <a href="tircanvas.html">TIR</a>
+                <a href="cameras.jsp">Cameras</a>
               <div style="visibility:hidden">
                 <div style="height:0px;">
                 <img id="colour" src="camera/1/" width="1" height="1">
@@ -98,32 +98,32 @@
             //var thermal = document.getElementById("thermal");
             var colour = document.getElementById("colour");
 
-            var range_x = document.getElementById("range-x");
-            var val_x = document.getElementById("val-x");
+            //var range_x = document.getElementById("range-x");
+            //var val_x = document.getElementById("val-x");
             var shift_x = 69;
 
-            range_x.onchange = function(e){
-              val_x.innerHTML = e.target.value;
-              shift_x = Number(e.target.value);
-            }
+            //range_x.onchange = function(e){
+            //  val_x.innerHTML = e.target.value;
+            //  shift_x = Number(e.target.value);
+            //}
 
-            var range_y = document.getElementById("range-y");
-            var val_y = document.getElementById("val-y");
+            //var range_y = document.getElementById("range-y");
+            //var val_y = document.getElementById("val-y");
             var shift_y = 20;
 
-            range_y.onchange = function(e){
-              val_y.innerHTML = e.target.value;
-              shift_y = Number(e.target.value);
-            }
+            //range_y.onchange = function(e){
+            //  val_y.innerHTML = e.target.value;
+            //  shift_y = Number(e.target.value);
+            //}
 
-            var range_scale = document.getElementById("range-scale");
-            var val_scale = document.getElementById("val-scale");
+            //var range_scale = document.getElementById("range-scale");
+            //var val_scale = document.getElementById("val-scale");
             var tir_scale = 50;
 
-            range_scale.onchange = function(e){
-              val_scale.innerHTML = e.target.value;
-              tir_scale = Number(e.target.value);
-            }
+            //range_scale.onchange = function(e){
+            //  val_scale.innerHTML = e.target.value;
+            //  tir_scale = Number(e.target.value);
+           // }
 
             function updateImages() {
                 colour.src =  "camera" + "/1/" + new Date().getTime();

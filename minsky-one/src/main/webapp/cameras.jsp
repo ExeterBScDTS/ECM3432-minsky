@@ -43,7 +43,6 @@
             <div class="starter-template">
               <div>
                 <img id="colour" src="camera/1/" width="256" height="192">
-                <img id="thermal" src="camera/0/" width="256" height="192">
                 <canvas id="canvas" width="240" height="320"></canvas>
                   <script type="module">
                     import {main} from "./js/tircanvas.js";
@@ -135,7 +134,7 @@
             
             function updateImages() {
                 colour.src =  "camera" + "/1/" + new Date().getTime();
-                thermal.src =  "camera" + "/0/" + new Date().getTime();
+                //thermal.src =  "camera" + "/0/" + new Date().getTime();
                 updateComposite(shift_x,shift_y,tir_scale);
             }
         
