@@ -33,7 +33,7 @@ class Histogram{
     let response = await fetch("histjson.jsp?bins=" + num_bins + "&height=" + max_height);
     let tir = await response.json();
     for(let i=0; i<tir.length; i++){
-       this.setheight(i,tir[i],"black",max_height); 
+       this.setheight(i,tir[i],"rgb(255,255,0)",max_height); 
     }
   }
 }
