@@ -1,4 +1,4 @@
-// Unit-tests for tircanvas.ts TIRCanvas class.
+// Unit-tests for TIRCanvas class.
 import {Palette, TIRCanvas} from './minsky-tir';
 import { JSDOM } from 'jsdom';
 import { expect } from 'chai';

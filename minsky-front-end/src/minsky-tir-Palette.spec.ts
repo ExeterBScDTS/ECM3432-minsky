@@ -1,4 +1,4 @@
-// Unit-tests for tircanvas.ts Palette class.
+// Unit-tests for Palette class.
 
 import {Palette} from './minsky-tir';
 import { expect } from 'chai';

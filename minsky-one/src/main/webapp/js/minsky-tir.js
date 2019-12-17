@@ -52,7 +52,6 @@ export class Palette {
     }
 }
 export class TIRCanvas {
-    // Use main() rather than call constructor directly.
     constructor(canvas, palette) {
         this.mint = 12.0;
         this.maxt = 35.0;
@@ -95,6 +94,9 @@ export class TIRCanvas {
     }
 }
 export class Histogram {
+    constructor(svg, num_bins, max_height) {
+        this.drawHist(svg, num_bins, max_height);
+    }
     rect(n, h, fill, max_height) {
         var NS = "http://www.w3.org/2000/svg";
         var SVGObj = document.createElementNS(NS, "rect");
@@ -138,16 +140,14 @@ export class Histogram {
     setPalette(palette) {
         this.palette = palette.data;
     }
-    static main() {
-        let svg = document.getElementById('svg-hist');
+    static main(selector) {
+        let svg = document.querySelector(selector);
         let num_bins = 50;
         let max_height = 460;
-        let h = new Histogram();
+        let h = new Histogram(svg, num_bins, max_height);
         let p = new Palette();
         p.setLength(50);
         h.setPalette(p);
-        h.drawHist(svg, num_bins, max_height);
         h.redraw();
-        //var updateInterval = window.setInterval(h.redrawHist(num_bins,max_height), 200);
     }
 }
