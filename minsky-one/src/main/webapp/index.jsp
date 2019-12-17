@@ -54,11 +54,12 @@
               <div style="visibility:hidden">
                 <div style="height:0px;">
                 <img id="colour" src="camera/1/" width="1" height="1">
+
                 <canvas id="thermal" width="240" height="320"></canvas>
                 </div>
                   <script type="module">
                     import {TIRCanvas} from "./js/minsky-tir.js";
-                    TIRCanvas.main('#thermal');
+                    TIRCanvas.main('#thermal','tirjson.jsp');
                   </script>
               </div>
               <div height="640">
@@ -126,8 +127,8 @@
            // }
 
             function updateImages() {
-                colour.src =  "camera" + "/1/" + new Date().getTime();
-                //thermal.src =  "camera" + "/0/" + new Date().getTime();
+                //colour.src =  "camera" + "/1/" + new Date().getTime();
+                colour.src =  "colourcam.jsp#" + new Date().getTime();
                 updateComposite(shift_x,shift_y,tir_scale);
             }
         

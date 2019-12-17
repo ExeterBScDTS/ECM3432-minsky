@@ -52,11 +52,12 @@ export class Palette {
     }
 }
 export class TIRCanvas {
-    constructor(canvas, palette) {
+    constructor(canvas, palette, uri) {
         this.mint = 12.0;
         this.maxt = 35.0;
         this.ctx = canvas.getContext('2d');
         this.pal = palette;
+        this.uri = uri;
     }
     palIdx(v) {
         if (v < this.mint)
@@ -71,7 +72,7 @@ export class TIRCanvas {
     }
     draw() {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield fetch('tirjson.jsp');
+            const response = yield fetch(this.uri);
             const tir = yield response.json();
             for (let row = 0; row < 32; row++) {
                 let y = row * 10;
@@ -85,11 +86,12 @@ export class TIRCanvas {
             window.requestAnimationFrame(() => this.draw());
         });
     }
-    static main(selector) {
+    static main(selector, uri) {
         let p = new Palette();
         p.setLength(512);
         let c = document.querySelector(selector);
-        let t = new TIRCanvas(c, p);
+        //let uri:string = 'tirjson.jsp';
+        let t = new TIRCanvas(c, p, uri);
         t.draw();
     }
 }
