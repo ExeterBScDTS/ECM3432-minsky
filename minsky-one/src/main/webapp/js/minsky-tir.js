@@ -95,7 +95,12 @@ export class TIRCanvas {
 }
 export class Histogram {
     constructor(svg, num_bins, max_height) {
-        this.drawHist(svg, num_bins, max_height);
+        this.num_bins = num_bins;
+        this.max_height = max_height;
+        for (let i = 0; i < num_bins; i++) {
+            let r1 = this.rect(i, 1, "white", max_height);
+            svg.appendChild(r1);
+        }
     }
     rect(n, h, fill, max_height) {
         var NS = "http://www.w3.org/2000/svg";
@@ -115,14 +120,6 @@ export class Histogram {
         //SVGObj.x.baseVal.value=1;
         SVGObj.style.fill = fill;
         SVGObj.setAttribute("transform", "translate(" + (n * 18) + "," + (max_height - h) + ")");
-    }
-    drawHist(svg, num_bins, max_height) {
-        this.num_bins = num_bins;
-        this.max_height = max_height;
-        for (let i = 0; i < num_bins; i++) {
-            let r1 = this.rect(i, 1, "black", max_height);
-            svg.appendChild(r1);
-        }
     }
     redraw() {
         return __awaiter(this, void 0, void 0, function* () {
