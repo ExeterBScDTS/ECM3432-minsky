@@ -57,7 +57,7 @@
                 <canvas id="thermal" width="240" height="320"></canvas>
                 </div>
                   <script type="module">
-                    import {TIRCanvas} from "./js/tircanvas.js";
+                    import {TIRCanvas} from "./js/minsky-tir.js";
                     TIRCanvas.main('#thermal');
                   </script>
               </div>

@@ -45,21 +45,22 @@ class Histogram{
   setPalette(palette:Palette){
      this.palette=palette.data;
   }
+
+  static main() {
+   let svg = <SVGSVGElement><any>document.getElementById('svg-hist');
+   let num_bins = 50;
+   let max_height = 460;
+ 
+   let h = new Histogram();
+   let p = new Palette();
+   p.setLength(50);
+ 
+   h.setPalette(p);
+   h.drawHist(svg,num_bins,max_height);
+ 
+   var updateInterval = window.setInterval("h.redrawHist(num_bins,max_height)", 200);
+ }
+
 }
 
 
-export function main() {
-  let svg = <SVGSVGElement><any>document.getElementById('svg-hist');
-  let num_bins = 50;
-  let max_height = 460;
-
-  let h = new Histogram();
-  let p = new Palette();
-  p.setLength(50);
-
-  h.setPalette(p);
-  h.drawHist(svg,num_bins,max_height);
-
-  var updateInterval = window.setInterval("h.redrawHist(num_bins,max_height)", 200);
-
-}

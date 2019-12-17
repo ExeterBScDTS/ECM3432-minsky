@@ -45,8 +45,8 @@
                 <img id="colour" src="camera/1/" width="256" height="192">
                 <canvas id="canvas" width="240" height="320"></canvas>
                   <script type="module">
-                    import {main} from "./js/tircanvas.js";
-                    main('#canvas');
+                    import {TIRCanvas} from "./js/minsky-tir.js";
+                    TIRCanvas.main('#canvas');
                   </script>
              </div>
               <div>

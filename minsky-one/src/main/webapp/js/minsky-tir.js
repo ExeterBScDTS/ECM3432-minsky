@@ -7,6 +7,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+function sleep(ms) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    });
+}
 export class Palette {
     setLength(n) {
         this.data = this.getPalette(n);
@@ -47,6 +52,7 @@ export class Palette {
     }
 }
 export class TIRCanvas {
+    // Use main() rather than call constructor directly.
     constructor(canvas, palette) {
         this.mint = 12.0;
         this.maxt = 35.0;
@@ -86,5 +92,62 @@ export class TIRCanvas {
         let c = document.querySelector(selector);
         let t = new TIRCanvas(c, p);
         t.draw();
+    }
+}
+export class Histogram {
+    rect(n, h, fill, max_height) {
+        var NS = "http://www.w3.org/2000/svg";
+        var SVGObj = document.createElementNS(NS, "rect");
+        SVGObj.id = "r_" + n;
+        SVGObj.width.baseVal.value = 17;
+        SVGObj.height.baseVal.value = h;
+        SVGObj.x.baseVal.value = 1;
+        SVGObj.style.fill = fill;
+        SVGObj.setAttribute("transform", "translate(" + (n * 18) + "," + (max_height - h) + ")");
+        return SVGObj;
+    }
+    setheight(n, h, fill, max_height) {
+        var SVGObj = document.getElementById("r_" + n);
+        //SVGObj.width.baseVal.value=17;
+        SVGObj.height.baseVal.value = h;
+        //SVGObj.x.baseVal.value=1;
+        SVGObj.style.fill = fill;
+        SVGObj.setAttribute("transform", "translate(" + (n * 18) + "," + (max_height - h) + ")");
+    }
+    drawHist(svg, num_bins, max_height) {
+        this.num_bins = num_bins;
+        this.max_height = max_height;
+        for (let i = 0; i < num_bins; i++) {
+            let r1 = this.rect(i, 1, "black", max_height);
+            svg.appendChild(r1);
+        }
+    }
+    redraw() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield sleep(200);
+            let response = yield fetch("histjson.jsp?bins=" + this.num_bins + "&height=" + this.max_height);
+            let tir = yield response.json();
+            for (let i = 0; i < tir.length; i++) {
+                this.setheight(i, tir[i], this.palette[i], this.max_height);
+            }
+            // use requestAnimationFrame() so we don't update when the browser page
+            // is not visible.
+            window.requestAnimationFrame(() => this.redraw());
+        });
+    }
+    setPalette(palette) {
+        this.palette = palette.data;
+    }
+    static main() {
+        let svg = document.getElementById('svg-hist');
+        let num_bins = 50;
+        let max_height = 460;
+        let h = new Histogram();
+        let p = new Palette();
+        p.setLength(50);
+        h.setPalette(p);
+        h.drawHist(svg, num_bins, max_height);
+        h.redraw();
+        //var updateInterval = window.setInterval(h.redrawHist(num_bins,max_height), 200);
     }
 }

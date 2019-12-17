@@ -1,5 +1,5 @@
 // Unit-tests for tircanvas.ts TIRCanvas class.
-import {Palette, TIRCanvas} from './tircanvas';
+import {Palette, TIRCanvas} from './minsky-tir';
 import { JSDOM } from 'jsdom';
 import { expect } from 'chai';
 import 'mocha';
