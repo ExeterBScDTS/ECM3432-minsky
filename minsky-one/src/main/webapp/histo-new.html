@@ -30,7 +30,12 @@
             </div>
         </main>
 
-  <script type="text/javascript" src="js/histo-plot.js"></script>
+  <!--script type="text/javascript" src="js/histo-plot.js"></script-->
+  <script type="module">
+     import {Palette} from "./js/tircanvas.js";
+     import {main} from "./js/histo-plot.js";
+     main();
+     </script>
   
   </body>
 </html>

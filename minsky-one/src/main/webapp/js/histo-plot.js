@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { Palette } from 'tircanvas';
 class Histogram {
     rect(n, h, fill, max_height) {
         var NS = "http://www.w3.org/2000/svg";
@@ -38,15 +39,23 @@ class Histogram {
             let response = yield fetch("histjson.jsp?bins=" + num_bins + "&height=" + max_height);
             let tir = yield response.json();
             for (let i = 0; i < tir.length; i++) {
-                this.setheight(i, tir[i], "rgb(255,255,0)", max_height);
+                //this.setheight(i,tir[i],"rgb(255,255,0)",max_height); 
+                this.setheight(i, tir[i], this.palette[i], max_height);
             }
         });
     }
+    setPalette(palette) {
+        this.palette = palette.data;
+    }
 }
-var svg = document.getElementById('svg-hist');
-var num_bins = 50;
-var max_height = 460;
-var h = new Histogram();
-h.drawHist(svg, num_bins, max_height);
-var updateInterval = window.setInterval("h.redrawHist(num_bins,max_height)", 200);
-// For OO approach see https://codeburst.io/canvas-animations-in-typescript-97ba0163cb19
+export function main() {
+    let svg = document.getElementById('svg-hist');
+    let num_bins = 50;
+    let max_height = 460;
+    let h = new Histogram();
+    let p = new Palette();
+    p.setLength(50);
+    h.setPalette(p);
+    h.drawHist(svg, num_bins, max_height);
+    var updateInterval = window.setInterval("h.redrawHist(num_bins,max_height)", 200);
+}

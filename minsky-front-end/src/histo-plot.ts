@@ -1,5 +1,9 @@
+import {Palette} from 'tircanvas';
 
 class Histogram{
+
+   palette:Array<string>;
+
    rect(n:number,h:number,fill:string,max_height:number){
      var NS="http://www.w3.org/2000/svg";
      var SVGObj= <SVGRectElement><any>document.createElementNS(NS,"rect");
@@ -33,20 +37,29 @@ class Histogram{
     let response = await fetch("histjson.jsp?bins=" + num_bins + "&height=" + max_height);
     let tir = await response.json();
     for(let i=0; i<tir.length; i++){
-       this.setheight(i,tir[i],"rgb(255,255,0)",max_height); 
+       //this.setheight(i,tir[i],"rgb(255,255,0)",max_height); 
+       this.setheight(i,tir[i],this.palette[i],max_height); 
     }
+  }
+
+  setPalette(palette:Palette){
+     this.palette=palette.data;
   }
 }
 
-  var svg = <SVGSVGElement><any>document.getElementById('svg-hist');
-  var num_bins = 50;
-  var max_height = 460;
 
-  var h = new Histogram();
+export function main() {
+  let svg = <SVGSVGElement><any>document.getElementById('svg-hist');
+  let num_bins = 50;
+  let max_height = 460;
 
+  let h = new Histogram();
+  let p = new Palette();
+  p.setLength(50);
+
+  h.setPalette(p);
   h.drawHist(svg,num_bins,max_height);
 
   var updateInterval = window.setInterval("h.redrawHist(num_bins,max_height)", 200);
 
-  // For OO approach see https://codeburst.io/canvas-animations-in-typescript-97ba0163cb19
-  
+}
