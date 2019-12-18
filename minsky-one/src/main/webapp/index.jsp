@@ -44,97 +44,38 @@
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= user %></button>
             </form>
           </div>
-        </nav>
-        <main role="main" class="container">
+      </nav>
+      <main role="main" class="container">
 
-            <div class="starter-template">
-                <a href="authorised/status.jsp">Sensor status</a> |
-                <a href="histo-new.html">Histogram</a> |
-                <a href="cameras.jsp">Cameras</a>
-              <div style="visibility:hidden;height:0px;">
-                <img id="colour" src="" width="1" height="1">
-                <script>
+        <div class="starter-template">
+            <a href="authorised/status.jsp">Sensor status</a> |
+            <a href="histo-new.html">Histogram</a> |
+            <a href="cameras.jsp">Cameras</a>
+
+            <div style="visibility:hidden;height:0px;">
+              <img id="colour" width="1" height="1"/>
+              <script>
                   function updateColour() {
-                    colour.src =  "colourcam.jsp#" + new Date().getTime();
+                    colour.src="colourcam.jsp#" + new Date().getTime();
                   }
                   setInterval(updateColour, 200);
-                </script>
-                <canvas id="thermal" width="240" height="320"></canvas>
-                <script type="module">
+              </script>
+              <canvas id="thermal" width="240" height="320"></canvas>
+              <script type="module">
                   import {TIRCanvas} from "./js/minsky-tir.js";
                   TIRCanvas.main('#thermal','tirjson.jsp');
-                </script>
-              </div>
-                  
-              <div height="640">
-                <canvas class="image_cw" id="composite" width="640" height="640">
-              </div>  
+              </script>
             </div>
+                  
+            <div height="640">
+              <canvas class="image_cw" id="composite" width="640" height="640">
+            </div>  
+        </div>
       
-          </main>
-          <script type="module">
+      </main>
+      <script type="module">
             import {Composite} from "./js/minsky-composite.js";
             Composite.main('#composite','#colour','#thermal');
-          </script>
-          <!--
-          <script>
-          function updateComposite(mov_x, mov_y, scale){
-            var ctx = document.getElementById('composite').getContext('2d');
-            var img = new Image();
-            var colour = document.getElementById("colour");
-            var thermal = document.getElementById("thermal");
-            ctx.save();
-            ctx.clearRect(0, 0, 640, 480);
-            ctx.rotate(-Math.PI/2);
-            ctx.translate(-400,80);
-            ctx.scale(1.5, 1.5);
-            ctx.drawImage(thermal, mov_x/10.0, mov_y/10.0);
-            ctx.restore();
-            ctx.save();
-            ctx.globalAlpha = 0.3;
-            ctx.drawImage(colour, 0, 0);
-            ctx.restore();
-          }
-
-          window.onload = function() {
-            //var thermal = document.getElementById("thermal");
-            var colour = document.getElementById("colour");
-
-            //var range_x = document.getElementById("range-x");
-            //var val_x = document.getElementById("val-x");
-            var shift_x = 69;
-
-            //range_x.onchange = function(e){
-            //  val_x.innerHTML = e.target.value;
-            //  shift_x = Number(e.target.value);
-            //}
-
-            //var range_y = document.getElementById("range-y");
-            //var val_y = document.getElementById("val-y");
-            var shift_y = 20;
-
-            //range_y.onchange = function(e){
-            //  val_y.innerHTML = e.target.value;
-            //  shift_y = Number(e.target.value);
-            //}
-
-            //var range_scale = document.getElementById("range-scale");
-            //var val_scale = document.getElementById("val-scale");
-            var tir_scale = 50;
-
-            //range_scale.onchange = function(e){
-            //  val_scale.innerHTML = e.target.value;
-            //  tir_scale = Number(e.target.value);
-           // }
-
-            function updateImages() {
-                colour.src =  "colourcam.jsp#" + new Date().getTime();
-                updateComposite(shift_x,shift_y,tir_scale);
-            }
-        
-            setInterval(updateImages, 200);
-        }
-        </script>
-      -->    
+      </script>
   </body>
 </html>

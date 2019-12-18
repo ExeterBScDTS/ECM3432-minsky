@@ -42,12 +42,18 @@
 
             <div class="starter-template">
               <div>
-                <img id="colour" src="camera/1/" width="256" height="192">
-                <canvas id="canvas" width="240" height="320"></canvas>
-                  <script type="module">
-                    import {TIRCanvas} from "./js/minsky-tir.js";
-                    TIRCanvas.main('#canvas');
-                  </script>
+                <img id="colour" width="256" height="192">
+                <script>
+                  function updateColour() {
+                    colour.src="colourcam.jsp#" + new Date().getTime();
+                  }
+                  setInterval(updateColour, 200);
+                </script>
+                <canvas id="thermal" width="240" height="320"></canvas>
+                <script type="module">
+                  import {TIRCanvas} from "./js/minsky-tir.js";
+                  TIRCanvas.main('#thermal','tirjson.jsp');
+                </script>
              </div>
               <div>
                 <canvas id="composite" width="640" height="480">
