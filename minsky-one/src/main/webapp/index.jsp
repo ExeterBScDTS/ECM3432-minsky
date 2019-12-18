@@ -51,8 +51,7 @@
                 <a href="authorised/status.jsp">Sensor status</a> |
                 <a href="histo-new.html">Histogram</a> |
                 <a href="cameras.jsp">Cameras</a>
-              <div style="visibility:hidden">
-                <div style="height:0px;">
+              <div style="visibility:hidden;height:0px;">
                 <img id="colour" src="" width="1" height="1">
                 <script>
                   function updateColour() {
@@ -60,26 +59,16 @@
                   }
                   setInterval(updateColour, 200);
                 </script>
-
                 <canvas id="thermal" width="240" height="320"></canvas>
                 <script type="module">
                   import {TIRCanvas} from "./js/minsky-tir.js";
                   TIRCanvas.main('#thermal','tirjson.jsp');
                 </script>
-                </div>
-                  
               </div>
+                  
               <div height="640">
                 <canvas class="image_cw" id="composite" width="640" height="640">
-              </div>
-              <div style="visibility:hidden">
-                  Set X [<span id="val-x"></span>]
-                  <input type="range" id="range-x">
-                  Set Y [<span id="val-y"></span>]
-                  <input type="range" id="range-y">
-                  Set scale [<span id="val-scale"></span>]
-                  <input type="range" id="range-scale">
-                </div>  
+              </div>  
             </div>
       
           </main>
