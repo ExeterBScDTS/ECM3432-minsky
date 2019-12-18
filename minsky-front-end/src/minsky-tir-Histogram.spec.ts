@@ -1,18 +1,19 @@
-// Unit-tests for tircanvas.ts TIRCanvas class.
-import {Palette, TIRCanvas} from './minsky-tir';
+// Unit-tests for Histogram class.
+import {Palette, Histogram} from './minsky-tir';
 import { JSDOM } from 'jsdom';
 import { expect } from 'chai';
 import 'mocha';
 
-const dom = new JSDOM('<!doctype html><html><body><div><canvas id="canvas" width="240" height="320"></canvas></div></body></html>');
+const dom = new JSDOM('<!doctype html><html><body><div><svg id="svg" width="100" height="100"></svg></div></body></html>');
 
 let p = new Palette();
-p.setLength(100);
+p.setLength(50);
 
-let c = <HTMLCanvasElement> dom.window.document.querySelector('#canvas');
-let tircanv = new TIRCanvas(c,p);
+let svg = <SVGSVGElement> dom.window.document.querySelector('#svg');
 
+//let hist = new Histogram(svg,10,50);
 
+/*
 describe('TIRCanvas.palIdx()', () => {
 
   it('10 should return 0', () => {
@@ -26,3 +27,4 @@ describe('TIRCanvas.palIdx()', () => {
   });
 
 });
+*/

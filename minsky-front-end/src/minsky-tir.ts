@@ -58,13 +58,14 @@ export class Palette{
 export class TIRCanvas {
   private readonly ctx: CanvasRenderingContext2D;
   private readonly pal: Palette;
+  private readonly uri: string;
   mint = 12.0;
   maxt = 35.0;
 
-  // Use main() rather than call constructor directly.
-  private constructor(canvas: HTMLCanvasElement, palette: Palette ) {
+  constructor(canvas: HTMLCanvasElement, palette: Palette , uri: string) {
     this.ctx = canvas.getContext('2d');
     this.pal = palette;
+    this.uri = uri;
   }
 
   palIdx(v:number):number{
@@ -79,7 +80,7 @@ export class TIRCanvas {
   }
 
   async draw() {
-    const response = await fetch('tirjson.jsp');
+    const response = await fetch(this.uri);
     const tir = await response.json();
 
     for(let row=0; row<32; row++){
@@ -94,12 +95,13 @@ export class TIRCanvas {
     window.requestAnimationFrame(() => this.draw());
   }
 
-  static main(selector:string) {
+  static main(selector:string, uri:string) {
 
     let p = new Palette();
     p.setLength(512);
     let c = <HTMLCanvasElement> document.querySelector(selector);
-    let t = new TIRCanvas(c,p);
+    //let uri:string = 'tirjson.jsp';
+    let t = new TIRCanvas(c,p,uri);
     t.draw();
   }
 }
@@ -109,7 +111,16 @@ export class Histogram{
     palette:Array<string>;
     num_bins:number;
     max_height:number;
- 
+
+    constructor(svg:SVGSVGElement, num_bins:number,max_height:number) {
+        this.num_bins=num_bins;
+        this.max_height=max_height;
+        for(let i=0; i<num_bins; i++){
+            let r1 = this.rect(i,1,"white",max_height); 
+                svg.appendChild(r1);
+            }
+    }
+
     rect(n:number,h:number,fill:string,max_height:number):SVGRectElement{
       var NS="http://www.w3.org/2000/svg";
       var SVGObj= <SVGRectElement><any>document.createElementNS(NS,"rect");
@@ -130,16 +141,6 @@ export class Histogram{
       SVGObj.style.fill=fill;
       SVGObj.setAttribute("transform","translate(" + (n * 18) + "," + (max_height - h) + ")");
    }
-   
- 
-   drawHist(svg:SVGSVGElement,num_bins:number,max_height:number){
-       this.num_bins=num_bins;
-       this.max_height=max_height;
-       for(let i=0; i<num_bins; i++){
-        let r1 = this.rect(i,1,"black",max_height); 
-            svg.appendChild(r1);
-        }
-   }
  
    async redraw():Promise<void>{
      await sleep(200);
@@ -157,20 +158,16 @@ export class Histogram{
       this.palette=palette.data;
    }
  
-   static main() {
-    let svg = <SVGSVGElement><any>document.getElementById('svg-hist');
+   static main(selector:string) {
+    let svg = <SVGSVGElement><any>document.querySelector(selector);
     let num_bins = 50;
     let max_height = 460;
   
-    let h = new Histogram();
+    let h = new Histogram(svg,num_bins,max_height);
     let p = new Palette();
     p.setLength(50);
-  
     h.setPalette(p);
-    h.drawHist(svg,num_bins,max_height);
     h.redraw();
-
-    //var updateInterval = window.setInterval(h.redrawHist(num_bins,max_height), 200);
   }
  
  }

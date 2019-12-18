@@ -52,12 +52,12 @@ export class Palette {
     }
 }
 export class TIRCanvas {
-    // Use main() rather than call constructor directly.
-    constructor(canvas, palette) {
+    constructor(canvas, palette, uri) {
         this.mint = 12.0;
         this.maxt = 35.0;
         this.ctx = canvas.getContext('2d');
         this.pal = palette;
+        this.uri = uri;
     }
     palIdx(v) {
         if (v < this.mint)
@@ -72,7 +72,7 @@ export class TIRCanvas {
     }
     draw() {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield fetch('tirjson.jsp');
+            const response = yield fetch(this.uri);
             const tir = yield response.json();
             for (let row = 0; row < 32; row++) {
                 let y = row * 10;
@@ -86,15 +86,24 @@ export class TIRCanvas {
             window.requestAnimationFrame(() => this.draw());
         });
     }
-    static main(selector) {
+    static main(selector, uri) {
         let p = new Palette();
         p.setLength(512);
         let c = document.querySelector(selector);
-        let t = new TIRCanvas(c, p);
+        //let uri:string = 'tirjson.jsp';
+        let t = new TIRCanvas(c, p, uri);
         t.draw();
     }
 }
 export class Histogram {
+    constructor(svg, num_bins, max_height) {
+        this.num_bins = num_bins;
+        this.max_height = max_height;
+        for (let i = 0; i < num_bins; i++) {
+            let r1 = this.rect(i, 1, "white", max_height);
+            svg.appendChild(r1);
+        }
+    }
     rect(n, h, fill, max_height) {
         var NS = "http://www.w3.org/2000/svg";
         var SVGObj = document.createElementNS(NS, "rect");
@@ -114,14 +123,6 @@ export class Histogram {
         SVGObj.style.fill = fill;
         SVGObj.setAttribute("transform", "translate(" + (n * 18) + "," + (max_height - h) + ")");
     }
-    drawHist(svg, num_bins, max_height) {
-        this.num_bins = num_bins;
-        this.max_height = max_height;
-        for (let i = 0; i < num_bins; i++) {
-            let r1 = this.rect(i, 1, "black", max_height);
-            svg.appendChild(r1);
-        }
-    }
     redraw() {
         return __awaiter(this, void 0, void 0, function* () {
             yield sleep(200);
@@ -138,16 +139,14 @@ export class Histogram {
     setPalette(palette) {
         this.palette = palette.data;
     }
-    static main() {
-        let svg = document.getElementById('svg-hist');
+    static main(selector) {
+        let svg = document.querySelector(selector);
         let num_bins = 50;
         let max_height = 460;
-        let h = new Histogram();
+        let h = new Histogram(svg, num_bins, max_height);
         let p = new Palette();
         p.setLength(50);
         h.setPalette(p);
-        h.drawHist(svg, num_bins, max_height);
         h.redraw();
-        //var updateInterval = window.setInterval(h.redrawHist(num_bins,max_height), 200);
     }
 }

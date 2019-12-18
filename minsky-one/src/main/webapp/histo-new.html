@@ -25,16 +25,16 @@
             <div class="starter-template">
               <div style="width:980px;height:520px">
               <svg id="svg-hist" width="960" height="500"></svg>
+              <script type="module">
+                import {Histogram} from "./js/minsky-tir.js";
+                Histogram.main('#svg-hist');
+              </script>
               </div>
               <a href="authorised/status.jsp">Sensor status</a>
             </div>
         </main>
 
-  <!--script type="text/javascript" src="js/histo-plot.js"></script-->
-  <script type="module">
-     import {Histogram} from "./js/minsky-tir.js";
-     Histogram.main();
-     </script>
+  
   
   </body>
 </html>

@@ -53,13 +53,21 @@
                 <a href="cameras.jsp">Cameras</a>
               <div style="visibility:hidden">
                 <div style="height:0px;">
-                <img id="colour" src="camera/1/" width="1" height="1">
+                <img id="colour" src="" width="1" height="1">
+                <script>
+                  function updateColour() {
+                    colour.src =  "colourcam.jsp#" + new Date().getTime();
+                  }
+                  setInterval(updateColour, 200);
+                </script>
+
                 <canvas id="thermal" width="240" height="320"></canvas>
+                <script type="module">
+                  import {TIRCanvas} from "./js/minsky-tir.js";
+                  TIRCanvas.main('#thermal','tirjson.jsp');
+                </script>
                 </div>
-                  <script type="module">
-                    import {TIRCanvas} from "./js/minsky-tir.js";
-                    TIRCanvas.main('#thermal');
-                  </script>
+                  
               </div>
               <div height="640">
                 <canvas class="image_cw" id="composite" width="640" height="640">
@@ -75,6 +83,11 @@
             </div>
       
           </main>
+          <script type="module">
+            import {Composite} from "./js/minsky-composite.js";
+            Composite.main('#composite','#colour','#thermal');
+          </script>
+          <!--
           <script>
           function updateComposite(mov_x, mov_y, scale){
             var ctx = document.getElementById('composite').getContext('2d');
@@ -126,13 +139,13 @@
            // }
 
             function updateImages() {
-                colour.src =  "camera" + "/1/" + new Date().getTime();
-                //thermal.src =  "camera" + "/0/" + new Date().getTime();
+                colour.src =  "colourcam.jsp#" + new Date().getTime();
                 updateComposite(shift_x,shift_y,tir_scale);
             }
         
             setInterval(updateImages, 200);
         }
-        </script>       
+        </script>
+      -->    
   </body>
 </html>
