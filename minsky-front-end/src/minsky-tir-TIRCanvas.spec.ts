@@ -10,7 +10,7 @@ let p = new Palette();
 p.setLength(100);
 
 let c = <HTMLCanvasElement> dom.window.document.querySelector('#canvas');
-let tircanv = new TIRCanvas(c,p);
+let tircanv = new TIRCanvas(c,p, "");
 
 
 describe('TIRCanvas.palIdx()', () => {

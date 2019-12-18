@@ -11,7 +11,7 @@ p.setLength(50);
 
 let svg = <SVGSVGElement> dom.window.document.querySelector('#svg');
 
-let hist = new Histogram(svg,10,50);
+//let hist = new Histogram(svg,10,50);
 
 /*
 describe('TIRCanvas.palIdx()', () => {

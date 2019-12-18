@@ -53,7 +53,7 @@
                 <a href="cameras.jsp">Cameras</a>
               <div style="visibility:hidden">
                 <div style="height:0px;">
-                <img id="colour" src="camera/1/" width="1" height="1">
+                <img id="colour" src="colourcam.jsp" width="1" height="1">
 
                 <canvas id="thermal" width="240" height="320"></canvas>
                 </div>
@@ -76,6 +76,11 @@
             </div>
       
           </main>
+          <script type="module">
+            import {Composite} from "./js/minsky-composite.js";
+            Composite.main('#composite','#colour','#thermal');
+          </script>
+          <!--
           <script>
           function updateComposite(mov_x, mov_y, scale){
             var ctx = document.getElementById('composite').getContext('2d');
@@ -127,13 +132,13 @@
            // }
 
             function updateImages() {
-                //colour.src =  "camera" + "/1/" + new Date().getTime();
                 colour.src =  "colourcam.jsp#" + new Date().getTime();
                 updateComposite(shift_x,shift_y,tir_scale);
             }
         
             setInterval(updateImages, 200);
         }
-        </script>       
+        </script>
+      -->    
   </body>
 </html>
