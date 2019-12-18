@@ -21,7 +21,7 @@ export class Composite {
     update() {
         let mov_x = 69;
         let mov_y = 20; //, scale:number
-        this.colour.src = "colourcam.jsp#" + new Date().getTime();
+        //this.colour.src = "colourcam.jsp#" + new Date().getTime();
         //this.thermal.src = "";
         //let colour = <HTMLCanvasElement>document.getElementById("colour");
         //let thermal = <HTMLCanvasElement>document.getElementById("thermal");

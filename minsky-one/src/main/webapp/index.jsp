@@ -53,14 +53,21 @@
                 <a href="cameras.jsp">Cameras</a>
               <div style="visibility:hidden">
                 <div style="height:0px;">
-                <img id="colour" src="colourcam.jsp" width="1" height="1">
+                <img id="colour" src="" width="1" height="1">
+                <script>
+                  function updateColour() {
+                    colour.src =  "colourcam.jsp#" + new Date().getTime();
+                  }
+                  setInterval(updateColour, 200);
+                </script>
 
                 <canvas id="thermal" width="240" height="320"></canvas>
+                <script type="module">
+                  import {TIRCanvas} from "./js/minsky-tir.js";
+                  TIRCanvas.main('#thermal','tirjson.jsp');
+                </script>
                 </div>
-                  <script type="module">
-                    import {TIRCanvas} from "./js/minsky-tir.js";
-                    TIRCanvas.main('#thermal','tirjson.jsp');
-                  </script>
+                  
               </div>
               <div height="640">
                 <canvas class="image_cw" id="composite" width="640" height="640">
