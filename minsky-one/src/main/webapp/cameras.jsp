@@ -71,7 +71,11 @@
             </div>
       
           </main>
-          <script>
+          <script type="module">
+            import {Composite} from "./js/minsky-composite.js";
+            Composite.main('#composite','#colour','#thermal');
+          </script>
+          <!-- script>
           function updateComposite(mov_x, mov_y, scale){
             var ctx = document.getElementById('composite').getContext('2d');
             var img = new Image();
@@ -146,6 +150,7 @@
         
             setInterval(updateImages, 800);
         }
-        </script>       
+        </script> 
+      -->      
   </body>
 </html>
