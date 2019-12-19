@@ -11,12 +11,12 @@
     <!-- Custom styles for this template -->
     <link href="bootstrap/starter-template.css" rel="stylesheet">
     <style type="text/css"> 
-    .image_ccw {
+      .image_ccw {
         transform: rotate(270deg);
-    }
-    .image_cw {
+      }
+      .image_cw {
         transform: rotate(90deg);
-    }
+      }
     </style>
     <title>Minsky One</title>
   </head>
@@ -74,8 +74,9 @@
       
       </main>
       <script type="module">
-            import {Composite} from "./js/minsky-composite.js";
-            Composite.main('#composite','#colour','#thermal');
+        import {Composite} from "./js/minsky-composite.js";
+        let adjust=()=>{return[0,0,0]};
+        Composite.main({canvas:'#composite',colour:'#colour',thermal:'#thermal',adjust:adjust});
       </script>
   </body>
 </html>

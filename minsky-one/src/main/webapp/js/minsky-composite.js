@@ -19,28 +19,28 @@ export class Composite {
         this.thermal = thermal;
     }
     update() {
-        let mov_x = 69;
-        let mov_y = 20; //, scale:number
-        //this.colour.src = "colourcam.jsp#" + new Date().getTime();
-        //this.thermal.src = "";
-        //let colour = <HTMLCanvasElement>document.getElementById("colour");
-        //let thermal = <HTMLCanvasElement>document.getElementById("thermal");
-        this.ctx.save();
-        this.ctx.clearRect(0, 0, 640, 480);
-        this.ctx.rotate(-Math.PI / 2);
-        this.ctx.translate(-400, 80);
-        this.ctx.scale(1.5, 1.5);
-        this.ctx.drawImage(this.thermal, mov_x / 10.0, mov_y / 10.0);
-        this.ctx.restore();
-        this.ctx.save();
-        this.ctx.globalAlpha = 0.3;
-        this.ctx.drawImage(this.colour, 0, 0);
-        this.ctx.restore();
-        sleep(200);
-        window.requestAnimationFrame(() => this.update());
+        return __awaiter(this, void 0, void 0, function* () {
+            yield sleep(200).then(() => {
+                let mov_x = 69;
+                let mov_y = 20; //, scale:number
+                this.ctx.save();
+                this.ctx.clearRect(0, 0, 640, 480);
+                this.ctx.rotate(-Math.PI / 2);
+                this.ctx.translate(-400, 80);
+                this.ctx.scale(1.5, 1.5);
+                this.ctx.drawImage(this.thermal, mov_x / 10.0, mov_y / 10.0);
+                this.ctx.restore();
+                this.ctx.save();
+                this.ctx.globalAlpha = 0.3;
+                this.ctx.drawImage(this.colour, 0, 0);
+                this.ctx.restore();
+                window.requestAnimationFrame(() => this.update());
+            });
+        });
     }
-    static main(canvas, colour, thermal) {
+    static main({ canvas, colour, thermal, adjust }) {
         let comp = new Composite(document.querySelector(canvas), document.querySelector(colour), document.querySelector(thermal));
+        comp.adjust = adjust;
         comp.update();
     }
 }

@@ -72,6 +72,7 @@ export class TIRCanvas {
     }
     draw() {
         return __awaiter(this, void 0, void 0, function* () {
+            yield sleep(200).then(() => { });
             const response = yield fetch(this.uri);
             const tir = yield response.json();
             for (let row = 0; row < 32; row++) {
@@ -80,7 +81,7 @@ export class TIRCanvas {
                     let x = (23 - col) * 10;
                     let v = tir[col * 32 + row];
                     this.ctx.fillStyle = this.getColour(v);
-                    this.ctx.fillRect(x, y, 10, 10);
+                    this.ctx.fillRect(y, x, 10, 10);
                 }
             }
             window.requestAnimationFrame(() => this.draw());
@@ -125,7 +126,7 @@ export class Histogram {
     }
     redraw() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield sleep(200);
+            yield sleep(200).then(() => { });
             let response = yield fetch("histjson.jsp?bins=" + this.num_bins + "&height=" + this.max_height);
             let tir = yield response.json();
             for (let i = 0; i < tir.length; i++) {

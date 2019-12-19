@@ -80,6 +80,8 @@ export class TIRCanvas {
   }
 
   async draw() {
+
+    await sleep(200).then(()=>{});
     const response = await fetch(this.uri);
     const tir = await response.json();
 
@@ -89,7 +91,7 @@ export class TIRCanvas {
           let x=(23-col)*10;
           let v = tir[col*32 + row];
           this.ctx.fillStyle = this.getColour(v);
-          this.ctx.fillRect(x, y, 10, 10);
+          this.ctx.fillRect(y, x, 10, 10);
       }
     }
     window.requestAnimationFrame(() => this.draw());
@@ -143,7 +145,7 @@ export class Histogram{
    }
  
    async redraw():Promise<void>{
-     await sleep(200);
+     await sleep(200).then(()=>{});
      let response = await fetch("histjson.jsp?bins=" + this.num_bins + "&height=" + this.max_height);
      let tir = await response.json();
      for(let i=0; i<tir.length; i++){
