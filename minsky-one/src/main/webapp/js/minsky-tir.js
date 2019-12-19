@@ -78,7 +78,7 @@ export class TIRCanvas {
             for (let row = 0; row < 32; row++) {
                 let y = row * 10;
                 for (let col = 0; col < 24; col++) {
-                    let x = (23 - col) * 10;
+                    let x = col * 10;
                     let v = tir[col * 32 + row];
                     this.ctx.fillStyle = this.getColour(v);
                     this.ctx.fillRect(y, x, 10, 10);
