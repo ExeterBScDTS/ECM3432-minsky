@@ -56,14 +56,14 @@
               <img id="colour" width="1" height="1"/>
               <script>
                   function updateColour() {
-                    colour.src="colourcam.jsp#" + new Date().getTime();
+                    colour.src="colourcam.png#" + new Date().getTime();
                   }
                   setInterval(updateColour, 200);
               </script>
               <canvas id="thermal" width="240" height="320"></canvas>
               <script type="module">
                   import {TIRCanvas} from "./js/minsky-tir.js";
-                  TIRCanvas.main('#thermal','tirjson.jsp');
+                  TIRCanvas.main('#thermal','tir.json');
               </script>
             </div>
                   
