@@ -39,7 +39,7 @@
   -->
   <servlet>
     <servlet-name>tirjson</servlet-name>
-    <jsp-file>/tirjson.jsp</jsp-file>
+    <jsp-file>/jsp/tirjson.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>tirjson</servlet-name>
@@ -48,7 +48,7 @@
 
   <servlet>
     <servlet-name>histjson</servlet-name>
-    <jsp-file>/histjson.jsp</jsp-file>
+    <jsp-file>/jsp/histjson.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>histjson</servlet-name>
@@ -57,7 +57,7 @@
 
   <servlet>
     <servlet-name>colourcam</servlet-name>
-    <jsp-file>/colourcam.jsp</jsp-file>
+    <jsp-file>/jsp/colourcam.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>colourcam</servlet-name>

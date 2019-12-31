@@ -59,7 +59,6 @@ public class SimpleWebappTest {
       HttpURLConnection connection = null;
       try {
         // Fetch an HTML page rather than JSP as this is easier with embedded server.
-        // URL url = new URL("http://localhost:8082/" + appname + "/logon.html");
         URL url = new URL("http://localhost:8082/" + appname + "/test.html");
         connection = (HttpURLConnection) url.openConnection();
         if (connection.getResponseCode() != 200) {
@@ -85,7 +84,7 @@ public class SimpleWebappTest {
     public void testWebappJsp() {
       HttpURLConnection connection = null;
       try {
-        URL url = new URL("http://localhost:8080/webapp/index.jsp");
+        URL url = new URL("http://localhost:8080/webapp/tirjson.jsp");
         connection = (HttpURLConnection) url.openConnection();
         if (connection.getResponseCode() != 200) {
           throw new RuntimeException("Failed! HTTP Error Code: " + connection.getResponseCode());
