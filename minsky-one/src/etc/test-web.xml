@@ -5,6 +5,8 @@
       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
       version="3.1">
 
+  <contextPath>/</contextPath>
+
   <context-param>
     <param-name>minsky.camera.tir.rgbpath.default</param-name>
     <param-value>samples/mlx90640-0.rgb</param-value>
