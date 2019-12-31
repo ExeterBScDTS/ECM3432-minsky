@@ -7,8 +7,7 @@ import Image from "../components/image"
 const IndexPage = () => (
     <Layout>
         <div className="starter-template">
-            <a href="authorised/status.jsp">Sensor status</a> |
-            <a href="/histogram/">Histogram</a> |
+            <Link to="/histogram/">Histogram</Link> |
             <Link to="/cameras/">Cameras</Link>
 
             <div style={{visibility:'hidden',height:0}}>
