@@ -10,7 +10,14 @@
     <link rel="stylesheet" href="bootstrap/4.1.3/css/bootstrap.min.css">
     <!-- Custom styles for this template -->
     <link href="bootstrap/starter-template.css" rel="stylesheet">
-
+    <style type="text/css"> 
+      .image_ccw {
+        transform: rotate(270deg);
+      }
+      .image_cw {
+        transform: rotate(90deg);
+      }
+    </style>
     <title>Minsky One</title>
   </head>
   <%
@@ -39,29 +46,48 @@
           </div>
         </nav>
         <main role="main" class="container">
-
-            <div class="starter-template">
-              <div>
-                <img id="colour" src="camera/1/" width="256" height="192">
-                <img id="thermal" src="camera/0/" width="256" height="192">
-              </div>
+              <div class="row">
+                <div>
+                  <img id="colour" width="320"/>
+                </div>
+                <script>
+                  function updateColour() {
+                    colour.src="colourcam.jsp#" + new Date().getTime();
+                  }
+                  setInterval(updateColour, 500);
+                </script>
+                <canvas id="thermal" width="320" height="240"></canvas>
+                <script type="module">
+                  import {TIRCanvas} from "./js/minsky-tir.js";
+                  TIRCanvas.main('#thermal','tirjson.jsp');
+                </script>
+             </div>
               <div>
                 <canvas id="composite" width="640" height="480">
               </div>
               <span id="temp-val"></span>
               <div>
+                <script>
+                  var shift_x = undefined;
+                  var shift_y = undefined;
+                  var tir_scale = undefined;
+                  var adjust=()=>{return[shift_x,shift_y,tir_scale]};
+                </script>
                   Set X [<span id="val-x"></span>]
-                  <input type="range" id="range-x">
+                  <input type="range" id="range-x" onchange="shift_x=this.value">
                   Set Y [<span id="val-y"></span>]
-                  <input type="range" id="range-y">
+                  <input type="range" id="range-y" onchange="shift_y=this.value">
                   Set scale [<span id="val-scale"></span>]
-                  <input type="range" id="range-scale">
+                  <input type="range" id="range-scale" onchange="tir_scale=this.value">
                 </div>
               <a href="authorised/status.jsp">Sensor status</a>
-            </div>
       
           </main>
-          <script>
+          <script type="module">
+            import {Composite} from "./js/minsky-composite.js";
+            Composite.main({canvas:'#composite',colour:'#colour',thermal:'#thermal',adjust:adjust});
+          </script>
+          <!-- script>
           function updateComposite(mov_x, mov_y, scale){
             var ctx = document.getElementById('composite').getContext('2d');
             var img = new Image();
@@ -130,12 +156,13 @@
             
             function updateImages() {
                 colour.src =  "camera" + "/1/" + new Date().getTime();
-                thermal.src =  "camera" + "/0/" + new Date().getTime();
+                //thermal.src =  "camera" + "/0/" + new Date().getTime();
                 updateComposite(shift_x,shift_y,tir_scale);
             }
         
             setInterval(updateImages, 800);
         }
-        </script>       
+        </script> 
+      -->     
   </body>
 </html>

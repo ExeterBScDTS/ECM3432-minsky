@@ -33,6 +33,36 @@
     <param-value></param-value>
   </context-param>
 
+<!-- Although tirjson.jsp can be access with that URL, it is
+  preferable to access it via tir.json as it is less problematic to
+  prototype front-end code with that URL.
+  -->
+  <servlet>
+    <servlet-name>tirjson</servlet-name>
+    <jsp-file>/tirjson.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>tirjson</servlet-name>
+    <url-pattern>/tir.json</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>histjson</servlet-name>
+    <jsp-file>/histjson.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>histjson</servlet-name>
+    <url-pattern>/hist.json</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>colourcam</servlet-name>
+    <jsp-file>/colourcam.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>colourcam</servlet-name>
+    <url-pattern>/colourcam.png</url-pattern>
+  </servlet-mapping>
 
   <servlet>
      <servlet-name>props</servlet-name>

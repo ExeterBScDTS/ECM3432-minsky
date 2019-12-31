@@ -8,7 +8,8 @@ public class Processes {
 
     static Map<String, Process> myprocs = new HashMap<String, Process>();
 
-    public static void launch(String id, String cmd) {
+    public static void launch(String id, String cmd)
+    {
         Process p = myprocs.get(id);
         if((p != null) && (p.isAlive())){
             return;
@@ -18,10 +19,9 @@ public class Processes {
             ProcessBuilder pb = new ProcessBuilder(cmds).inheritIO();
             myprocs.put(id, pb.start());
         } catch (IOException e) {
-			e.printStackTrace();
+		    e.printStackTrace();
         }
     }
-    
     
     public static void stop(String id) {
         myprocs.get(id).destroy();

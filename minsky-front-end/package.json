@@ -1,0 +1,29 @@
+{
+  "name": "minsky-front-end",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "mocha -r ts-node/register src/*.spec.ts",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.2.7",
+    "@types/jsdom": "^12.2.4",
+    "@types/mocha": "^5.2.7",
+    "@types/parse5": "^4.0.0",
+    "bufferutil": "^4.0.1",
+    "canvas": "^2.6.1",
+    "chai": "^4.2.0",
+    "jsdom": "^15.2.1",
+    "mocha": "^6.2.2",
+    "parse5": "^4.0.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3",
+    "utf-8-validate": "^5.0.2",
+    "webpack": "^4.41.3"
+  },
+  "dependencies": {}
+}

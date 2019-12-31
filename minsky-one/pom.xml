@@ -100,13 +100,15 @@
         -->
         
         <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-jsp -->
-        <!--
-<dependency>
-    <groupId>org.eclipse.jetty</groupId>
-    <artifactId>jetty-jsp</artifactId>
-    <version>9.2.10.v20150310</version>
-</dependency>
+
+<!--
+    <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-jsp</artifactId>
+        <version>${jettyVersion}</version>
+    </dependency>
 -->
+
     </dependencies>
 
     <build>
