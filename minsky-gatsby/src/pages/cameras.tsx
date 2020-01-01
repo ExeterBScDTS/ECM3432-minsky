@@ -3,17 +3,18 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import TirCanv from "../components/tircanv"
+import RgbCanv from "../components/rgbcanv"
+import Composite from "../components/composite"
+
 
 const CamerasPage = () => (
   <Layout>
             <div className="row">
-                <div>
-                  <img id="colour" width="320"/>
-            </div>
-            <TirCanv/>
+              <RgbCanv id="rgb" />
+              <TirCanv/>
             </div>
               <div>
-                <canvas id="composite" width="640" height="480" />
+                <Composite/>
               </div>
               <span id="temp-val"></span>
               <div>

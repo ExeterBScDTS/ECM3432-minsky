@@ -42,7 +42,7 @@ class Histogram{
  
    async redraw():Promise<void>{
      await sleep(200).then(()=>{});
-     let response = await fetch("../hist.json?bins=" + this.num_bins + "&height=" + this.max_height);
+     let response = await fetch("/hist.json?bins=" + this.num_bins + "&height=" + this.max_height);
      let tir = await response.json();
      for(let i=0; i<tir.length; i++){
         this.setheight(i,tir[i],this.palette[i],this.max_height); 
