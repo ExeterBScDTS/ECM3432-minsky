@@ -10,6 +10,7 @@ export interface MyProps {
     id?: string;
     rgb?: string;
     tir?: string;
+    controls?: string;
   }
 
 class Composite extends React.Component<MyProps>{
@@ -26,7 +27,8 @@ class Composite extends React.Component<MyProps>{
     private mov_y:number = 10;
 
     state = {
-        x:50, y:50, scale:50
+        x:50, y:50, scale:50,
+        vis:"visible"
     }
 
     /*
@@ -61,7 +63,6 @@ class Composite extends React.Component<MyProps>{
     private async autoRefresh() {
         await sleep(200).then(()=>{});
         this.draw();
-        console.log(this.state);
         window.requestAnimationFrame(() => this.autoRefresh());
       }
     
@@ -70,6 +71,9 @@ class Composite extends React.Component<MyProps>{
         this.ctx = canvas.getContext("2d")
         this.rgb = document.getElementById(this.props.rgb) as HTMLImageElement;
         this.tir = document.getElementById(this.props.tir) as HTMLImageElement;
+        if(this.props.controls=="off"){
+            this.setState({vis:"hidden"});
+        }
         this.autoRefresh();
     }
 
@@ -80,18 +84,18 @@ class Composite extends React.Component<MyProps>{
         <div>
         <Slider axis="y" y={this.state.y} onChange={
             ({x,y})=>{this.setState({y:y})}
-            } style={{height:480}} />
+            } style={{height:480,visibility:this.state.vis}} />
         <canvas ref="canvas" width={640} height={480}/>
         </div>
         <div>
         <Slider axis="x" x={this.state.x} onChange={
             ({x,y})=>{this.setState({x:x})}
-            } style={{width:640}} /> 
+            } style={{width:640,visibility:this.state.vis}} /> 
         </div>
         <div>
         <Slider axis="x" x={this.state.scale} onChange={
             ({x,y})=>{this.setState({scale:x})}
-            } style={{width:160}} /> 
+            } style={{width:160,visibility:this.state.vis}} /> 
         </div>
         </>
         )

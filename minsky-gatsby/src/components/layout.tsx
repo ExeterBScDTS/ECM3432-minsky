@@ -6,6 +6,7 @@
  */
 
 import * as React from "react"
+import { Link } from "gatsby"
 import * as PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -27,10 +28,11 @@ const Layout = ({ children }:{children:any}) => {
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-          <a className="navbar-brand" href="#">Minsky One</a>
+          <Link className="navbar-brand" to="/">Minsky One</Link>
+          <Link className="navbar-brand" to="/histogram">histogram</Link>
           <div className="collapse navbar-collapse justify-content-end">
-            <form className="form-inline my-2 my-lg-0" method="get" action="authorised">
-              <button className="btn btn-outline-success my-2 my-sm-0" type="submit"> user </button>
+            <form className="form-inline my-2 my-lg-0" method="get" action="/cameras">
+              <button className="btn btn-outline-success my-2 my-sm-0" type="submit"> settings </button>
             </form>
           </div>
         </nav>
