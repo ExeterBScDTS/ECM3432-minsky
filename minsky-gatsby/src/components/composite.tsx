@@ -31,13 +31,6 @@ class Composite extends React.Component<MyProps>{
         vis:"visible"
     }
 
-    /*
-    constructor(props:MyProps) {
-        super(props);
-        this.state = {x:10,y:10};
-      }
-      */
-
     private draw() {
 
         let mov_x = this.state.x * this.width / 100;
@@ -49,13 +42,10 @@ class Composite extends React.Component<MyProps>{
         mov_y -= tir_h / 2;
         this.ctx.save();
         this.ctx.clearRect(0, 0, 640, 480);
-        //this.ctx.rotate(-Math.PI/2);
-        //this.ctx.translate(-400,80);
-        //this.ctx.scale(1.5, 1.5);
         this.ctx.drawImage(this.tir, mov_x, mov_y, tir_w, tir_h);
         this.ctx.restore();
         this.ctx.save();
-        this.ctx.globalAlpha = 0.3;
+        this.ctx.globalAlpha = 0.5;
         this.ctx.drawImage(this.rgb, 0, 0, 640, 480);
         this.ctx.restore();
     }
@@ -79,8 +69,7 @@ class Composite extends React.Component<MyProps>{
 
     render() {
         return(
-        <>    
-        
+        <>         
         <div>
         <Slider axis="y" y={this.state.y} onChange={
             ({x,y})=>{this.setState({y:y})}

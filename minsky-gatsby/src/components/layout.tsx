@@ -10,7 +10,6 @@ import { Link } from "gatsby"
 import * as PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
 import "./layout.css"
 
 const Layout = ({ children }:{children:any}) => {
@@ -24,7 +23,6 @@ const Layout = ({ children }:{children:any}) => {
     }
   `)
 
-  //  <Header siteTitle={data.site.siteMetadata.title} />
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
