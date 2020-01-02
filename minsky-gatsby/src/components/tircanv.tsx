@@ -7,7 +7,11 @@ import {TIRCanvas} from "./tircanvas"
 // See https://blog.cloudboost.io/using-html5-canvas-with-react-ff7d93f5dc76
 // And https://www.gatsbyjs.org/docs/static-folder/
 
-class TirCanv extends React.Component {
+export interface MyProps {
+    id: string
+  }
+
+class TirCanv extends React.Component<MyProps> {
 
     componentDidMount() {
         const canvas:HTMLCanvasElement = this.refs.canvas as HTMLCanvasElement;
@@ -19,7 +23,7 @@ class TirCanv extends React.Component {
 
     render() { 
         return(
-        <canvas ref="canvas" width={320} height={240} />
+        <canvas ref="canvas" width={320} height={240} id={this.props.id}/>
         )
     }
 }

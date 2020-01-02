@@ -34,6 +34,7 @@ class RgbCanv extends React.Component<MyProps>{
         this.uri = "/colourcam.png";
         this.ctx = canvas.getContext("2d")
         this.img = document.createElement("img");
+        this.img.id = "bob";
         this.draw();
     }
 
