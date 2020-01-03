@@ -29,9 +29,7 @@ const Layout = ({ children }:{children:any}) => {
           <Link className="navbar-brand" to="/">Minsky One</Link>
           <Link className="navbar-brand" to="/histogram">histogram</Link>
           <div className="collapse navbar-collapse justify-content-end">
-            <form className="form-inline my-2 my-lg-0" method="get" action="/cameras">
-              <button className="btn btn-outline-success my-2 my-sm-0" type="submit"> settings </button>
-            </form>
+          <Link className="btn btn-outline-secondary" to="/cameras">settings</Link>
           </div>
         </nav>
 
