@@ -24,7 +24,8 @@ import org.junit.Test;
 public class SimpleWebappTest {
 
   private Server server;
-  String appname = "minskyOne-0.2";
+  //String appname = "minskyOne-0.2/";
+  String appname = "";
 
   @Before
   public void setUp() throws Exception {
@@ -59,7 +60,7 @@ public class SimpleWebappTest {
       HttpURLConnection connection = null;
       try {
         // Fetch an HTML page rather than JSP as this is easier with embedded server.
-        URL url = new URL("http://localhost:8082/" + appname + "/test.html");
+        URL url = new URL("http://localhost:8082/" + appname + "test.html");
         connection = (HttpURLConnection) url.openConnection();
         if (connection.getResponseCode() != 200) {
           throw new RuntimeException("Failed! HTTP Error Code: " + connection.getResponseCode());

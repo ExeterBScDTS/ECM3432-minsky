@@ -25,8 +25,10 @@ public class HistogramData {
         in.close();
 
         List<Float>  ir = Arrays.asList(f);
-        float ir_min = Collections.min(ir);
-        float ir_max = Collections.max(ir);
+        //float ir_min = Collections.min(ir);
+        //float ir_max = Collections.max(ir);
+        float ir_min = 0.0f;
+        float ir_max = 50.0f;
 
         double start = Math.floor(ir_min / 10.0) * 10.0;
         double end = Math.ceil(ir_max / 10.0) * 10.0;
