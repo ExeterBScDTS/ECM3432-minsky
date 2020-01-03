@@ -16,7 +16,36 @@ class Histogram{
         for(let i=0; i<num_bins; i++){
             let r1 = this.rect(i,1,"white",max_height); 
                 svg.appendChild(r1);
+            let t1 = this.tick(i,"black",max_height);
+              svg.appendChild(t1);
             }
+    }
+
+    tick(n:number,fill:string,max_height:number):SVGGElement{
+      var NS="http://www.w3.org/2000/svg";
+      var SVGGroup = <SVGGElement><any>document.createElementNS(NS,"g"); 
+      var SVGObj= <SVGPathElement><any>document.createElementNS(NS,"path");
+      //SVGObj.style.fill=fill;
+      SVGObj.style.stroke=fill;
+      SVGObj.style.strokeWidth="2";
+      SVGObj.setAttribute("d", "M0 0L0 4");
+      SVGGroup.appendChild(SVGObj);
+      var SVGText1= <SVGTextElement><any>document.createElementNS(NS,"text");
+      var SVGText2= <SVGTextElement><any>document.createElementNS(NS,"text");
+      SVGText1.style.fill=fill;
+      SVGText2.style.fill=fill;
+      let temp = "" + (1000 + n);
+      temp = temp[2] + temp[3];
+      SVGText1.textContent= "" + temp[0];
+      SVGText1.setAttribute("y","20");
+      SVGText1.setAttribute("x","-4");
+      SVGText2.textContent= "" + temp[1];
+      SVGText2.setAttribute("y","34");
+      SVGText2.setAttribute("x","-4"); 
+      SVGGroup.appendChild(SVGText1);
+      SVGGroup.appendChild(SVGText2);
+      SVGGroup.setAttribute("transform","translate(" + (9+ n * 18) + "," + (max_height) + ")");
+      return SVGGroup;
     }
 
     rect(n:number,h:number,fill:string,max_height:number):SVGRectElement{
