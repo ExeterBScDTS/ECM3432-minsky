@@ -6,7 +6,6 @@
 
     <Set name="war"><SystemProperty name="jetty.home" default="."/>/</Set>
 
-<!--
     <Get name="securityHandler">
       <Set name="loginService">
             <New class="org.eclipse.jetty.jaas.JAASLoginService">
@@ -15,6 +14,5 @@
             </New>
       </Set>
     </Get>
--->
 
 </Configure>

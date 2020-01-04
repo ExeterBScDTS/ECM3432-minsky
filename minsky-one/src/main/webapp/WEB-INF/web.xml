@@ -95,7 +95,6 @@
      <url-pattern>/histogram/*</url-pattern>
   </servlet-mapping>  
 
-<!--
  <login-config>
     <auth-method>FORM</auth-method>
     <realm-name>Test JAAS Realm</realm-name>
@@ -108,7 +107,6 @@
       </form-error-page>
     </form-login-config>
   </login-config>
--->
 
   <security-constraint>
     <web-resource-collection>
