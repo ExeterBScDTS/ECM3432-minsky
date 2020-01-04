@@ -122,10 +122,10 @@
     <realm-name>Test JAAS Realm</realm-name>
     <form-login-config>
       <form-login-page>
-        /logon.html
+        /auth/logon.html
       </form-login-page>
       <form-error-page>
-        /authfail.html
+        /auth/fail.html
       </form-error-page>
     </form-login-config>
   </login-config>
