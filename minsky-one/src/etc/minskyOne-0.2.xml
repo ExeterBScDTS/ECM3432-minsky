@@ -6,7 +6,7 @@
 <!-- =============================================================== -->
 <Configure id='wac' class="org.eclipse.jetty.webapp.WebAppContext">
 
-  <Set name="contextPath">/minskyOne-0.2</Set>
+  <Set name="contextPath">/</Set>
 
   <Set name="war"><Property name="jetty.webapps" default="."/>/minskyOne-0.2.war</Set>
   <Set name="extractWAR">true</Set>

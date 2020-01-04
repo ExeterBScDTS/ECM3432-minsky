@@ -156,6 +156,7 @@
                     -->
                         <webApp>
                         <descriptor>${project.basedir}/src/etc/test-web.xml</descriptor>
+                        <contextPath>/</contextPath>
                         </webApp>
                 </configuration>
             </plugin>

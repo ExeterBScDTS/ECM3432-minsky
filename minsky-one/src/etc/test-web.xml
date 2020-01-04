@@ -5,6 +5,8 @@
       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
       version="3.1">
 
+  <contextPath>/</contextPath>
+
   <context-param>
     <param-name>minsky.camera.tir.rgbpath.default</param-name>
     <param-value>samples/mlx90640-0.rgb</param-value>
@@ -39,7 +41,7 @@
   -->
   <servlet>
     <servlet-name>tirjson</servlet-name>
-    <jsp-file>/tirjson.jsp</jsp-file>
+    <jsp-file>/jsp/tirjson.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>tirjson</servlet-name>
@@ -48,7 +50,7 @@
 
   <servlet>
     <servlet-name>histjson</servlet-name>
-    <jsp-file>/histjson.jsp</jsp-file>
+    <jsp-file>/jsp/histjson.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>histjson</servlet-name>
@@ -57,7 +59,7 @@
 
   <servlet>
     <servlet-name>colourcam</servlet-name>
-    <jsp-file>/colourcam.jsp</jsp-file>
+    <jsp-file>/jsp/colourcam.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>colourcam</servlet-name>
@@ -96,10 +98,10 @@
     <realm-name>Test JAAS Realm</realm-name>
     <form-login-config>
       <form-login-page>
-        /logon.html
+        /auth/logon.html
       </form-login-page>
       <form-error-page>
-        /authfail.html
+        /auth/fail.html
       </form-error-page>
     </form-login-config>
   </login-config>
